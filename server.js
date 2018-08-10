@@ -27,9 +27,6 @@ app.use(session({
 require('./server/config/sql.js');
 
 
-
-
-
 // ============ Routes ============
 
 //======== ANGULAR ROUTE ========

@@ -1,0 +1,31 @@
+<div class="wrapper">
+  register.component
+  <br>
+    <a [routerLink]= "['/']">back to main</a>
+    <hr>
+    <h3>register</h3>
+    <form (submit)="submitNewUser" action="">
+      first name:
+      <input [(ngModel)]="newUser.fname" type="text" name="fname" placeholder="First Name">
+      <br>
+      last name:
+      <input [(ngModel)]="newUser.lname" type="text" name="lname" placeholder="Last Name">
+      <br>
+      email
+      <input [(ngModel)]="newUser.email" type="text" name="email" placeholder="email">
+      <br>
+      password:
+      <input [(ngModel)]="newUser.pass" type="text" name="password" placeholder="password">
+      <br>
+      confirm password:
+      <input [(ngModel)]="newUser.pass2" type="text" name="password2" placeholder="password2">
+      <br>
+      <input type="submit" value="register">
+
+    </form>
+    
+  
+  
+  
+  </div>
+  

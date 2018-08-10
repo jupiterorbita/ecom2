@@ -3,7 +3,7 @@ console.log("SERVER > sql.js".blue);
 //=========== MYSQL CONNECTION ===========
 var mysql = require("mysql");
 // connect to mySQL
-connection = mysql.createConnection({
+var con = mysql.createConnection({
     host: "localhost",
     port: "3306",
     user: "root",
