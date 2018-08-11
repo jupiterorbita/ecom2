@@ -8,14 +8,26 @@ export class UserService {
 
   constructor(private _http: HttpClient) { }
 
-
+// ============== REGISTER ==============
 // ---- create new user --------
   createUser(newUser: any) {
+    console.log(`%c inside createUser userService >>> SERVER newUser =>`, 'color: yellow', newUser);
     return this._http.post('/api/new_user', newUser);
   }
 
+// ----- fetch ALL Users -----
+  fetchAllUsers() {
+    console.log(`%c inside FETCH ALL userService >>> SERVER`, 'color: yellow');
+    return this._http.get('/api/fetchAll');
+  }
 
 
+// ================ LOGIN ==============
+// ------- check user ----------
+  checkUser(potentialUser) {
+    console.log(`%c inside checkUser userService >>> SERVER`, 'color: yellow', potentialUser);
+    return this._http.post('/api/checkUser', potentialUser);
+  }
 
 
 

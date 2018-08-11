@@ -3,7 +3,23 @@ login.component
 <br>
   <a [routerLink]= "['/']">back to main</a>
   <hr>
-  
+  <h2>LOGIN</h2>
+  <form (submit)="login()" >
+    email:
+    <br>
+    <input [(ngModel)]="loginUser.email" name="loginUser.email" type="text" name="email" placeholder="email">
+    <br>
+    password:
+    <br>
+    <input [(ngModel)]="loginUser.pass" name="loginUser.pass" type="text" name="pass" placeholder="password">
+    <br>
+    <br>
+    <input type="submit" value="Login">
+    <hr>
+    email: {{ loginUser | json }} <br>
+    pass: {{ loginUser.pass }} <br>
+
+  </form>
   
 
 
