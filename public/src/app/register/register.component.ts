@@ -20,6 +20,7 @@ export class RegisterComponent implements OnInit {
       lname: '',
       email: '',
       pass: '',
+      pass2: '',
       created_at: '',
       updated_at: '',
       admin: ''
@@ -33,33 +34,28 @@ export class RegisterComponent implements OnInit {
     console.log('%c - this.newUser =>', 'color: yellow', this.newUser);
     console.log(`%c - this.newUser => ${JSON.stringify(this.newUser)}`, 'color: yellow');
 
-    this._userService.createUser(this.newUser)
-    .subscribe((res: any) => {
-        console.log('res from newUser save res =>', res);
-        console.log('res from newUser save res.result =>', res.result);
-        if (res.result) {
-          console.log('result is valid -> routing back to app.component');
-          this._router.navigate(['/']);
-        } else {
-          console.log('invalid result - server error not saved');
-        }
-      });
+    console.log('-----------');
+    console.log(this.newUser['pass']);
+    console.log(this.newUser['pass2']);
+
+    if (this.newUser['pass'] === this.newUser['pass2']) {
+      this._userService.createUser(this.newUser)
+      .subscribe((res: any) => {
+          console.log('res from newUser save res =>', res);
+          console.log('res from newUser save res.result =>', res.result);
+          if (res.result) {
+            console.log('result is valid -> routing back to app.component');
+            this._router.navigate(['/']);
+          } else {
+            console.log('invalid result - server error not saved');
+          }
+        });
+      } else {
+        console.log('pass doesn\'t match');
+        alert('pass doent match');
+      }
+
   }
-
-
-
-
-  // onSubmit_comment(cakeid, new_comment, myForm) {
-  //   console.log('onSubmit_comment() =>', cakeid, new_comment); // this.new_comment
-  //   console.log('=-=-=-=-= myForm.value =>', myForm.value);
-  //   this.new_comment = myForm.value;
-  //   console.log('this.new_comment =======>', this.new_comment);
-  //   const commentObserve = this._rateService.commentCake(cakeid, this.new_comment);
-  //   commentObserve.subscribe((data_response) => {
-  //     console.log('data_response came back for comment', data_response);
-  //     this.new_comment = {rating: null, comment: ''};
-  //   });
-  // }
 
 
 

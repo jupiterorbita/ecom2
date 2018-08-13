@@ -57,27 +57,34 @@ module.exports = {
 // ==================== LOGIN check user ================
     checkUser: (req, res) => {
         console.log('req.body.email =>'.green, req.body.email);
+        console.log('req.body.pass  =>'.green, req.body.pass);
         console.log('>>> USER CONTROLLER >>> CHECK USER');
         console.log("MySQL connected as id ".yellow + connection.threadId)
         // var sql = `SELECT EXISTS(SELECT * FROM UserSQL_DB.users WHERE email= '${req.body.email}');`;
-        var sql =`SELECT email FROM users WHERE email='${req.body.email}';`;
+        // var sql =`SELECT email FROM users WHERE email='${req.body.email}';`;
+        var sql = `SELECT id FROM users WHERE email='${req.body.email}' AND pass='${req.body.pass}' LIMIT 1;`
         connection.query(sql, function(err, bool_result) {
+            // select all f
             if (err) throw err;
             console.log('check user is => '.bgGreen.black, bool_result);
-            console.log('=======', bool_result[0]);
-            // if (bool_result[0] === undefined) {
             if (bool_result.length < 1) {
-                console.log('FAIL!!!!!!!!');
-                res.json({message: 'NO MATCH email', canLogin: false});
+                console.log('FAIL!!!!!!!!'.bgRed);
+                res.json({
+                    message: 'NO MATCH email or pass', 
+                    canLogin: false, 
+                });
             }
             else if (bool_result.length > 0) {
+                console.log('=======> give back id= '.bgGreen.black, bool_result[0].id);
+                // store in session
+                req.session.userid = bool_result[0].id;
+                console.log('req.session.userid =>', req.session.userid);
                 console.log('WIN length > 0 +1');
-                res.json({message: 'SUCCESS email MATCHES!', canLogin: true})
-            } else {
-                console.log('ERROR')
-                res.json({message: 'ERROR ERROR possible hacker!', canLogin: false})
-            }
-            // res.json({message: 'bool', bool_result: bool_result});
+                res.json({
+                    message: 'SUCCESS email & pass MATCHES!', 
+                    canLogin: true, 
+                });
+            } 
         });
     }
 

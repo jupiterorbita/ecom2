@@ -32,8 +32,7 @@ export class LoginComponent implements OnInit {
       console.log('%cback from server with res =>', 'color: yellow', res);
       console.log(res.message);
       if (res.canLogin === true) {
-        console.log('email ok proceed to check pass');
-        
+        console.log('SUCCESS id stored in session in server');
       } else if (res['canLogin'] === false) {
         console.log('no match email - DO NOT PROCCEED');
       }
