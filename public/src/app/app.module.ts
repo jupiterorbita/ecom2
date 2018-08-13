@@ -13,6 +13,8 @@ import { RegisterComponent } from './register/register.component';
 import { TeddyComponent } from './teddy/teddy.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { ProductsComponent } from './products/products.component';
+import { AdmindashComponent } from './admindash/admindash.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { FooterComponent } from './footer/footer.component';
     RegisterComponent,
     TeddyComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ProductsComponent,
+    AdmindashComponent
   ],
   imports: [
     BrowserModule,

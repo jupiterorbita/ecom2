@@ -8,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
+
   allUsers: {};
+  allFormattedDates: {};
 
   constructor(private _userService: UserService) { }
 
@@ -16,11 +18,15 @@ export class MainComponent implements OnInit {
     this.fetchAllUsers();
   }
 
+
+
   fetchAllUsers() {
-    console.log('%cfetching all users', 'color: yellow');
+    console.log('%c fetching all users', 'color: yellow');
     this._userService.fetchAllUsers().subscribe(res => {
       this.allUsers = res['result'];
       console.log('server res=>', res);
+
+      // console.log('%c SQL - DATES =>', 'color: lightgreen', res['result'][0]['date_created']);
       // console.log(res['results'][0].name);
     });
   }

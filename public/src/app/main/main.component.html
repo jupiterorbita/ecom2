@@ -1,9 +1,13 @@
 <div class="wrapper">
   main.component
   <br>
-  <a [routerLink]= "['/login']">LOGIN</a> - <a [routerLink]= "['/register']">REGISTER</a>
+  <a [routerLink]= "['/login']">LOGIN</a> - 
+  <a [routerLink]= "['/register']">REGISTER</a> - 
+  <a [routerLink]= "['/products']"> PRODUCTS </a> - 
+  <a [routerLink]= "['/admindash']"> ADMIN DASHBOARD </a>
+  <button (click)="clearSession()"> CLEAR SESSION </button>
   <hr>
-  <h3>all users registered</h3>
+  <h3>ALL REGISTERED USERS</h3>
   <table>
     <thead>
       <td>id</td>
@@ -22,7 +26,7 @@
         <td>{{ user.lname }}</td>
         <td>{{ user.email }}</td>
         <td>{{ user.pass }}</td>
-        <td>{{ user.created_at }}</td>
+        <td>{{ user.date_created }}</td>
         <td>{{ user.updated_at }}</td>
         <td>{{ user.admin }}</td>
       </tr>

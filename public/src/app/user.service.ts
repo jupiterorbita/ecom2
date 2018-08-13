@@ -30,6 +30,11 @@ export class UserService {
   }
 
 
+// ========== CHECK ADMIN RIGHTS ===========
+  // checkIfAdmin() {
+  //   console.log('%c inside checkIfAdmin userService >>> SERVER', 'color: red');
+  //   return this._http.get('/api/checkAdmin');
+  // }
 
 
 }

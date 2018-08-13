@@ -1,3 +1,5 @@
+import { AdmindashComponent } from './admindash/admindash.component';
+import { ProductsComponent } from './products/products.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MainComponent } from './main/main.component';
@@ -6,9 +8,12 @@ import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   // {path: '', pathMatch: 'full', redirectTo: '/main'},
-  {path: '', component: MainComponent},
+  {path: 'main', component: MainComponent},
+  {path: '', redirectTo: '/main', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent}
+  {path: 'register', component: RegisterComponent},
+  {path: 'products', component: ProductsComponent},
+  {path: 'admindash', component: AdmindashComponent}
 
 ];
 

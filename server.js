@@ -41,8 +41,8 @@ require('./server/config/routes')(app);
 // =========== SERVER CONNECTION ============
 // var server = app.listen(5000)
 // console.log('SERVER connected port:'.yellow, server);
-
-app.listen(5000, function () {
+var portNum = '5000';
+app.listen(portNum, function () {
     console.log("SERVER connected port:5000".yellow);
 })
 
