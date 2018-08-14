@@ -1,11 +1,15 @@
 <div class="wrapper">
   main.component
   <br>
+  <a [routerLink]= "['']">MAIN - reload ng </a> - 
   <a [routerLink]= "['/login']">LOGIN</a> - 
   <a [routerLink]= "['/register']">REGISTER</a> - 
-  <a [routerLink]= "['/products']"> PRODUCTS </a> - 
-  <a [routerLink]= "['/admindash']"> ADMIN DASHBOARD </a>
-  <button (click)="clearSession()"> CLEAR SESSION </button>
+  <a (click)="goToProducts()"> PRODUCTS </a> - 
+  <a (click)="goToAdminDash()"> ADMIN DASHBOARD </a>
+  <div *ngIf="sessionExists">
+
+    <button (click)="destroySession()"> CLEAR SESSION / LOGOUT </button>
+  </div>
   <hr>
   <h3>ALL REGISTERED USERS</h3>
   <table>
@@ -17,7 +21,7 @@
       <td>pass</td>
       <td>created_at</td>
       <td>updated_at</td>
-      <td>is admind</td>
+      <td>admin | json</td>
     </thead>
     <tbody>
       <tr *ngFor="let user of allUsers">
@@ -28,7 +32,7 @@
         <td>{{ user.pass }}</td>
         <td>{{ user.date_created }}</td>
         <td>{{ user.updated_at }}</td>
-        <td>{{ user.admin }}</td>
+        <td>{{ user.admin | json }}</td>
       </tr>
     </tbody>
   </table>

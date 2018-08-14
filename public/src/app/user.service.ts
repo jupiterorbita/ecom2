@@ -30,11 +30,22 @@ export class UserService {
   }
 
 
+// ======== check session =========
+  checkSession() {
+    console.log(`%c inside checkSession userService >>> SERVER`, 'color: yellow');
+    return this._http.get('/api/checkSession');
+  }
+
+
 // ========== CHECK ADMIN RIGHTS ===========
-  // checkIfAdmin() {
-  //   console.log('%c inside checkIfAdmin userService >>> SERVER', 'color: red');
-  //   return this._http.get('/api/checkAdmin');
-  // }
+  checkIfAdmin() {
+    console.log('%c inside checkIfAdmin userService >>> SERVER', 'color: red');
+    return this._http.get('/api/checkIfAdmin');
+  }
 
-
+// ======== DESTROY SESSION =========
+  destroySession() {
+    console.log(`%c inside destroySession userService >>> SERVER`, 'color: red');
+    return this._http.get('/api/destroySession');
+  }
 }

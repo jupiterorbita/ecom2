@@ -6,3 +6,27 @@
     min-height: 50px;
     margin-bottom: 10px;
 }
+
+/* ============ TOP NAV ============= */
+div.topNav{
+    overflow: hidden;
+    background-color: rgb(254, 239, 231);
+    min-height: 42px;
+    align-content: center;
+}
+/* ---------- LOGO ---------- */
+    .topNav img{
+        width: 180px;
+        display: inline-block;
+    }
+    .topNav .center_title{
+        display: inline-block;
+        vertical-align: top;
+        margin-left: 50px;
+    }
+    .topNav button{
+        display: inline-block;
+        vertical-align: top;
+        margin: 10px;
+        padding: 10px;
+    }

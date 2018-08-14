@@ -6,3 +6,12 @@
     margin-top: 10px;
     min-height: 50px;
 }
+
+/* ============= FOOTER ============== */
+div.footer{
+    background-color: rgb(250, 173, 68);
+    height: 30px;
+    font-size: 8pt;
+    text-align: center;
+    padding-top: 10px;
+}

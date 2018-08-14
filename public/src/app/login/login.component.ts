@@ -49,6 +49,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
+
   checkUser(potentialUser: any) {
     console.log('***********', potentialUser);
     this._userService.checkUser(potentialUser)
@@ -73,4 +74,10 @@ export class LoginComponent implements OnInit {
     });
   }
 
-}
+
+
+
+
+
+} // -- EOF
+
