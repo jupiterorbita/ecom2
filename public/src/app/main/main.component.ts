@@ -10,16 +10,16 @@ import { Component, OnInit } from '@angular/core';
 export class MainComponent implements OnInit {
 
 
-  allUsers: {};
-  allFormattedDates: {};
-  public sessionExists = false;
+  public allUsers: {};
+  public allFormattedDates: {};
+  public sessionExists: boolean;
 
   constructor(private _userService: UserService, private _router: Router) { }
 
   ngOnInit() {
     console.log('=== MAIN.COMPONENT.TS LOADED ===');
     this.fetchAllUsers();
-    this.sessionExists = false;
+    // this.sessionExists = false;
     this.checkSession();
   }
 

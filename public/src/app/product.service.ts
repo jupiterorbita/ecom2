@@ -23,6 +23,59 @@ export class ProductService {
     return this._http.get('/api/product/getInventory');
   }
 
+// DELETE product
+  deleteProduct(product_id) {
+    console.log('productService > deleteProduct > product_id =>', product_id);
+    return this._http.delete('/api/product/' + product_id + '/delete');
+  }
+
+// get ONE from id param
+  getOneProduct(product_id) {
+    console.log('productService > getOneProduct > product_id =>', product_id);
+    return this._http.get('/api/product/' + product_id + '/edit');
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -63,20 +116,16 @@ export class ProductService {
     return this._http.get('/api/product/qty_desc');
   }
 
-
-
-
-
-
-
-
-
   // ------------ NAME ▲ ASCENDING -------------
   name_asc() {
     console.log('userService > name_asc()');
     return this._http.get('/api/product/name_asc');
   }
-
+  // ------------ NAME ▲ ASCENDING -------------
+  name_desc() {
+    console.log('userService > name_desc()');
+    return this._http.get('/api/product/name_desc');
+  }
 
 
 

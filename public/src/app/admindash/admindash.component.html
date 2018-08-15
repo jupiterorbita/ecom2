@@ -58,15 +58,9 @@ admindash component
             </div>
 
             <div class="sort">
-                <a href="">name ascending ▲</a>
+                <button (click)="name_asc()">name ascending ▲</button>
                 <br>
-                <a href="">name descending ▼</a>
-            </div>
-
-            <div class="sort">
-                <a href="">SKU ascending ▲</a>
-                <br>
-                <a href="">SKU descending ▼</a>
+                <button (click)="name_desc()">name descending ▼</button>
             </div>
 
         </div>
@@ -85,6 +79,8 @@ admindash component
                 <td>color</td>
                 <td>qty</td>
                 <td>price</td>
+                <td>created_at</td>
+                <td>updated_at</td>
                 <td>actions</td>
             </thead>
             <tbody>
@@ -96,9 +92,11 @@ admindash component
                     <td> {{ product.color }} </td>
                     <td> x{{ product.qty }} </td>
                     <td> $ {{ product.product_price }} </td>
+                    <td> {{ product.date_created }} </td>
+                    <td> {{ product.date_updated }} </td>
                     <td>
-                        <button class="edit_button">EDIT</button>
-                        <button class="delete_button">DELETE</button>
+                        <button (click)="editProduct(product.id)" class="edit_button">EDIT</button>
+                        <button (click)="deleteProduct(product.id, product.product_name)" class="delete_button">DELETE</button>
                     </td>
                 </tr>
 

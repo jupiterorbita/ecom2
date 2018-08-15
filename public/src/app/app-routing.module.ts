@@ -17,7 +17,7 @@ const routes: Routes = [
   {path: 'products', component: ProductsComponent},
   {path: 'admindash', component: AdmindashComponent},
   {path: 'addproduct', component: AddproductComponent},
-  {path: 'editproduct', component: EditproductComponent}
+  {path: 'editproduct/:product_id', component: EditproductComponent}
 
 ];
 

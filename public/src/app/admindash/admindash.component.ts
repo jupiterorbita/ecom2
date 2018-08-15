@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admindash',
@@ -10,7 +11,10 @@ export class AdmindashComponent implements OnInit {
 
   allProducts: {};
 
-  constructor(private _productService: ProductService) { }
+  // deleteMessage: string;
+  confirmDelete: boolean;
+
+  constructor(private _productService: ProductService, private _router: Router) { }
 
   ngOnInit() {
     this.getInventory();
@@ -25,6 +29,69 @@ export class AdmindashComponent implements OnInit {
       this.allProducts = res['sql_result'];
     });
     }
+
+
+// ---------- DELETE 🛑 product --------
+  deleteProduct(product_id, name) {
+    console.log('DELETING product with id=>', product_id);
+    this.confirmDelete = confirm(`are you sure you want to DELETE 🛑  "${name}" 🛑  ?`);
+    if (this.confirmDelete === true) {
+      this._productService.deleteProduct(product_id).subscribe(res => {
+        console.log('did we delete the product?');
+        this.getInventory();
+        alert(`product deleted`);
+      });
+    } else {
+      // this.deleteMessage = 'You pressed Cancel!';
+      return;
+    }
+    console.log('DELETING product with id=>', product_id);
+  }
+
+
+
+// ------------ EDIT button => GO TO EDIT COMPONENT ==========
+  editProduct(product_id) {
+    console.log('EDIT product with id=> ', product_id);
+    this._router.navigate(['editproduct/' + product_id ]);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -67,7 +134,6 @@ export class AdmindashComponent implements OnInit {
       this.allProducts = res['order_results'];
     });
   }
-  // ----------- order by QTY DESC ------------
   qty_desc() {
     console.log('ORDER BY QTY ▼ DESC');
     this._productService.qty_desc().subscribe(res => {
@@ -75,14 +141,19 @@ export class AdmindashComponent implements OnInit {
     });
   }
 
-  // ----------- order by NAME ASCENDING -----------=
+  // ----------- order by NAME  -----------=
   name_asc() {
     console.log('ORDER BY name ▲ ASC');
     this._productService.name_asc().subscribe(res => {
       this.allProducts = res['order_results'];
     });
   }
-
+  name_desc() {
+    console.log('ORDER BY name ▼ DESC');
+    this._productService.name_asc().subscribe(res => {
+      this.allProducts = res['order_results'];
+    });
+  }
 
 
 

@@ -1,3 +1,116 @@
-<p>
-  editproduct works!
-</p>
+<div class="wrapper">
+
+  edit component
+  <br>
+  ¯\_(ツ)_/¯ 
+  <br>
+  <a [routerLink]= "['/admindash']">back to ADMIN dash</a>
+  <hr>
+  <h1> {{ editProduct.product_name }} </h1>
+  {{ editProduct | json }}
+  <hr>
+
+
+
+
+<!-- ============ DASHBOARD ================= -->
+<!-- <div class="dashboard_container"> -->
+    <!-- dashboard_container -->
+
+
+    <div class="create_product">
+        create new Product
+        
+        <div class="create_form">
+            <h1>EDIT {{ editProduct.product_name }} </h1>create create_form
+            <br>
+            <hr>
+            <br>
+
+            <div class="labels">
+<!-- ========= FORM ========= -->
+              <form (submit)="submitEditedProductForm()">
+
+                Product name:
+                <input 
+                  [(ngModel)]="editProduct.product_name" 
+                  type="text" 
+                  name="product_name" 
+                  placeholder="product name"
+                  value="{{ editProduct.product_name }}">
+                <br>
+                
+                product description:
+                <textarea 
+                  [(ngModel)]="editProduct.product_description" 
+                  name="product_description" 
+                  placeholder="descibe the product..." 
+                  value="{{ editProduct.product_description }}">
+                </textarea>
+                <br>
+                
+                SKU:
+                <input 
+                  [(ngModel)]="editProduct.sku" 
+                  type="number"
+                  name="sku" 
+                  placeholder="SKU#" 
+                  value="{{ editProduct.sku }}">
+                <br>
+                
+                Qty:
+                <input 
+                  [(ngModel)]="editProduct.qty" 
+                  type="number" 
+                  name="qty" 
+                  placeholder="1-100" 
+                  value="{{ editProduct.qty }}">
+                <br>
+                
+                Product Price: 
+                <input 
+                  [(ngModel)]="editProduct.product_price" 
+                  type="number" 
+                  name="product_price" 
+                  placeholder="$ - price" 
+                  value="{{ editProduct.product_price }}">
+                <br>
+                
+                image:
+                <input 
+                  [(ngModel)]="editProduct.img" 
+                  type="text" 
+                  name="img_url" 
+                  placeholder="img url" 
+                  value="{{ editProduct.img }}">
+                <!-- <input class='img_field' type="file" name="image" accept="image/*"> -->
+                <br>
+                
+                color:
+                <input 
+                  [(ngModel)]="editProduct.color" 
+                  type="text" 
+                  name="color" 
+                  placeholder="color" 
+                  value="{{ editProduct.color }}">
+                <br>
+                
+                <button (click)="resetToOriginalFields()" class="reset_button">RESET</button> 
+                <button type="submit" class="create_button">CREATE</button>
+              </form>
+            </div>
+
+        </div>
+    </div>
+
+<!-- </div> -->
+
+
+
+
+
+
+
+
+
+</div>
