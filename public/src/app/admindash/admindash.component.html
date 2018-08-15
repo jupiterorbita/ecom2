@@ -40,15 +40,21 @@ admindash component
             <hr>
 
             <div class="sort">
-                <a href="">price ascending ▲</a>
+                <button (click)="id_asc()">ID ascending ▲ </button>
                 <br>
-                <a href="">price descending ▼</a>
+                <button (click)="id_desc()">ID descending ▼ </button>
             </div>
 
             <div class="sort">
-                <a href="">Qty ascending ▲</a>
+                <button (click)="price_asc()">price ascending ▲</button>
                 <br>
-                <a href="">Qty descending ▼</a>
+                <button (click)="price_desc()">price descending ▼</button>
+            </div>
+
+            <div class="sort">
+                <button (click)="qty_asc()">Qty ascending ▲</button>
+                <br>
+                <button (click)="qty_desc()">Qty descending ▼</button>
             </div>
 
             <div class="sort">
@@ -76,63 +82,38 @@ admindash component
                 <td>SKU</td>
                 <td>name</td>
                 <td>img</td>
+                <td>color</td>
                 <td>qty</td>
                 <td>price</td>
-                <td>mark-up</td>
-                <td>Final Price</td>
                 <td>actions</td>
             </thead>
             <tbody>
-                <tr>
-                    <td>182g821g3</td>
-                    <td>003</td>
-                    <td>Teddy Hugger Medium</td>
-                    <td><img src="images/product_img/7.jpg" alt=""></td>
-                    <td>15</td>
-                    <td>$20</td>
-                    <td>20%</td>
-                    <td>$24</td>
+                <tr *ngFor="let product of allProducts">
+                    <td> {{ product.id }} </td>
+                    <td> {{ product.sku }} </td>
+                    <td> {{ product.product_name }} </td>
+                    <td> <img src="images/product_img/7.jpg" alt=""></td>
+                    <td> {{ product.color }} </td>
+                    <td> x{{ product.qty }} </td>
+                    <td> $ {{ product.product_price }} </td>
                     <td>
                         <button class="edit_button">EDIT</button>
                         <button class="delete_button">DELETE</button>
                     </td>
                 </tr>
-                <tr>
-                    <td>182g821g3</td>
-                    <td>003</td>
-                    <td>Teddy Hugger Medium</td>
-                    <td><img src="images/product_img/7.jpg" alt=""></td>
-                    <td>15</td>
-                    <td>$20</td>
-                    <td>20%</td>
-                    <td>$24</td>
-                    <td>
-                        <button class="edit_button">EDIT</button>
-                        <button class="delete_button">DELETE</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>182g821g3</td>
-                    <td>003</td>
-                    <td>Teddy Hugger Medium</td>
-                    <td><img src="images/product_img/7.jpg" alt=""></td>
-                    <td>15</td>
-                    <td>$20</td>
-                    <td>20%</td>
-                    <td>$24</td>
-                    <td>
-                        <button class="edit_button">EDIT</button>
-                        <button class="delete_button">DELETE</button>
-                    </td>
-                </tr>
+
             </tbody>
         </table>
+
 
     </div>
 
 
     <div class="pages">
         < 1 | 2 | 3 | 4 | 5 | .... | 14 >
+        <br>
+        {{ allProducts | json}}
+
     </div>
 
     <!-- inside product list -->

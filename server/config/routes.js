@@ -36,5 +36,28 @@ module.exports = function(app) {
 
 // create new product
     app.post("/api/product/create", prodCtrl.createProduct);
+// fetch aLL - get inventory
+    app.get("/api/product/getInventory", prodCtrl.getInventory);
 
-}
+
+
+    // ************* ordering *************-
+    // --------- id asc ------------
+    app.get("/api/product/id_asc", prodCtrl.id_asc);
+
+    // --------- id desc -----------
+    app.get("/api/product/id_desc", prodCtrl.id_desc);
+    
+    // --------- price asc --------
+    app.get("/api/product/price_asc", prodCtrl.price_asc);
+    // -------- price desc -------
+    app.get("/api/product/price_desc", prodCtrl.price_desc);
+
+
+
+    // --------- name asc ------------
+    app.get("/api/product/name_asc", prodCtrl.name_asc);
+
+
+
+} // -- EOF
