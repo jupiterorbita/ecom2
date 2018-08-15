@@ -1,0 +1,99 @@
+/* main.component */
+.wrapper{
+    border: 1px solid red;
+    border-radius: 10px;
+    background-color: rgb(243, 221, 192);
+    padding: 5px;
+}
+
+/* ============= DASHBOARD =========== */
+/* ----------- container ---------- */
+div.dashboard_container{
+    background-color: rgb(254, 239, 231);
+    min-height: 400px;
+    padding: 5px;
+}
+/* ----------- all inside CREATE ----- */
+    div.create_product{
+        background-color: rgb(255, 225, 203);
+        border: 1px solid black;
+        border-radius: 15px;
+        padding: 8px;
+    }
+    /*==== form is inside here ===*/
+    div.create_form{
+        border: 1px solid black;
+        width: 70%;
+        margin: 0 auto;
+        border-radius: 15px;
+        background-color: rgb(255, 239, 232);
+        padding: 5px;
+        text-align: center;
+    }
+    /* ========= FORM =============== */
+        div.labels{
+            /* margin-right: 220px; */
+            border-radius: 15px;
+            font-size: 16pt;
+            text-align: right;
+            padding: 10px;
+            /* width: 600px; */
+            min-height: 200px;
+            display: inline-block;
+            vertical-align: top;
+            background-color: rgb(255, 239, 232);
+        }
+            .labels input{
+                height: 25px;
+                margin-bottom: 5px;
+                font-size: 14pt;
+            }
+            .labels textarea{
+                width: 210px;
+                height: 50px;
+                resize: none;
+            }
+
+/**************************************
+**             BUTTONS               **
+**************************************/
+/* ---- ALL buttons styles ------ */
+.labels button{
+    margin-top: 10px;
+    margin-bottom: 1px;
+    /* height: 40px;
+    width: 80px; */
+    padding: 5px 10px;
+    border: none;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 16px;
+    border: 1px solid #4CAF50; 
+    background-color: white; /* Green */
+    /* webkit-transition-duration: 0.4s; Safari */
+    transition-duration: 0.4s;
+}
+    .labels button:hover {
+        background-color: #4CAF50; /* Green */
+        color: white;
+        /* box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19); */
+    }
+
+    /* ======== EDIT button TOP ====== */
+    button.reset_button {
+        margin-right: 60px;
+        border: 1px solid orange;
+        background-color: white; /* Green */
+    }
+        button.reset_button:hover{
+            background-color: orange;
+        }
+
+    /* ========= DELETE BUTTON ======= */
+    button.create_button{
+        border: 1px solid blue;
+        background-color: white; /* Green */
+    }
+        button.create_button:hover{
+            background-color: blue;
+        }

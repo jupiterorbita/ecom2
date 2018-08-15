@@ -2,32 +2,51 @@
 // var mysql = require("mysql");
 // connection = mysql.);
 console.log('SERVER > userController'.blue);
+const bcrypt = require('bcrypt');
+
 
 module.exports = {
 
     // =========== CREATE new user ===========
     newUser: (req, res) => {
         console.log('>>> USER CONTROLLER >>> newUser');
-        // connection.connect(function(err) {
-        //     if (err) throw err;
-            console.log("Connected!");
-            console.log("MySQL connected as id ".yellow + connection.threadId)
-            var sql = `INSERT INTO UserSQL_DB.users (fname, lname, email, pass, created_at, updated_at, admin) VALUES ('${req.body.fname}', '${req.body.lname}', '${req.body.email}', '${req.body.pass}', NOW(), NOW(), '0');`;
-            connection.query(sql, function (err, result) {
-                if (err) throw err;
-                console.log(result.affectedRows + ' record(s) created');
-                res.json({message: 'ok', result: result});
-            });
-            // connection.end((err) => {
-            //     if (err) {
-            //         console.log('terminated with err =>', err)
-            //     }
-            //     console.log('connection -> MySQL ENDED'.bgWhite.black);
-            //     // The connection is terminated gracefully
-            //     // Ensures all previously enqueued queries are still
-            //     // before sending a COM_QUIT packet to the MySQL server.
-            // });
-        // });
+        console.log("Connected!");
+        console.log("MySQL connected as id ".yellow + connection.threadId)
+
+        // check if email aready exits
+        var sql_email = `SELECT email FROM users WHERE email='${req.body.email}' LIMIT 1;`;
+        connection.query(sql_email, function (err, email_exists_result) {
+            if (err) throw err;
+            console.log('email exists result', email_exists_result);
+            // if email exists STOP
+            if (email_exists_result.length > 0 ) {
+                console.log('EMAIL ALREADY IN DB - STOP REG');
+                res.json({
+                    message: 'cannot continue, email aready in DB',
+                    success: false
+                });
+            } else {
+                // IF indeed new user then continue
+                console.log(`nothing found in DB while lookin for email "${req.body.email}" continue to register`);
+
+                bcrypt.hash(req.body.pass, 10, function(err, pw_hash) {
+                    console.log('PASS HASH =>', pw_hash);
+                
+                    var sql = `INSERT INTO UserSQL_DB.users (fname, lname, email, pass, created_at, updated_at, admin) VALUES ('${req.body.fname}', '${req.body.lname}', '${req.body.email}', '${pw_hash}', NOW(), NOW(), '0');`;
+                    connection.query(sql, function (err, result) {
+                        if (err) throw err;
+                        console.log(result.affectedRows + ' record(s) created');
+                        res.json({
+                            message: 'successful register', 
+                            success: true
+                        });
+                    });
+                });
+
+            }
+        });
+
+
     },
 
 // ============== FETCH ALL USERS ==================
@@ -57,49 +76,126 @@ module.exports = {
 
 // ==================== LOGIN check user ================
     checkUser: (req, res) => {
-        console.log('req.body.email =>'.green, req.body.email);
-        console.log('req.body.pass  =>'.green, req.body.pass);
-        console.log('>>> USER CONTROLLER >>> CHECK USER');
         console.log("MySQL connected as id ".yellow + connection.threadId)
-        // var sql = `SELECT EXISTS(SELECT * FROM UserSQL_DB.users WHERE email= '${req.body.email}');`;
-        // var sql =`SELECT email FROM users WHERE email='${req.body.email}';`;
-        var sql = `SELECT id, admin FROM users WHERE email='${req.body.email}' AND pass='${req.body.pass}' LIMIT 1;`
-        connection.query(sql, function(err, bool_result) {
+        var sql = `SELECT email, id, admin FROM users WHERE email='${req.body.email}' LIMIT 1;`
+        connection.query(sql, function(err, result) {
             if (err) throw err;
-            console.log('check user is => '.bgGreen.black, bool_result);
+            // console.log('======= RESULT ====>'.bgRed.black, result);
+            // console.log(result.length);
+            if (result.length > 0) {
 
-            // check if result is ok ------ to do NOT by length
-            if (bool_result.length < 1) {
-                console.log('FAIL!!!!!!!!'.bgRed);
+                // check if email exitst
+                if (result[0]['email'] === req.body.email) {
+                    // console.log('email is valid and in DB'.red);
+
+                    // grab the pass using the same email that is now valid
+                    var sql2 = `SELECT pass FROM users WHERE email='${req.body.email}' LIMIT 1;`
+                    connection.query(sql2, function(err, result2) {
+                        if (err) throw err;
+                        // console.log('PASS SQL RESULT =>'.bgBlue, result2);
+
+                        // compaire pass 
+                        bcrypt.compare(req.body.pass, result2[0]['pass'], function(err, pw_result) {
+                            if (err) throw err;
+                            // console.log('BCRYPT PW RESULT ====>'.bgYellow.black, pw_result);
+
+                            if (pw_result === true) {
+
+                                //check if admin & store in session
+                                if (result[0].admin === 1) {
+                                    // console.log('this user is an admin!');
+                                    // console.log('result[0].admin', result[0].admin);
+                                    // console.log('result[0].id', result[0].id);
+                                    req.session.userid = result[0].id;
+                                    // console.log('req.session.userid', req.session.userid);
+                                    res.json({
+                                        message: 'SUCCESS email & pass match',
+                                        canLogin: true,
+                                        powerLevel: 9999
+                                    });
+                                } 
+                                // if not admin just store in session
+                                else if (result[0].admin != 1) {
+                                    console.log('this is not an admin!');
+                                    req.session.userid = result[0].id;
+                                    res.json({
+                                        message: 'SUCCESS email & pass match',
+                                        canLogin: true,
+                                        powerLevel: 0
+                                    });
+                                }
+
+                                
+                            } else { 
+                                // if pass doen't match DO NOT PROCEED
+                                console.log('pass dontt match, send back json NO-GO');
+                                res.json({
+                                    message: 'ERROR - cannot login code:2',
+                                    canLogin: false,
+                                    powerLevel: -1
+                                });
+                            }
+                        })
+
+                    })
+
+                }    
+
+            } else { 
+                console.log('email doesnt exit return ERR'.red);
                 res.json({
-                    message: 'NO MATCH email or pass', 
-                    canLogin: false, 
+                    messsage: 'error loging in code:1',
+                    canLogin: false,
+                    powerLevel: -1
                 });
             }
-            else if (bool_result.length > 0) {
-                console.log('=======> store id in session = '.bgGreen.black, bool_result[0].id);
-                if (bool_result[0].admin === 1) { // check if admin
-                    console.log('is admin =>', bool_result[0].admin);
-                    req.session.userid = bool_result[0].id; // store in session
-                    res.json({
-                        message: 'SUCCESS email & pass MATCHES!', 
-                        canLogin: true,
-                        powerLevel: 9999 
-                    });
-                }
-                else if (bool_result[0].admin != 1) {
-                    req.session.userid = bool_result[0].id;
-                    console.log('IS ADMIN? =>', bool_result[0].admin)
-                    console.log('req.session.userid =>', req.session.userid);
-                    console.log('WIN length > 0 +1');
-                    res.json({
-                        message: 'SUCCESS email & pass MATCHES! but you have no power here!', 
-                        canLogin: true,
-                        powerLevel: 0 
-                    });
-                }
-            } 
-        });
+        })
+
+
+
+        // bcrypt.compare(req.body.pass, pw_hash, function(err, res) {
+        //     if (err) throw err;
+        //     console.log('PW COMPAIRE RESULT =>', res);
+        // });
+
+
+        // var sql = `SELECT id, admin FROM users WHERE email='${req.body.email}' AND pass='${req.body.pass}' LIMIT 1;`
+        // connection.query(sql, function(err, bool_result) {
+        //     if (err) throw err;
+        //     console.log('check user is => '.bgGreen.black, bool_result);
+
+        //     // check if result is ok ------ to do NOT by length
+        //     if (bool_result.length < 1) {
+        //         console.log('FAIL!!!!!!!!'.bgRed);
+        //         res.json({
+        //             message: 'NO MATCH email or pass', 
+        //             canLogin: false, 
+        //         });
+        //     }
+        //     else if (bool_result.length > 0) {
+        //         console.log('=======> store id in session = '.bgGreen.black, bool_result[0].id);
+        //         if (bool_result[0].admin === 1) { // check if admin
+        //             console.log('is admin =>', bool_result[0].admin);
+        //             req.session.userid = bool_result[0].id; // store in session
+        //             res.json({
+        //                 message: 'SUCCESS email & pass MATCHES!', 
+        //                 canLogin: true,
+        //                 powerLevel: 9999 
+        //             });
+        //         }
+        //         else if (bool_result[0].admin != 1) {
+        //             req.session.userid = bool_result[0].id;
+        //             console.log('IS ADMIN? =>', bool_result[0].admin)
+        //             console.log('req.session.userid =>', req.session.userid);
+        //             console.log('WIN length > 0 +1');
+        //             res.json({
+        //                 message: 'SUCCESS email & pass MATCHES! but you have no power here!', 
+        //                 canLogin: true,
+        //                 powerLevel: 0 
+        //             });
+        //         }
+        //     } 
+        // });
     },
 
 

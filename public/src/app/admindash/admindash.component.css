@@ -60,7 +60,7 @@ div.search{
         padding: 6px;
         border: none;
         font-size: 17px;
-        min-width: 200px;
+        min-width: 300px;
         border-radius: 15px 15px 15px 15px;
         -moz-border-radius: 15px;
         border: solid 1px rgb(250, 173, 68);
@@ -99,7 +99,7 @@ div.left_filters{
 /* ----------- TABLE --------- */
 div.table{
     display: inline-block;
-    width: 90%;
+    min-width: 720px;
     vertical-align: top;
     margin-left: 10px;
     /* background-color: #4CAF50; */

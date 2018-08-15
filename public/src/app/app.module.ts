@@ -15,6 +15,8 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ProductsComponent } from './products/products.component';
 import { AdmindashComponent } from './admindash/admindash.component';
+import { AddproductComponent } from './addproduct/addproduct.component';
+import { EditproductComponent } from './editproduct/editproduct.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { AdmindashComponent } from './admindash/admindash.component';
     HeaderComponent,
     FooterComponent,
     ProductsComponent,
-    AdmindashComponent
+    AdmindashComponent,
+    AddproductComponent,
+    EditproductComponent
   ],
   imports: [
     BrowserModule,

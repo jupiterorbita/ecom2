@@ -1,0 +1,83 @@
+<div class="wrapper">
+    ADD product component
+    <br>
+    <a [routerLink]= "['/admindash']">back to ADMIN dash</a>
+    <hr>
+    <h2>Add New Product</h2>
+
+    <!-- ============ DASHBOARD ================= -->
+    <div class="dashboard_container">
+        dashboard_container
+
+
+
+
+
+        <div class="create_product">
+            create new Product
+            
+            <div class="create_form">
+                create create_form
+                <br>
+                <hr>
+                <br>
+
+
+                <div class="labels">
+  <!-- ========= FORM ========= -->
+                  <form (submit)="submitNewProductForm(formProduct)" #formProduct="ngForm">
+
+                    Product name:
+                    <input ngModel type="text" name="product_name" placeholder="product name">
+                    <br>
+                    
+                    product description:
+                    <textarea ngModel name="product_description" placeholder="descibe the product..."></textarea>
+                    <br>
+                    
+                    SKU:
+                    <input ngModel type="number" name="sku" placeholder="SKU#">
+                    <br>
+                    
+                    Qty:
+                    <input ngModel type="number" name="qty" placeholder="1-100">
+                    <br>
+                    
+                    Product Price: 
+                    <input ngModel type="number" name="product_price" placeholder="$ - price">
+                    <br>
+                    
+                    image:
+                    <input ngModel type="text" name="img_url" placeholder="img url">
+                    <!-- <input class='img_field' type="file" name="image" accept="image/*"> -->
+                    <br>
+                    
+                    color:
+                    <input ngModel type="text" name="color" placeholder="color">
+                    <br>
+                    
+                    <button class="reset_button">RESET</button> 
+                    <button type="submit" class="create_button">CREATE</button>
+                  </form>
+                </div>
+
+
+
+            </div>
+
+
+
+
+
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+</div>

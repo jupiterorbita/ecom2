@@ -23,7 +23,7 @@ export class RegisterComponent implements OnInit {
       pass2: '',
       created_at: '',
       updated_at: '',
-      admin: ''
+      admin: 0
     };
   }
 
@@ -38,14 +38,34 @@ export class RegisterComponent implements OnInit {
     console.log(this.newUser['pass']);
     console.log(this.newUser['pass2']);
 
+
+  // --------- FORM VALIDATORS -----------
+    // FIRST name Validation
+    if (this.newUser['fname'].length < 3 || this.newUser['fname'].length > 15 ) {
+      console.log('First name must be 3-15 letters');
+      alert('First name must be 3-15 letters');
+      return;
+    }
+    // LAST name Validation
+    if (this.newUser['lname'].length < 3 || this.newUser['lname'].length > 20 ) {
+      console.log('Last name must be 3-20 letters');
+      alert('Last name must be 3-20 letters');
+      return;
+    }
+    if (this.newUser['pass'].length < 3 || this.newUser['pass'].length > 50 ) {
+      console.log('Password must be 3-50 characters');
+      alert('Password must be 3-50 characters');
+      return;
+    }
+
     if (this.newUser['pass'] === this.newUser['pass2']) {
       this._userService.createUser(this.newUser)
       .subscribe((res: any) => {
           console.log('res from newUser save res =>', res);
-          console.log('res from newUser save res.result =>', res.result);
-          if (res.result) {
+          console.log('res from newUser save res.success =>', res.success);
+          if (res.success === true) {
             console.log('result is valid -> routing back to app.component');
-            this._router.navigate(['/']);
+            this._router.navigate(['products']);
           } else {
             console.log('invalid result - server error not saved');
           }
@@ -53,6 +73,7 @@ export class RegisterComponent implements OnInit {
       } else {
         console.log('pass doesn\'t match');
         alert('pass doent match');
+        return;
       }
 
   }
@@ -61,4 +82,4 @@ export class RegisterComponent implements OnInit {
 
 
 
-}
+} // -- EOF

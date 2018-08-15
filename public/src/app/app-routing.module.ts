@@ -1,3 +1,5 @@
+import { EditproductComponent } from './editproduct/editproduct.component';
+import { AddproductComponent } from './addproduct/addproduct.component';
 import { AdmindashComponent } from './admindash/admindash.component';
 import { ProductsComponent } from './products/products.component';
 import { NgModule } from '@angular/core';
@@ -13,7 +15,9 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'products', component: ProductsComponent},
-  {path: 'admindash', component: AdmindashComponent}
+  {path: 'admindash', component: AdmindashComponent},
+  {path: 'addproduct', component: AddproductComponent},
+  {path: 'editproduct', component: EditproductComponent}
 
 ];
 

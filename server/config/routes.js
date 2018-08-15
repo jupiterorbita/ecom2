@@ -1,8 +1,9 @@
 // var users = require('../controllers/users.js');
 // const ctrl = require("./../controllers/userController.js");
 const ctrl = require("./../controllers/userController.js");
+const prodCtrl = require("./../controllers/productController.js")
 
-console.log("SERVER > routes.js".blue);
+console.log(">> SERVER > routes.js".blue);
 
 module.exports = function(app) {
 
@@ -30,5 +31,10 @@ module.exports = function(app) {
     app.get("/api/checkIfAdmin", ctrl.checkIfAdmin);
 
 
+
+//================ PRODUCT ROUTES =================
+
+// create new product
+    app.post("/api/product/create", prodCtrl.createProduct);
 
 }

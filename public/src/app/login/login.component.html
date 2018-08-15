@@ -7,11 +7,11 @@ login.component
   <form (submit)="login()" >
     email:
     <br>
-    <input [(ngModel)]="loginUser.email" name="loginUser.email" type="text" name="email" placeholder="email">
+    <input [(ngModel)]="loginUser.email" name="loginUser.email" type="email" name="email" placeholder="email">
     <br>
     password:
     <br>
-    <input [(ngModel)]="loginUser.pass" name="loginUser.pass" type="text" name="pass" placeholder="password">
+    <input [(ngModel)]="loginUser.pass" name="loginUser.pass" type="password" name="pass" placeholder="password">
     <br>
     <br>
     <input type="submit" value="Login">

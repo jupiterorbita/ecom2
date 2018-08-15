@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
   }
 
 
+
   login() {
     this.checkUser(this.loginUser);
   }
@@ -34,19 +35,21 @@ export class LoginComponent implements OnInit {
 
   goToAdmin() {
     // this.checkIfAdmin();
-    this._router.navigate(['admindash']).then(nav => {
-      console.log('nav success?', nav); // true if nav is successful
-    }, err => {
-      console.log('nav success?', err); // when there is an error
-    });
+    this._router.navigate(['admindash']);
+    // .then(nav => {
+    //   console.log('nav success?', nav); // true if nav is successful
+    // }, err => {
+    //   console.log('nav success?', err); // when there is an error
+    // });
   }
 
   goToProducts() {
-    this._router.navigate(['products']).then(nav => {
-      console.log('nav success?', nav); // true if nav is successful
-    }, err => {
-      console.log('nav success?', err); // when there is an error
-    });
+    this._router.navigate(['products']);
+    // .then(nav => {
+    //   console.log('nav success?', nav); // true if nav is successful
+    // }, err => {
+    //   console.log('nav success?', err); // when there is an error
+    // });
   }
 
 
@@ -67,7 +70,7 @@ export class LoginComponent implements OnInit {
           this.goToProducts();
         }
       } else {
-        alert('FAIL');
+        alert('Sorry, cannot login');
         console.log('no match email OR pass - DO NOT PROCCEED');
         return;
       }

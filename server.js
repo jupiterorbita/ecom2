@@ -2,6 +2,8 @@ var path = require('path');
 var colors = require("colors"); // npm install colors https://www.npmjs.com/package/colors
 
 
+const bcrypt = require('bcrypt');
+
 //========== EXPRESS ==============
 const express = require('express');
 const app = express();

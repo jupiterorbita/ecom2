@@ -48,4 +48,8 @@ export class UserService {
     console.log(`%c inside destroySession userService >>> SERVER`, 'color: red');
     return this._http.get('/api/destroySession');
   }
-}
+
+
+
+
+} // -- EOF

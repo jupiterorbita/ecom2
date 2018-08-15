@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductService } from '../product.service';
 
 @Component({
   selector: 'app-admindash',
@@ -7,9 +8,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdmindashComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _productService: ProductService) { }
 
   ngOnInit() {
+    this.getInventory();
   }
 
-}
+
+// --------- get all products -----------
+  getInventory() {
+    this._productService().subscribe(res => {
+        
+    }
+    })
+  }
+
+
+
+
+
+
+
+
+
+
+
+} // -- EOF
