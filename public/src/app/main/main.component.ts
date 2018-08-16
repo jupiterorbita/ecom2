@@ -80,9 +80,6 @@ export class MainComponent implements OnInit {
     this._userService.fetchAllUsers().subscribe(res => {
       this.allUsers = res['result'];
       // console.log('server res=>', res);
-
-      // console.log('%c SQL - DATES =>', 'color: lightgreen', res['result'][0]['date_created']);
-      // console.log(res['results'][0].name);
     });
   }
 
@@ -91,6 +88,7 @@ export class MainComponent implements OnInit {
     // send req to store session and make admin for demo purposes
     this._userService.makeAdmin().subscribe(res => {
       if (res['powerLevel'] > 9000 && res['canLogin'] === true ) {
+        console.log('%cyou are now Chuck Norris', 'color: lightgreen');
         this._router.navigate(['admindash']);
       }
     });
