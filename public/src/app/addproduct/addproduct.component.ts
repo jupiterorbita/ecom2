@@ -25,6 +25,7 @@ export class AddproductComponent implements OnInit {
     };
   }
 
+  // ADD FRONT-END VALIDATIONS --- !!!
 
   submitNewProductForm(formProduct) {
     console.log('submitNewProductForm presses');
