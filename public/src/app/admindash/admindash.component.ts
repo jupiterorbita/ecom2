@@ -11,7 +11,6 @@ export class AdmindashComponent implements OnInit {
 
   allProducts: {};
 
-  // deleteMessage: string;
   confirmDelete: boolean;
   // search string
   sql_value_str = '';
