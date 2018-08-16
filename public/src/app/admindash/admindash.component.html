@@ -21,7 +21,9 @@ admindash component
 
     <!-- ========== SEARCH =========== -->
         <div class="search">
-            <input class="search-container" type="text" placeholder="Search...">
+            <div *ngIf="searchResultsFound">search results: {{ searchResultsFound }}</div>
+            <br>
+            <input (keyup)="onKey($event)" class="search-container" type="text" placeholder="Search...">
             <button type="submit">
                 <img src="images/search.png" alt="">
             </button>

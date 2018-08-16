@@ -13,6 +13,9 @@ export class AdmindashComponent implements OnInit {
 
   // deleteMessage: string;
   confirmDelete: boolean;
+  // search string
+  sql_value_str = '';
+  searchResultsFound = null;
 
   constructor(private _productService: ProductService, private _router: Router) { }
 
@@ -58,6 +61,35 @@ export class AdmindashComponent implements OnInit {
 
 
 
+  // ======== onKey event =============
+  onKey(event: any) {
+    // console.log('====== event =>', event);
+    // console.log('====== event.target =>', event.target);
+    console.log('====== event.target.value =>', event.target.value);
+    this.sql_value_str = event.target.value;
+    console.log('this.sql_value_str', this.sql_value_str);
+    if (this.sql_value_str.length > 0) {
+      this._productService.sendSearchStr(this.sql_value_str)
+      .subscribe(server_res => {
+        console.log('server_res =>', server_res);
+        console.log('server_res["found"] =>', server_res['found']);
+        if (server_res['found'] === true) {
+          this.allProducts = server_res['res'];
+          console.log('search results found from DB:' + Object.keys(this.allProducts).length);
+          this.searchResultsFound = Object.keys(this.allProducts).length;
+          console.log('%c all products =>', 'color: yellow', this.allProducts);
+        } else {
+          console.log('not found');
+          this.searchResultsFound = 0;
+          // this.getInventory();
+        }
+      });
+    } else {
+      this.getInventory();
+      this.searchResultsFound = null;
+
+    }
+  }
 
 
 

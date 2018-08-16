@@ -6,8 +6,8 @@
   <br>
   <a [routerLink]= "['/admindash']">back to ADMIN dash</a>
   <hr>
-  <h1> {{ editProduct.product_name }} </h1>
-  {{ editProduct | json }}
+  <h1> {{ tempProductName }} </h1>
+  <!-- {{ editProduct | json }} -->
   <hr>
 
 
@@ -22,7 +22,7 @@
         create new Product
         
         <div class="create_form">
-            <h1>EDIT {{ editProduct.product_name }} </h1>create create_form
+            <h1>EDIT{{ tempProductName }} </h1>create create_form
             <br>
             <hr>
             <br>
@@ -95,9 +95,9 @@
                   value="{{ editProduct.color }}">
                 <br>
                 
-                <button (click)="resetToOriginalFields()" class="reset_button">RESET</button> 
-                <button type="submit" class="create_button">CREATE</button>
+                <button type="submit" class="create_button">UPDATE</button>
               </form>
+              <button (click)="resetToOriginalFields()" class="reset_button">RESET</button> 
             </div>
 
         </div>

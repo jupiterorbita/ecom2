@@ -42,9 +42,11 @@ module.exports = function(app) {
     app.delete("/api/product/:product_id/delete", prodCtrl.deleteProduct);
 // GET ONE from param id
     app.get("/api/product/:product_id/edit", prodCtrl.getOneProduct);
+// UPDATE ONE (PUT)
+    app.put("/api/product/:product_id/saveEdit", prodCtrl.saveEdit);
 
-
-
+//---------------- search --------------
+    app.get("/api/product/search/:sql_str", prodCtrl.searchQueryString);
 
 
 

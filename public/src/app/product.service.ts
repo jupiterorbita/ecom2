@@ -35,10 +35,17 @@ export class ProductService {
     return this._http.get('/api/product/' + product_id + '/edit');
   }
 
+  saveEditedProduct(product_id: any, editedProduct: any) {
+    console.log('productService > saveEditedProduct > product_id =>', product_id);
+    return this._http.put('/api/product/' + product_id + '/saveEdit', editedProduct);
+  }
 
 
-
-
+// -------------search -----------
+  sendSearchStr(sql_str: any) {
+    console.log('productService > sendSearchStr > SQL STRING =>', sql_str);
+    return this._http.get('/api/product/search/' + sql_str);
+  }
 
 
 

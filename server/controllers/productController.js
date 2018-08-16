@@ -55,9 +55,37 @@ module.exports = {
         })
     },
 
+    // =========== SAVE EDIT ============
+    saveEdit: (req, res) => {
+        console.log('>> SERVER > productController.js > deleteProduct'.blue);
+        console.log("MySQL connected as id ".yellow + connection.threadId);
+        console.log('req.params.product_id =>'.bgWhite.black, req.params.product_id);
+        var sql = `UPDATE products SET product_name='${req.body.product_name}', product_price='${req.body.product_price}', sku='${req.body.sku}', product_description='${req.body.product_description}', qty='${req.body.qty}', img='${req.body.img}', color='${req.body.color}', updated_at=NOW() WHERE id='${req.params.product_id}'`;
+        connection.query(sql, function(err, sql_result, fields) {
+            if (err) throw err;
+            console.log(sql_result);
+            res.json({message: 'OK product successfully updated'});
+        });
+    },
 
+ // ================== SEARCH ======================
+    searchQueryString: (req, res) => {
+        console.log('>> SERVER > productController.js > deleteProduct'.blue);
+        console.log("MySQL connected as id ".yellow + connection.threadId);
+        console.log('req.params.sql_str =>'.bgWhite.black, req.params.sql_str);
+        var sql = `SELECT * FROM products WHERE product_name LIKE '%${req.params.sql_str}%';`;
+        connection.query(sql, function(err, sql_search_result, fields) {
+            if (err) throw err;
+            console.log(sql_search_result);
+            if (sql_search_result.length > 0) {
+                res.json({found: true, res: sql_search_result});
+            } else {
+                console.log('empty array - no result');
+                res.json({found: false, res: ''});
+            }
+        })
 
-
+    },
 
 
 
