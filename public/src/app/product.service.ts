@@ -35,6 +35,7 @@ export class ProductService {
     return this._http.get('/api/product/' + product_id + '/edit');
   }
 
+// SAVE - EDIT product
   saveEditedProduct(product_id: any, editedProduct: any) {
     console.log('productService > saveEditedProduct > product_id =>', product_id);
     return this._http.put('/api/product/' + product_id + '/saveEdit', editedProduct);

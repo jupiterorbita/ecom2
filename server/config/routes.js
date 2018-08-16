@@ -9,27 +9,29 @@ module.exports = function(app) {
 
 //======= REGISTER routes ===========
     // Create new user
-    app.post("/api/new_user", ctrl.newUser);
+    app.post("/api/users/new_user", ctrl.newUser);
 
     // fetch all users
-    app.get("/api/fetchAll", ctrl.getUsers);
+    app.get("/api/users/fetchAll", ctrl.getUsers);
 
 
 // ======== Login route ============
     // check user 
-    app.post("/api/checkUser", ctrl.checkUser);
+    app.post("/api/users/checkUser", ctrl.checkUser);
 
 
 // ======= CHECK SESSION =========
-    app.get("/api/checkSession", ctrl.checkSession);
+    app.get("/api/users/checkSession", ctrl.checkSession);
 
 
 // ======= DESTROY SESSION ========
-    app.get("/api/destroySession", ctrl.destroySession);
+    app.get("/api/users/destroySession", ctrl.destroySession);
 
 //========= CHECK if ADMIN ========
-    app.get("/api/checkIfAdmin", ctrl.checkIfAdmin);
+    app.get("/api/users/checkIfAdmin", ctrl.checkIfAdmin);
 
+//========== MAKE ADMIN ==========
+    app.get("/api/users/makeAdmin", ctrl.makeAdmin);
 
 
 //================ PRODUCT ROUTES =================
@@ -44,6 +46,8 @@ module.exports = function(app) {
     app.get("/api/product/:product_id/edit", prodCtrl.getOneProduct);
 // UPDATE ONE (PUT)
     app.put("/api/product/:product_id/saveEdit", prodCtrl.saveEdit);
+
+
 
 //---------------- search --------------
     app.get("/api/product/search/:sql_str", prodCtrl.searchQueryString);

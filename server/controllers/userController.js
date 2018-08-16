@@ -153,49 +153,6 @@ module.exports = {
 
 
 
-        // bcrypt.compare(req.body.pass, pw_hash, function(err, res) {
-        //     if (err) throw err;
-        //     console.log('PW COMPAIRE RESULT =>', res);
-        // });
-
-
-        // var sql = `SELECT id, admin FROM users WHERE email='${req.body.email}' AND pass='${req.body.pass}' LIMIT 1;`
-        // connection.query(sql, function(err, bool_result) {
-        //     if (err) throw err;
-        //     console.log('check user is => '.bgGreen.black, bool_result);
-
-        //     // check if result is ok ------ to do NOT by length
-        //     if (bool_result.length < 1) {
-        //         console.log('FAIL!!!!!!!!'.bgRed);
-        //         res.json({
-        //             message: 'NO MATCH email or pass', 
-        //             canLogin: false, 
-        //         });
-        //     }
-        //     else if (bool_result.length > 0) {
-        //         console.log('=======> store id in session = '.bgGreen.black, bool_result[0].id);
-        //         if (bool_result[0].admin === 1) { // check if admin
-        //             console.log('is admin =>', bool_result[0].admin);
-        //             req.session.userid = bool_result[0].id; // store in session
-        //             res.json({
-        //                 message: 'SUCCESS email & pass MATCHES!', 
-        //                 canLogin: true,
-        //                 powerLevel: 9999 
-        //             });
-        //         }
-        //         else if (bool_result[0].admin != 1) {
-        //             req.session.userid = bool_result[0].id;
-        //             console.log('IS ADMIN? =>', bool_result[0].admin)
-        //             console.log('req.session.userid =>', req.session.userid);
-        //             console.log('WIN length > 0 +1');
-        //             res.json({
-        //                 message: 'SUCCESS email & pass MATCHES! but you have no power here!', 
-        //                 canLogin: true,
-        //                 powerLevel: 0 
-        //             });
-        //         }
-        //     } 
-        // });
     },
 
 
@@ -240,6 +197,20 @@ module.exports = {
             // res.json({message: 'ok', result: result});
         });
     },
+
+
+// =========== MAKE ADMIN ===============
+    makeAdmin: (req, res) => {
+        console.log('inside > SERVER > makeAdmin > USER CONTROLLER'.yellow);
+        console.log('MAKING AN ADMIN => session + admin rights for DEMO');
+        req.session.userid = 1; // make admin with db record of id 1 which is an admin
+        res.json({
+            message: 'SUCCESS made admin using default id=1',
+            canLogin: true,
+            powerLevel: 9999
+        });
+    },
+
 
 
 // ============= DESTROY SESSION =============

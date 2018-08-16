@@ -87,6 +87,14 @@ export class MainComponent implements OnInit {
   }
 
 
+  superAdmin() {
+    // send req to store session and make admin for demo purposes
+    this._userService.makeAdmin().subscribe(res => {
+      if (res['powerLevel'] > 9000 && res['canLogin'] === true ) {
+        this._router.navigate(['admindash']);
+      }
+    });
+  }
 
 
 

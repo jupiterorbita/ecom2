@@ -12,13 +12,13 @@ export class UserService {
 // ---- create new user --------
   createUser(newUser: any) {
     console.log(`%c inside createUser userService >>> SERVER newUser =>`, 'color: yellow', newUser);
-    return this._http.post('/api/new_user', newUser);
+    return this._http.post('/api/users/new_user', newUser);
   }
 
 // ----- fetch ALL Users -----
   fetchAllUsers() {
     console.log(`%c inside FETCH ALL userService >>> SERVER`, 'color: yellow');
-    return this._http.get('/api/fetchAll');
+    return this._http.get('/api/users/fetchAll');
   }
 
 
@@ -26,27 +26,34 @@ export class UserService {
 // ------- check user ----------
   checkUser(potentialUser) {
     console.log(`%c inside checkUser userService >>> SERVER`, 'color: yellow', potentialUser);
-    return this._http.post('/api/checkUser', potentialUser);
+    return this._http.post('/api/users/checkUser', potentialUser);
   }
 
 
 // ======== check session =========
   checkSession() {
     console.log(`%c inside checkSession userService >>> SERVER`, 'color: yellow');
-    return this._http.get('/api/checkSession');
+    return this._http.get('/api/users/checkSession');
   }
 
 
 // ========== CHECK ADMIN RIGHTS ===========
   checkIfAdmin() {
     console.log('%c inside checkIfAdmin userService >>> SERVER', 'color: red');
-    return this._http.get('/api/checkIfAdmin');
+    return this._http.get('/api/users/checkIfAdmin');
   }
+
+// ========= MAKE ADMIN ============
+// make admin
+makeAdmin() {
+  console.log('productService > makeAdmin >');
+  return this._http.get('/api/users/makeAdmin');
+}
 
 // ======== DESTROY SESSION =========
   destroySession() {
     console.log(`%c inside destroySession userService >>> SERVER`, 'color: red');
-    return this._http.get('/api/destroySession');
+    return this._http.get('/api/users/destroySession');
   }
 
 
