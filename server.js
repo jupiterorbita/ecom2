@@ -9,12 +9,52 @@ const express = require('express');
 const app = express();
 
 
+
+// =========== SERVER CONNECTION ============
+// var server = app.listen(5000)
+// console.log('SERVER connected port:'.yellow, server);
+const portNum = '5000';
+app.listen(portNum, function () {
+    console.log("SERVER connected port:5000".yellow);
+})
+
+
+
+// ------------------------ SOCKET -------------------
+// =========== SOCKET.io ============
+
+// require('./server/config/socket.io.js');
+
+const io = require('socket.io').listen(5000);
+
+var counter = 0;
+
+io.on('connection', function(socket) {
+
+    socket.emit('greetings', { msg: 'greetings from socket.io.js'});
+    socket.on('thankyou', function (data) {
+        console.log('data =>', data);
+        
+    });
+});
+
+
+
+
+
+
+
+
 //========== BODY PARSER ==============
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+
+
+
+
 
 
 // Session
@@ -40,12 +80,5 @@ require('./server/config/routes')(app);
     //     res.sendFile(path.resolve("./public/dist/public/index.html"))
     // });
 
-// =========== SERVER CONNECTION ============
-// var server = app.listen(5000)
-// console.log('SERVER connected port:'.yellow, server);
-var portNum = '5000';
-app.listen(portNum, function () {
-    console.log("SERVER connected port:5000".yellow);
-})
 
 // ------------------ END ------------------

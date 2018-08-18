@@ -10,19 +10,15 @@ module.exports = function(app) {
 //======= REGISTER routes ===========
     // Create new user
     app.post("/api/users/new_user", ctrl.newUser);
-
     // fetch all users
     app.get("/api/users/fetchAll", ctrl.getUsers);
-
 
 // ======== Login route ============
     // check user 
     app.post("/api/users/checkUser", ctrl.checkUser);
 
-
 // ======= CHECK SESSION =========
     app.get("/api/users/checkSession", ctrl.checkSession);
-
 
 // ======= DESTROY SESSION ========
     app.get("/api/users/destroySession", ctrl.destroySession);
