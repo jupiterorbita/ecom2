@@ -91,44 +91,6 @@ export class AdmindashComponent implements OnInit {
   }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // ============ ORDERING =============
   // ----------- order by ID  -----------=
   id_asc() {

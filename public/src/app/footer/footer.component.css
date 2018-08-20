@@ -1,17 +1,19 @@
 .wrapper{
-    border: 1px solid rgb(255, 187, 0);
+    border: 1px solid rgb(48, 45, 37);
     border-radius: 10px;
-    background-color: rgb(155, 166, 189);
+    background-color: rgb(250, 173, 68);
     padding: 5px;
     margin-top: 10px;
-    min-height: 50px;
+    min-height: 40px;
+    font-size: 10pt;
+    text-align: center;
 }
 
 /* ============= FOOTER ============== */
-div.footer{
+/* div.footer{
     background-color: rgb(250, 173, 68);
     height: 30px;
-    font-size: 8pt;
+    font-size: 10pt;
     text-align: center;
     padding-top: 10px;
-}
+} */

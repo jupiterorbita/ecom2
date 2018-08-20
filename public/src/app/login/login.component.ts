@@ -10,7 +10,7 @@ import { DataService } from '../data.service';
 })
 export class LoginComponent implements OnInit {
 
-  loginUser: {};
+  public loginUser: {};
   public loginValidation: any;
 
   constructor(
@@ -81,6 +81,8 @@ export class LoginComponent implements OnInit {
         } else {
           alert('USER logged in!');
           console.log('SUCCESS id stored in session in server, goToProducts now');
+          // change login status and update service
+
           this.loginValidation['canLogin'] = true;
           this.loginValidation['admin'] = false;
           this._dataService.loginValidation.next(this.loginValidation);

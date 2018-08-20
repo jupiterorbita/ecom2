@@ -1,37 +1,38 @@
 <div class="wrapper">
 
-	header component
+	<!-- header component -->
 
 	<!-- ============= TOP NAV BAR ============== -->
-	<div class="topNav">
+	<!-- <div class="topNav">
 		<img src="images/t_logo.png" alt="">
 		<div class="center_title">
 			<h1>_PLACEHOLDER_</h1>
 		</div>
 		
-	</div>
+	</div> -->
 	<button (click)="superAdmin()"> > BECOME CHUCK NORRIS< </button>
-	<a [routerLink]= "['/']">MAIN - reload ng </a> - 
+	<a [routerLink]= "['/']"> HOME </a> - 
 
-	<span *ngIf="!sessionExists">
+	<span *ngIf="loginValidation['canLogin'] === false">
 
-		<a [routerLink]= "['/login']">LOGIN</a> - 
-		<a [routerLink]= "['/register']">REGISTER</a> - 
+		<a [routerLink]= "['/login']"> LOGIN </a> - 
+		<a [routerLink]= "['/register']"> REGISTER </a> - 
 	</span>
 
 	<a (click)="goToProducts()"> PRODUCTS </a> - 
-	<a (click)="goToAdminDash()"> ADMIN DASHBOARD </a>
 
-	<br>
+	<span *ngIf="loginValidation['admin'] === true">
+		<a (click)="goToAdminDash()"> ADMIN DASHBOARD </a>
+	</span>
+	<span *ngIf="loginValidation['canLogin'] === true">
+		<button (click)="destroySession()"> CLEAR SESSION / LOGOUT </button>
+	</span>
+	<hr>
+
 	sesionExists => {{ sessionExists | json}}
 	<br>
 	what is session => {{ whatisssession | json}}
 	<br>
-	
-	<div *ngIf="loginValidation['canLogin'] === true">
-		<button (click)="destroySession()"> CLEAR SESSION / LOGOUT </button>
-	</div>
-	<br>
-	{{ loginValidation | json}}
+	loginValidation => {{ loginValidation | json}}
 
 </div>

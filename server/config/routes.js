@@ -49,55 +49,6 @@ module.exports = function(app) {
     app.get("/api/product/search/:sql_str", prodCtrl.searchQueryString);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     // ************* ordering *************-
     // --------- id ▲ asc ------------
     app.get("/api/product/id_asc", prodCtrl.id_asc);

@@ -5,3 +5,163 @@
     padding: 5px;
     min-height: 300px;
 }
+
+
+/* * * * * * * * * * * MAIN CONTENT * * * * * * * * * */
+
+div.content_wrap{
+    background-color: rgb(254, 239, 231);
+    padding: 5px;
+}
+
+
+/* ---------- LEFT FILTERS --------- */
+div.left_filters{
+    padding: 5px;
+    width: 140px;
+    height: 300px;
+    display: inline-block;
+    vertical-align: top;
+    background-color: rgb(251, 200, 146);
+    border-radius: 15px;
+}
+    div.sort{
+        background-color: rgb(255, 239, 233);
+        padding: 3px;
+        border-radius: 5px;
+        margin-bottom: 5px;
+    }
+
+
+
+
+
+/* =========== LEFT FILTER =========== */
+/* div.left_filter{
+    background-color: rgb(246, 202, 140);
+    border-radius: 15px;
+    display: inline-block;
+    vertical-align: top;
+    width: 200px;
+    height: 500px;
+    padding: 10px;
+}
+    .left_filter .filter_price{
+        background-color: rgb(255, 239, 232);
+        width: auto;
+        height: auto;
+    }
+     */
+
+/* ============ MAIN CONTENT & PAGES ========= */
+div.content{
+    background-color: rgb(254, 239, 231);
+    border: 1px solid black;
+    display: inline-block;
+    vertical-align: top;
+    width: 850px;
+    min-height: 600px;
+}
+
+    .content .pages{
+        margin-top: 10px;
+        margin-bottom: 10px;
+        background-color:rgb(254, 239, 231);
+        text-align: center;
+    }
+
+    div.item{
+        border-radius: 15px;
+        border: 1px solid black;
+        margin: 10px;
+        background-color: rgb(248, 223, 212);
+        min-height: 60px;
+        width: 800px;
+    }
+    /* --------- PRODUCT IMG --------- */
+        .content .item .product_img{
+            border-radius: 15px 15px 15px 15px;
+            width: 150px;
+            margin: 5px;
+            display: inline-block;
+            vertical-align: top;
+        }
+            .stars{
+                display: inline-block;
+                height: 20px;
+            }
+            
+        .content .item .mid_item{
+            display: inline-block;
+            vertical-align: top;
+            /* background-color: cadetblue; */
+        }
+        .content .item .right_item{
+            display: inline-block;
+            vertical-align: top;
+            /* background-color: cornsilk; */
+            width: 300px;
+        }
+
+
+/**************************************
+**             BUTTONS               **
+**************************************/
+
+/* ====== SEARCH BUTTON ========= */
+div.topNav .search button{
+    /* background: linear-gradient(red, yellow); */
+    border: 1px solid rgb(250, 173, 68); 
+    border-radius: 15px 15px 15px 15px;
+    padding: 6px 10px;
+    transition-duration: 0.4s;
+    font-size: 18px;
+    text-align: center;
+    color: rgb(130, 39, 23);
+}
+    .search button:hover{
+        color: white;
+        background-color: rgb(250, 173, 68);
+    }
+    button.addToCartBtn{
+        margin-top: 5px;
+        margin-bottom: 5px;
+        /* height: 40px;
+        width: 80px; */
+        padding: 10px 25px;
+        border: none;
+        border-radius: 15px;
+        text-align: center;
+        font-size: 18px;
+        border: 2px solid #4CAF50; 
+        background-color: white; /* Green */
+        /* webkit-transition-duration: 0.4s; Safari */
+        transition-duration: 0.4s;
+    }
+        button.addToCartBtn:hover {
+            background-color: #4CAF50; /* Green */
+            color: white;
+            /* box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19); */
+        }
+
+
+/* ============ each product ADD to CARD BUTTON */
+.item button{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: aqua;
+    padding: 5px 15px;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 14px;
+    border: 2px solid #4CAF50; 
+    background-color: white; /* Green */
+    /* webkit-transition-duration: 0.4s; Safari */
+    transition-duration: 0.4s;
+}
+    .item button:hover {
+        background-color: #4CAF50; /* Green */
+        color: white;
+        /* box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19); */
+    }

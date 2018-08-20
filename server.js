@@ -39,22 +39,12 @@ app.listen(portNum, function () {
 // });
 
 
-
-
-
-
-
-
 //========== BODY PARSER ==============
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
-
-
-
-
 
 
 // Session

@@ -13,6 +13,8 @@ export class HeaderComponent implements OnInit {
   public sessionExists: boolean;
   public whatisssession: any;
 
+  public confirmLogoutAlert: boolean;
+
   public newUrl: string;
   public loginValidation: any;
 
@@ -49,23 +51,29 @@ export class HeaderComponent implements OnInit {
 
   destroySession() {
     console.log('destroySession() pressed');
-    this._userService.destroySession()
-    .subscribe((res: any) => {
-      console.log('res -> destroy session = ', res);
-      this.sessionExists = false;
 
-      this.loginValidation['canLogin'] = false;
-      this.loginValidation['admin'] = false;
-      this._dataService.loginValidation.next(this.loginValidation);
+    this.confirmLogoutAlert = confirm('Are you sure you want to logout?\nthis will force refresh the page to clear all session data!');
+    if (this.confirmLogoutAlert === true) {
 
-      // on logout perform a FULL reload
-      this.newUrl = '/';
-      window.location.href = this.newUrl;
-      this.checkSession();
+      this._userService.destroySession()
+      .subscribe((res: any) => {
+        console.log('res -> destroy session = ', res);
+        this.sessionExists = false;
 
-      // location.reload(true);
-      this._router.navigate(['/']);
-    });
+        this.loginValidation['canLogin'] = false;
+        this.loginValidation['admin'] = false;
+        this._dataService.loginValidation.next(this.loginValidation);
+
+        // on logout perform a FULL reload
+        this.newUrl = '/';
+        window.location.href = this.newUrl;
+        this.checkSession();
+
+        // location.reload(true);
+        this._router.navigate(['/']);
+      });
+
+    } else { return; }
   }
 
   superAdmin() {
@@ -79,6 +87,7 @@ export class HeaderComponent implements OnInit {
         this._dataService.loginValidation.next(this.loginValidation);
         this.checkSession();
         this._router.navigate(['admindash']);
+        alert('You are now Chuck Norris');
       }
     });
   }
