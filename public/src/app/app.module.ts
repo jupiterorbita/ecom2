@@ -17,6 +17,8 @@ import { ProductsComponent } from './products/products.component';
 import { AdmindashComponent } from './admindash/admindash.component';
 import { AddproductComponent } from './addproduct/addproduct.component';
 import { EditproductComponent } from './editproduct/editproduct.component';
+import { ProductService } from './product.service';
+import { DataService } from './data.service';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,7 @@ import { EditproductComponent } from './editproduct/editproduct.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [UserService],
+  providers: [UserService, ProductService, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

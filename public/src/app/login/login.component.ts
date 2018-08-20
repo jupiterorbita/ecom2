@@ -1,6 +1,7 @@
 import { UserService } from './../user.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-login',
@@ -10,8 +11,17 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   loginUser: {};
+  public loginValidation: any;
 
-  constructor(private _userService: UserService, private _route: ActivatedRoute, private _router: Router) { }
+  constructor(
+    private _dataService: DataService,
+    private _userService: UserService,
+    private _route: ActivatedRoute,
+    private _router: Router) {
+      this._dataService.loginValidation.subscribe( (service_login) => {
+        this.loginValidation = service_login;
+      });
+    }
 
   ngOnInit() {
     this.loginUser = {
@@ -63,10 +73,17 @@ export class LoginComponent implements OnInit {
         if (res.powerLevel > 9000 ) {
           alert('CHUCK NORRIS logged in!');
           console.log('SUCCESS id stored in session in server, goToAdmin now');
+          // change login status and update service
+          this.loginValidation['canLogin'] = true;
+          this.loginValidation['admin'] = true;
+          this._dataService.loginValidation.next(this.loginValidation);
           this.goToAdmin();
         } else {
           alert('USER logged in!');
           console.log('SUCCESS id stored in session in server, goToProducts now');
+          this.loginValidation['canLogin'] = true;
+          this.loginValidation['admin'] = false;
+          this._dataService.loginValidation.next(this.loginValidation);
           this.goToProducts();
         }
       } else {

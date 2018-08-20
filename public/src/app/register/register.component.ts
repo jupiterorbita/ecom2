@@ -1,6 +1,7 @@
 import { UserService } from './../user.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { DataService } from '../data.service';
 
 
 @Component({
@@ -10,9 +11,15 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
 
-  newUser: {};
+  public newUser: {};
+  public loginValidation: any;
 
-  constructor(private _userService: UserService, private _route: ActivatedRoute, private _router: Router) { }
+
+  constructor(
+    private _dataService: DataService,
+    private _userService: UserService,
+    private _route: ActivatedRoute,
+    private _router: Router) { }
 
   ngOnInit() {
     this.newUser = {
@@ -65,6 +72,9 @@ export class RegisterComponent implements OnInit {
           console.log('res from newUser save res.success =>', res.success);
           if (res.success === true) {
             console.log('result is valid -> routing back to app.component');
+            this.loginValidation['canLogin'] = true;
+            this.loginValidation['admin'] = false;
+            this._dataService.loginValidation.next(this.loginValidation);
             this._router.navigate(['products']);
           } else {
             console.log('invalid result - server error not saved');

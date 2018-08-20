@@ -1,6 +1,7 @@
 import { Router } from '@angular/router';
 import { UserService } from './../user.service';
 import { Component, OnInit } from '@angular/core';
+// import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-main',
@@ -14,7 +15,12 @@ export class MainComponent implements OnInit {
   public allFormattedDates: {};
   public sessionExists: boolean;
 
-  constructor(private _userService: UserService, private _router: Router) { }
+
+  constructor(
+    // private _dataService: DataService,
+    private _userService: UserService,
+    private _router: Router
+  ) { }
 
   ngOnInit() {
     console.log('=== MAIN.COMPONENT.TS LOADED ===');

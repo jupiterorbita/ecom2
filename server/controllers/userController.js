@@ -226,6 +226,7 @@ module.exports = {
         req.session.destroy(function(err) {
             if (err) throw err;
             console.log('successfully CLEARED SESSION');
+            res.json({msg: 'ok'});
         });
         console.log('req.session after destroy =>'.yellow, req.session);
     }
