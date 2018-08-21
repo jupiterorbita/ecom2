@@ -214,7 +214,7 @@ module.exports = {
 
         // req.session.string_id
         // console.log('req.session =>', req.session);
-        console.log('getAllCartItems >> req.session.cart =>', req.session['cart']);
+        console.log('getAllCartItems >> req.session["cart"] =>', req.session['cart']);
 
         if (!req.session['cart']) {
             res.json({message: 'nothing in cart'});
@@ -222,16 +222,32 @@ module.exports = {
         // if cart has something in get items
         else if (req.session['cart']) {
 
-            var sql = `SELECT * FROM UserSQL_DB.products WHERE id in (${req.session.sql_string_id});`
-            connection.query(sql, function(err, results, fields) {
+            var sql = `SELECT id, product_name, product_price, img FROM UserSQL_DB.products WHERE id in (${req.session.sql_string_id});`
+            connection.query(sql, function(err, results_arr, fields) {
             if (err) throw err;
-                console.log(results);
-                res.json({message: "found items", results: results});
+                console.log('results_arr'.green, results_arr);
+
+                // ****** calculate price of each product ******
+                for (var idx = 0; idx < results_arr.length; idx++) {
+                    // console.log('results_arr["idx"] =>'.green, results_arr[idx])
+                    console.log(`cart id: ${results_arr[idx]['id']}, has price $ ${results_arr[idx]['product_price']}`); 
+                    
+                    // loop through the req.body.cart obj to find same id and multiply with price
+                    for (var i = 0; i < req.session['cart'].length; i++) {
+                        if (req.session['cart'][i].id === results_arr[idx].id) {
+                            console.log('SAME!!! => req.session["cart"][i].id === results_arr[idx].id', req.session['cart'][i].id, results_arr[idx].id);
+                            
+                        }
+                    }
+
+
+                }
+
+
+                res.json({message: "found items", results: results_arr});
             });
         }
 
-        // calculate price of each product
-        
 
 
 
