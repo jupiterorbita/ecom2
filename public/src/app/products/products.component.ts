@@ -50,7 +50,7 @@ export class ProductsComponent implements OnInit {
         this.cart[idx].qty++;
         // then update the cart service
         this._dataService.cart.next(this.cart);
-        
+
         // go and update the cart session > SERVER
         this._dataService.updateCartItemToSession(this.cart)
         .subscribe(server_res => {

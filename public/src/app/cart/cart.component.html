@@ -6,23 +6,27 @@
 cart is => {{ cart | json }}
 
 <br>
+<div *ngIf="cartProducts.lenght > 0" class="table">
 
-<table>
-  <thead>
-    <td>name</td>
-    <td>qty</td>
-    <td>price</td>
-    <td>total_sku price</td>
-  </thead>
-  <tbody>
-    <tr>
-      <td>aaa</td>
-      <td>aaa</td>
-      <td>aaa</td>
-      <td>aaa</td>
-    </tr>
-  </tbody>
-</table>
+  <table>
+    <thead>
+      <td>name</td>
+      <td>qty</td>
+      <td>price</td>
+      <td>total_sku price</td>
+    </thead>
+    <tbody>
+      <tr>
+        <td>aaa</td>
+        <td>aaa</td>
+        <td>aaa</td>
+        <td>aaa</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
 <hr>
 
 {{ cartProducts | json}}

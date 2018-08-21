@@ -214,10 +214,14 @@ module.exports = {
         console.log('productController > getAllCartItems'.yellow);
 
         req.session.string_id
+        // console.log('req.session =>', req.session);
         console.log('req.session.cart =>', req.session.cart);
 
+        if (!req.session.cart) {
+            res.json({message: 'nothing in cart'});
+        }
         // if cart has something in get items
-        if (req.session.cart.length > 0) {
+        else if (req.session.cart) {
 
             var sql = `SELECT * FROM UserSQL_DB.products WHERE id in (${req.session.sql_string_id});`
             connection.query(sql, function(err, results, fields) {
@@ -225,8 +229,6 @@ module.exports = {
                 console.log(results);
                 res.json({message: "found items", results: results});
             });
-        } else {
-            res.json({message: 'nothing in cart'});
         }
     },
 

@@ -35,7 +35,19 @@ export class CartComponent implements OnInit {
     this._productService.getAllCartItems()
     .subscribe((res: any) => {
       console.log('did we get all the carts items?', res);
-      this.cartProducts = res['results'];
+
+      if (res['message'] === 'nothing in cart') {
+        console.log('no products in cart');
+        return;
+      } else if (res['message'] === 'found items') {
+        this.cartProducts = res['results'];
+      }
     });
   }
-}
+
+
+
+
+
+
+} // -- EOF
