@@ -78,14 +78,8 @@
               <h2>{{ product.product_name }}</h2>
               <h3>$ {{ product.product_price }}</h3>
               <img class="stars" src="images/star_rating.png" alt="">
-              <img class="stars" src="images/star_rating.png" alt="">
-              <img class="stars" src="images/star_rating.png" alt="">
-              <img class="stars" src="images/star_rating.png" alt="">
-              <img class="stars" src="images/star_rating.png" alt="">
               <br>
-              <span>QTY: </span><input type="text">
-              <br>
-              <button>ADD TO CART</button>
+              <button (click)="addToCart(product.id)"> id={{ product.id }}, ADD TO CART</button>
           </div>
           <div class="right_item">
             {{ product.product_description}}

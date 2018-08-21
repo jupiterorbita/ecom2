@@ -10,6 +10,10 @@
 		</div>
 		
 	</div> -->
+
+	<img src="assets/img/logo.png" alt="">
+
+
 	<button (click)="superAdmin()"> > BECOME CHUCK NORRIS< </button>
 	<a [routerLink]= "['/']"> HOME </a> - 
 
@@ -34,5 +38,16 @@
 	what is session => {{ whatisssession | json}}
 	<br>
 	loginValidation => {{ loginValidation | json}}
+	<hr>
+	<h3>CART : </h3>
+	{{ cart | json}}
+	<br>
+	SKUs in cart => {{ cart.length }}
+	<br>
+	total items in cart => {{ cart_total_size }}
+	<br>
+	<button (click)="countCartItems()">count cart items</button>
+	<br>
+	<button (click)="clearCart()">CLEAR CART</button>
 
 </div>

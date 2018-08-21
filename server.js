@@ -63,6 +63,8 @@ require('./server/config/sql.js');
 
 //======== ANGULAR ROUTE ========
 app.use(express.static( __dirname + '/public/dist/public' ));
+// app.use(express.static(__dirname, 'public'));
+
 
 require('./server/config/routes')(app);
     // // widlcard for angular

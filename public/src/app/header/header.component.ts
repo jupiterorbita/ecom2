@@ -13,10 +13,14 @@ export class HeaderComponent implements OnInit {
   public sessionExists: boolean;
   public whatisssession: any;
 
+  public confirmClearCart: boolean;
   public confirmLogoutAlert: boolean;
 
   public newUrl: string;
   public loginValidation: any;
+
+  cart: any;
+  cart_total_size: any;
 
   constructor(
     private _dataService: DataService,
@@ -26,6 +30,14 @@ export class HeaderComponent implements OnInit {
     this._dataService.loginValidation.subscribe((service_login) => {
       this.loginValidation = service_login;
     });
+    this._dataService.cart.subscribe((service_cart) => {
+      this.cart = service_cart;
+      this.cart_total_size = this.countCartItems(); // everytime a change in cart update
+      console.log('cart_total_size CONSTRUCTOR >', this.cart_total_size);
+    });
+    this._dataService.cart_total_size.subscribe((service_cart_size) => {
+      this.cart_total_size = service_cart_size;
+    });
   }
 
   ngOnInit() {
@@ -34,6 +46,36 @@ export class HeaderComponent implements OnInit {
     this.checkSession();
   }
 
+  countCartItems() {
+    this.cart_total_size = 0;
+    for (let idx = 0; idx < this.cart.length; idx++) {
+      console.log('idx => ', idx);
+      console.log('%c this.cart[idx]', 'color:yellow', this.cart[idx]);
+      console.log('this.cart[idx]["qty"] =>', this.cart[idx]['qty']);
+      this.cart_total_size += this.cart[idx]['qty'];
+      this._dataService.cart_total_size.next(this.cart_total_size);
+
+      console.log('cart_total_size =>', this.cart_total_size);
+    }
+    return this.cart_total_size;
+    }
+    // this.cart_total_size = Object.keys(this.cart).length;
+
+
+  clearCart() {
+    console.log('### about to clear CART ###');
+    this.confirmClearCart = confirm(`CLEAR CART? with ${this.cart_total_size} items ?`);
+    if (this.confirmClearCart === true) {
+      // for (let idx = this.cart.length; idx > 0; idx--) {
+      //   this.cart.pop();
+      // }
+      this.cart = [];
+      console.log('IS THE CART EMPTY? =>', this.cart);
+      this._dataService.cart.next(this.cart);
+      alert('CART is now empty!!!!');
+    }
+    return;
+  }
 
   checkSession() {
     console.log('00000000000');
@@ -122,4 +164,4 @@ export class HeaderComponent implements OnInit {
   }
 
 
-}
+} // -- EOF

@@ -2,6 +2,7 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { ProductService } from '../product.service';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-products',
@@ -13,11 +14,17 @@ export class ProductsComponent implements OnInit {
   allProducts: {};
   sql_value_str = '';
   searchResultsFound = null;
+  cart: any;
 
   constructor(
+    private _dataService: DataService,
     private _productService: ProductService,
     private _userService: UserService,
-    private _router: Router) { }
+    private _router: Router) {
+      this._dataService.cart.subscribe((service_cart) => {
+        this.cart = service_cart;
+      });
+    }
 
   ngOnInit() {
     // this.checkSession();
@@ -35,8 +42,22 @@ export class ProductsComponent implements OnInit {
     }
 
 
+// ========= ADD TO CART ==========
+  addToCart(product_id) {
+    console.log('-- clicked ADD -- with id=>', product_id);
+    for (let idx = 0; idx < this.cart.length; idx++) {
+      if (this.cart[idx].id === product_id) {
+        this.cart[idx].qty++;
+        this._dataService.cart.next(this.cart);
+        return;
+      }
+    }
+    this.cart.push({id: product_id, qty: 1});
+    this._dataService.cart.next(this.cart);
+  }
 
-  // ======== onKey event =============
+
+  // ======== onKey event SEARCH =============
   onKey(event: any) {
     // console.log('====== event =>', event);
     // console.log('====== event.target =>', event.target);
@@ -91,7 +112,7 @@ export class ProductsComponent implements OnInit {
   }
   name_desc() {
     console.log('ORDER BY name ▼ DESC');
-    this._productService.name_asc().subscribe(res => {
+    this._productService.name_desc().subscribe(res => {
       this.allProducts = res['order_results'];
     });
   }

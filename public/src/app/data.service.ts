@@ -6,11 +6,12 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class DataService {
 
-  // cart = new BehaviorSubject([
-  //   { id: 1, qty: 1},
-  //   { id: 2, qty: 1},
-  //   { id: 3, qty: 1},
-  // ]);
+  cart = new BehaviorSubject([
+    // { id: null, qty: null},
+  ]);
+
+  cart_total_size = new BehaviorSubject(null);
+
 
   loginValidation = new BehaviorSubject({
     canLogin: false,
@@ -29,4 +30,4 @@ export class DataService {
     // )
   }
 
-}
+} // -- EOF

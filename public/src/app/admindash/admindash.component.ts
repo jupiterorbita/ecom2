@@ -143,7 +143,7 @@ export class AdmindashComponent implements OnInit {
   }
   name_desc() {
     console.log('ORDER BY name ▼ DESC');
-    this._productService.name_asc().subscribe(res => {
+    this._productService.name_desc().subscribe(res => {
       this.allProducts = res['order_results'];
     });
   }

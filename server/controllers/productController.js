@@ -166,7 +166,7 @@ module.exports = {
         connection.query(sql, function(err, results, fields) {
         if (err) throw err;
             // console.log(results);
-            res.json({message: "success retreiving all data ORDER BY ID ASC", order_results: results});
+            res.json({message: "success retreiving all data ORDER BY ID DESC", order_results: results});
         });
     },
 
