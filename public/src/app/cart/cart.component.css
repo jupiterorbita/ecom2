@@ -4,3 +4,11 @@
     background-color: rgb(225, 243, 192);
     padding: 5px;
 }
+
+table, thead, tr, td {
+    border: 1px solid black;
+}
+
+thead {
+    font-size: 18pt;
+}

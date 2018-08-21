@@ -25,10 +25,17 @@ export class CartComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.cartProducts = [];
+    this.getAllCartProducts();
   }
 
 
   getAllCartProducts() {
     console.log('getAllCartProducts');
+    this._productService.getAllCartItems()
+    .subscribe((res: any) => {
+      console.log('did we get all the carts items?', res);
+      this.cartProducts = res['results'];
+    });
   }
 }

@@ -77,6 +77,9 @@ module.exports = function(app) {
 // ----------- Add cart Item To Session ------------
     app.post("/api/session/updateCartItemToSession", prodCtrl.updateCartItemToSession);
 
+//----------- Get All Cart Items ------------------
+    app.get("/api/product/getAllCartItems", prodCtrl.getAllCartItems);
+    
 
 
 

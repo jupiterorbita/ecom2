@@ -177,7 +177,8 @@ module.exports = {
 
 // ------------ Add Cart Item To Session -----------------
     updateCartItemToSession: (req, res) => {
-        var string_id = [];
+        var arr_id = [];
+        var sql_string_id = '';
         console.log('addCartItemToSession res.body=>\n', req.body);
         console.log('req.session.cart', req.session.cart);
         console.log('req.seesion', req.session);
@@ -186,20 +187,48 @@ module.exports = {
             console.log(req.body[idx]);
             console.log('id =>', req.body[idx]['id']);
 
-            string_id.push(req.body[idx]['id'])
+            arr_id.push(req.body[idx]['id']);
 
-            console.log('id is =>', req.body[idx]['id'], 'qty is =>', req.body[idx].qty);
+
+
+            if (arr_id.length === 1) {
+                sql_string_id += (req.body[idx]['id']);
+            }
+            else if (arr_id.length > 1) {
+                sql_string_id += (', ' + (req.body[idx]['id']));
+            }
+
+            // console.log('id is =>', req.body[idx]['id'], 'qty is =>', req.body[idx].qty);
         }
-        console.log('string_id ===>'.yellow, string_id);
+        console.log('string_id ===>'.yellow, arr_id);
+        console.log('string ===>'.bgCyan, sql_string_id);
+        req.session.sql_string_id = sql_string_id;
         req.session.cart = req.body;
         console.log('NEW req.session.cart =>', req.session.cart);
         // console.log('SERVER RESPONSE --->', res)
         res.json({message: 'got res.body'});
-    }
+    },
 
+// ------------ Get All Cart Items ------------------
+    getAllCartItems: (req, res) => {
+        console.log('productController > getAllCartItems'.yellow);
 
+        req.session.string_id
+        console.log('req.session.cart =>', req.session.cart);
 
+        // if cart has something in get items
+        if (req.session.cart.length > 0) {
 
+            var sql = `SELECT * FROM UserSQL_DB.products WHERE id in (${req.session.sql_string_id});`
+            connection.query(sql, function(err, results, fields) {
+            if (err) throw err;
+                console.log(results);
+                res.json({message: "found items", results: results});
+            });
+        } else {
+            res.json({message: 'nothing in cart'});
+        }
+    },
 
 
 

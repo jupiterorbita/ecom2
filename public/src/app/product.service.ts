@@ -54,48 +54,53 @@ export class ProductService {
 
   // ------------ ID ▲ ASCENDING -------------
   id_asc() {
-    console.log('userService > id_asc()');
+    console.log('productService > id_asc()');
     return this._http.get('/api/product/id_asc');
   }
   // ------------ ID ▼ DESCENDING -----------
   id_desc() {
-    console.log('userService > id_desc()');
+    console.log('productService > id_desc()');
     return this._http.get('/api/product/id_desc');
   }
 
   // ------------ PRICE ▲ ASC --------------
   price_asc() {
-    console.log('userService > price_asc()');
+    console.log('productService > price_asc()');
     return this._http.get('/api/product/price_asc');
   }
   // ------------ PRICE ▼ DESC --------------
   price_desc() {
-    console.log('userService > price_desc()');
+    console.log('productService > price_desc()');
     return this._http.get('/api/product/price_desc');
   }
 
   // ------------ QTY ▲ ASC --------------
   qty_asc() {
-    console.log('userService > qty_asc()');
+    console.log('productService > qty_asc()');
     return this._http.get('/api/product/qty_asc');
   }
   // ------------ QTY ▼ DESC --------------
   qty_desc() {
-    console.log('userService > qty_desc()');
+    console.log('productService > qty_desc()');
     return this._http.get('/api/product/qty_desc');
   }
 
   // ------------ NAME ▲ ASCENDING -------------
   name_asc() {
-    console.log('userService > name_asc()');
+    console.log('productService > name_asc()');
     return this._http.get('/api/product/name_asc');
   }
   // ------------ NAME ▲ ASCENDING -------------
   name_desc() {
-    console.log('userService > name_desc()');
+    console.log('productService > name_desc()');
     return this._http.get('/api/product/name_desc');
   }
 
-
+// ================= CART ==================
+// ------------ Get All Cart Items ---------
+  getAllCartItems() {
+    console.log('productService > getAllCartItems()');
+    return this._http.get('/api/product/getAllCartItems');
+  }
 
 } // -- EOF
