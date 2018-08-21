@@ -29,7 +29,6 @@ export class ProductsComponent implements OnInit {
   ngOnInit() {
     // this.checkSession();
     this.getInventory();
-
   }
 
 // --------- get all products (onInit)-----------
