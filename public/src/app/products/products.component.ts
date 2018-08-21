@@ -52,9 +52,11 @@ export class ProductsComponent implements OnInit {
         this._dataService.cart.next(this.cart);
 
         // go and update the cart session > SERVER
-        this._dataService.updateCartItemToSession(this.cart)
+        // this._dataService.updateCartItemToSession({cart: this.cart})
+
+        this._dataService.updateCartItemToSession({ cart: this.cart})
         .subscribe(server_res => {
-          console.log('--------', server_res);
+          console.log('-- updated cart ------', server_res);
         });
         return;
       }
@@ -66,7 +68,7 @@ export class ProductsComponent implements OnInit {
     this._dataService.cart.next(this.cart);
 
     // go and update the cart session > SERVER
-    this._dataService.updateCartItemToSession(this.cart)
+    this._dataService.updateCartItemToSession({cart: this.cart})
     .subscribe(server_res => {
       console.log('--------', server_res);
     });

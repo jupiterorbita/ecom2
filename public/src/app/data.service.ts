@@ -25,9 +25,9 @@ export class DataService {
 
   constructor(private _http: HttpClient) { }
 
-  updateCartItemToSession(product_id) {
-    console.log('dataService > addCartItemToSession > product_id => ', product_id);
-    return this._http.post('/api/session/updateCartItemToSession', product_id);
+  updateCartItemToSession(cart) {
+    console.log('dataService > addCartItemToSession > cart => ', cart);
+    return this._http.post('/api/session/updateCartItemToSession', cart);
   }
 
 

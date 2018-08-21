@@ -180,22 +180,21 @@ module.exports = {
         var arr_id = [];
         var sql_string_id = '';
         console.log('addCartItemToSession res.body=>\n', req.body);
-        console.log('req.session.cart', req.session.cart);
+        console.log('req.session.cart', req.session['cart']);
         console.log('req.seesion', req.session);
+// ------------------------
+        
+        for (var idx = 0; idx < req.body['cart'].length; idx++) {
+            console.log(req.body['cart'][idx]);
+            console.log('id =>', req.body['cart'][idx]['id']);
 
-        for (var idx = 0; idx < req.body.length; idx++) {
-            console.log(req.body[idx]);
-            console.log('id =>', req.body[idx]['id']);
-
-            arr_id.push(req.body[idx]['id']);
-
-
+            arr_id.push(req.body['cart'][idx]['id']);
 
             if (arr_id.length === 1) {
-                sql_string_id += (req.body[idx]['id']);
+                sql_string_id += (req.body['cart'][idx]['id']);
             }
             else if (arr_id.length > 1) {
-                sql_string_id += (', ' + (req.body[idx]['id']));
+                sql_string_id += (', ' + (req.body['cart'][idx]['id']));
             }
 
             // console.log('id is =>', req.body[idx]['id'], 'qty is =>', req.body[idx].qty);
@@ -203,8 +202,8 @@ module.exports = {
         console.log('string_id ===>'.yellow, arr_id);
         console.log('string ===>'.bgCyan, sql_string_id);
         req.session.sql_string_id = sql_string_id;
-        req.session.cart = req.body;
-        console.log('NEW req.session.cart =>', req.session.cart);
+        req.session['cart'] = req.body['cart'];
+        console.log('NEW req.session.cart =>', req.session['cart']);
         // console.log('SERVER RESPONSE --->', res)
         res.json({message: 'got res.body'});
     },
@@ -213,15 +212,15 @@ module.exports = {
     getAllCartItems: (req, res) => {
         console.log('productController > getAllCartItems'.yellow);
 
-        req.session.string_id
+        // req.session.string_id
         // console.log('req.session =>', req.session);
-        console.log('req.session.cart =>', req.session.cart);
+        console.log('getAllCartItems >> req.session.cart =>', req.session['cart']);
 
-        if (!req.session.cart) {
+        if (!req.session['cart']) {
             res.json({message: 'nothing in cart'});
         }
         // if cart has something in get items
-        else if (req.session.cart) {
+        else if (req.session['cart']) {
 
             var sql = `SELECT * FROM UserSQL_DB.products WHERE id in (${req.session.sql_string_id});`
             connection.query(sql, function(err, results, fields) {
@@ -230,6 +229,12 @@ module.exports = {
                 res.json({message: "found items", results: results});
             });
         }
+
+        // calculate price of each product
+        
+
+
+
     },
 
 
