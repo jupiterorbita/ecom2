@@ -135,6 +135,10 @@ export class HeaderComponent implements OnInit {
   }
 
 
+  goToCart() {
+    this._router.navigate(['cart']);
+  }
+
   goToProducts() {
     this._userService.checkSession()
     .subscribe((res) => {

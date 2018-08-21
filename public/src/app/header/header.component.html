@@ -28,6 +28,9 @@
 	<span *ngIf="loginValidation['admin'] === true">
 		<a (click)="goToAdminDash()"> ADMIN DASHBOARD </a>
 	</span>
+
+	<button (click)="goToCart()"> CART [items] </button>
+
 	<span *ngIf="loginValidation['canLogin'] === true">
 		<button (click)="destroySession()"> CLEAR SESSION / LOGOUT </button>
 	</span>

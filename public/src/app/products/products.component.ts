@@ -46,13 +46,31 @@ export class ProductsComponent implements OnInit {
     console.log('-- clicked ADD -- with id=>', product_id);
     for (let idx = 0; idx < this.cart.length; idx++) {
       if (this.cart[idx].id === product_id) {
+        // update cart QTY
         this.cart[idx].qty++;
+        // then update the cart service
         this._dataService.cart.next(this.cart);
+        
+        // go and update the cart session > SERVER
+        this._dataService.updateCartItemToSession(this.cart)
+        .subscribe(server_res => {
+          console.log('--------', server_res);
+        });
         return;
       }
-    }
+
+    } // else...
+    // push new cart item with default qty 1
     this.cart.push({id: product_id, qty: 1});
+    // update again the service
     this._dataService.cart.next(this.cart);
+
+    // go and update the cart session > SERVER
+    this._dataService.updateCartItemToSession(this.cart)
+    .subscribe(server_res => {
+      console.log('--------', server_res);
+    });
+    return;
   }
 
 

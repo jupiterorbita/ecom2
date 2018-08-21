@@ -59,6 +59,14 @@ app.use(session({
 require('./server/config/sql.js');
 
 
+// multer 
+// const storage = multer.diskStorage({
+//     destination: '',
+//     filename: function (req, file, callback) {
+//     //..
+//     }
+// });
+
 // ============ Routes ============
 
 //======== ANGULAR ROUTE ========

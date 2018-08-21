@@ -171,8 +171,41 @@ module.exports = {
     },
 
 
+// ================================================================
+// ======================= DATA CART SESSION ======================
+// ================================================================
+
+// ------------ Add Cart Item To Session -----------------
+    updateCartItemToSession: (req, res) => {
+        var string_id = [];
+        console.log('addCartItemToSession res.body=>\n', req.body);
+        console.log('req.session.cart', req.session.cart);
+        console.log('req.seesion', req.session);
+
+        for (var idx = 0; idx < req.body.length; idx++) {
+            console.log(req.body[idx]);
+            console.log('id =>', req.body[idx]['id']);
+
+            string_id.push(req.body[idx]['id'])
+
+            console.log('id is =>', req.body[idx]['id'], 'qty is =>', req.body[idx].qty);
+        }
+        console.log('string_id ===>'.yellow, string_id);
+        req.session.cart = req.body;
+        console.log('NEW req.session.cart =>', req.session.cart);
+        // console.log('SERVER RESPONSE --->', res)
+        res.json({message: 'got res.body'});
+    }
 
 
 
 
-}
+
+
+
+
+
+
+
+
+} // -- EOF
