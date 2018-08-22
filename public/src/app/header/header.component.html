@@ -1,56 +1,55 @@
 <div class="wrapper">
 
-	<!-- header component -->
-
-	<!-- ============= TOP NAV BAR ============== -->
-	<!-- <div class="topNav">
-		<img src="images/t_logo.png" alt="">
-		<div class="center_title">
-			<h1>_PLACEHOLDER_</h1>
-		</div>
-		
-	</div> -->
-
 	<img src="assets/img/logo.png" alt="">
-
-
-	<button (click)="superAdmin()"> !!! BECOME CHUCK NORRIS !!! </button> - 
-	<button [routerLink]= "['/']"> HOME </button> - 
-
-	<span *ngIf="loginValidation['canLogin'] === false">
-
-		<button [routerLink]= "['/login']"> LOGIN </button> - 
-		<button [routerLink]= "['/register']"> REGISTER </button> - 
-	</span>
-
-	<button (click)="goToProducts()"> PRODUCTS </button> - 
-
-	<span *ngIf="loginValidation['admin'] === true">
-		<button (click)="goToAdminDash()"> ADMIN DASHBOARD </button> - 
-	</span>
-
-	<button (click)="goToCart()"> CART [{{cart_total_size}}] </button> || 
-
-	<span *ngIf="loginValidation['canLogin'] === true">
-		<button (click)="destroySession()"> CLEAR SESSION / LOGOUT </button>
-	</span>
 	<hr>
-
-	sesionExists => {{ sessionExists | json}}
-	<br>
-	what is session => {{ whatisssession | json}}
-	<br>
+	sesionExists => {{ sessionExists | json}} | 
+	what is session => {{ whatisssession | json}} | 
 	loginValidation => {{ loginValidation | json}}
 	<hr>
-	<h3>CART : </h3>
-	{{ cart | json}}
-	<br>
-	SKUs in cart => {{ cart.length }}
-	<br>
+	CART : {{ cart | json}} | 
+	SKUs in cart => {{ cart.length }} | 
 	total items in cart => {{ cart_total_size }}
-	<br>
-	<button (click)="countCartItems()">count cart items</button>
-	<br>
-	<button (click)="clearCart()">CLEAR CART</button>
+
+<!-- ========== NAVIGATION ============ -->
+	<div class="nav">
+		<ul>
+			<span *ngIf="loginValidation['canLogin'] === false">
+				<li>
+					<a (click)="superAdmin()"> 💣 BECOME CHUCK NORRIS  </a>
+				</li>
+			</span>
+
+			<li>
+				<a [routerLink]= "['/']"> 🏠 HOME </a>
+			</li>
+
+			<li>
+				<a (click)="goToProducts()"> 🛍 Browse Teddies! </a>
+			</li>
+			
+			<span *ngIf="loginValidation['canLogin'] === false">
+				<li>
+					<a [routerLink]= "['/login']"> 🔐 Login </a>
+				</li>
+
+				<li>
+					<a [routerLink]= "['/register']"> 🐻 Join the Bears! </a>
+				</li>
+			</span>
+
+			<span *ngIf="cart_total_size > 0">
+				<li>
+					<a (click)="goToCart()"> 🛒 CART ({{cart_total_size}})</a>
+				</li>
+			</span>
+
+			<span *ngIf="loginValidation['canLogin'] === true">
+				<li>
+					<a (click)="destroySession()"> 🛑  Logout </a>
+				</li>
+			</span>
+		</ul>
+	</div>
+
 
 </div>

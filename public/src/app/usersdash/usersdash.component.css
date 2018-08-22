@@ -1,13 +1,17 @@
-.wrapper{
+/* .wrapper{
     border: 1px solid rgb(255, 187, 0);
     border-radius: 10px;
-    background-color: rgb(203, 243, 202);
+    background-color: rgb(163, 146, 133);
     padding: 5px;
-    min-height: 50px;
-    margin-bottom: 10px;
+    min-height: 300px;
+} */
+
+.wrapper{
+    border: 1px solid red;
+    border-radius: 10px;
+    background-color: rgb(243, 221, 192);
+    padding: 5px;
 }
-
-
 
 /* ===== NAV BAR ======= */
 /* removes bullets from list */
@@ -41,4 +45,14 @@ li a:hover{
 li a.active {
     background-color: whitesmoke;
     color: black;
+}
+
+
+
+table, td{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+thead{
+    font-size: 14pt;
 }

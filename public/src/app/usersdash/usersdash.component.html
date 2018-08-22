@@ -1,0 +1,52 @@
+<div class="wrapper">
+  user dash
+
+
+
+
+  <div class="nav">
+      <ul>
+          <li>
+            <a [routerLink]= "['/admindash']"> 
+              PRODUCTS DASH 
+            </a>
+          </li>
+          <li>
+            <a class = "active"> 
+                USERS DASH
+            </a>
+          </li>
+      </ul>
+  </div>
+
+
+  <h3>ALL REGISTERED USERS</h3>
+  <table>
+    <thead>
+      <td>id</td>
+      <td>fname</td>
+      <td>lname</td>
+      <td>email</td>
+      <td>pass</td>
+      <td>created_at</td>
+      <td>updated_at</td>
+      <td>admin | json</td>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of allUsers">
+        <td>{{ user.id }}</td>
+        <td>{{ user.fname }}</td>
+        <td>{{ user.lname }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.pass }}</td>
+        <td>{{ user.date_created }}</td>
+        <td>{{ user.updated_at }}</td>
+        <td>{{ user.admin | json }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+
+
+</div>

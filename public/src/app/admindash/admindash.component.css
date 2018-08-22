@@ -6,8 +6,40 @@
     min-height: 300px;
 }
 
-
-/* ---------- LOGO ---------- */
+/* ===== NAV BAR ======= */
+/* removes bullets from list */
+ul {
+    list-style-type: none;
+    background-color: #DEE7E7;
+    margin: 0px;
+    padding: 0px;
+    /* border: 1px solid #555; */
+    overflow: hidden;
+}
+li {
+    float: left;
+}
+li a:hover:not(.active) {
+    background-color: #ddd;
+}
+/* build vertical nav bar */
+li a{
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+    text-align: center;
+}
+li a:hover{
+    background-color: whitesmoke;
+    color: white;
+}
+/* lets the user know which page they are on */
+li a.active {
+    background-color: whitesmoke;
+    color: black;
+}
+/* ---------- LOGO ----------
     .topNav img{
         width: 180px;
         display: inline-block;
@@ -22,7 +54,7 @@
         vertical-align: top;
         margin: 10px;
         padding: 10px;
-    }
+    } */
 
 
 /* ============= DASHBOARD =========== */

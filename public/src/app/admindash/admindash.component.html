@@ -11,13 +11,27 @@
         <!-- dashboard_container -->
 
         <div class="product_list">
-            <button> go to users </button>
-            admindash component - product list & users list 
-            <br>
+
+                admindash component - product list & users list 
+
+            <div class="nav">
+                <ul>
+                    <li>
+                    <a class = "active"> PRODUCTS DASH </a>
+                    </li>
+                    <li>
+                    <a [routerLink]= "['usersdash']"> 
+                        USERS DASH
+                    </a>
+                    </li>
+                </ul>
+            </div>
+
+
             <h2>Teddy Store Inventory</h2>
+
             <button [routerLink]="['/addproduct']" class="add_button">ADD New Product</button>
-            <hr>
-            <br>
+
 
 
     <!-- ========== SEARCH =========== -->

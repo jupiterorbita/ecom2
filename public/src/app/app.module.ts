@@ -20,6 +20,9 @@ import { EditproductComponent } from './editproduct/editproduct.component';
 import { ProductService } from './product.service';
 import { DataService } from './data.service';
 import { CartComponent } from './cart/cart.component';
+import { ProductsdashComponent } from './productsdash/productsdash.component';
+import { UsersdashComponent } from './usersdash/usersdash.component';
+import { AdminheadComponent } from './adminhead/adminhead.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,10 @@ import { CartComponent } from './cart/cart.component';
     AdmindashComponent,
     AddproductComponent,
     EditproductComponent,
-    CartComponent
+    CartComponent,
+    ProductsdashComponent,
+    UsersdashComponent,
+    AdminheadComponent
   ],
   imports: [
     BrowserModule,
