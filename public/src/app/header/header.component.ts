@@ -66,10 +66,14 @@ export class HeaderComponent implements OnInit {
     console.log('### about to clear CART ###');
     this.confirmClearCart = confirm(`CLEAR CART? with ${this.cart_total_size} items ?`);
     if (this.confirmClearCart === true) {
-      // for (let idx = this.cart.length; idx > 0; idx--) {
-      //   this.cart.pop();
-      // }
-      this.cart = [];
+      for (let idx = this.cart.length; idx > 0; idx--) {
+        this.cart.pop();
+      }
+      // this.cart = [];
+      // go and CLEAR cart from SESSION!!!
+      this._dataService.clearCartSession().subscribe((res) => {
+        console.log('is cart cleared? res =>', res);
+      });
       console.log('IS THE CART EMPTY? =>', this.cart);
       this._dataService.cart.next(this.cart);
       alert('CART is now empty!!!!');

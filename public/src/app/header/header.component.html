@@ -14,22 +14,22 @@
 	<img src="assets/img/logo.png" alt="">
 
 
-	<button (click)="superAdmin()"> > BECOME CHUCK NORRIS< </button>
-	<a [routerLink]= "['/']"> HOME </a> - 
+	<button (click)="superAdmin()"> !!! BECOME CHUCK NORRIS !!! </button> - 
+	<button [routerLink]= "['/']"> HOME </button> - 
 
 	<span *ngIf="loginValidation['canLogin'] === false">
 
-		<a [routerLink]= "['/login']"> LOGIN </a> - 
-		<a [routerLink]= "['/register']"> REGISTER </a> - 
+		<button [routerLink]= "['/login']"> LOGIN </button> - 
+		<button [routerLink]= "['/register']"> REGISTER </button> - 
 	</span>
 
-	<a (click)="goToProducts()"> PRODUCTS </a> - 
+	<button (click)="goToProducts()"> PRODUCTS </button> - 
 
 	<span *ngIf="loginValidation['admin'] === true">
-		<a (click)="goToAdminDash()"> ADMIN DASHBOARD </a>
+		<button (click)="goToAdminDash()"> ADMIN DASHBOARD </button> - 
 	</span>
 
-	<button (click)="goToCart()"> CART [items] </button>
+	<button (click)="goToCart()"> CART [{{cart_total_size}}] </button> || 
 
 	<span *ngIf="loginValidation['canLogin'] === true">
 		<button (click)="destroySession()"> CLEAR SESSION / LOGOUT </button>

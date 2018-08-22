@@ -6,7 +6,7 @@
 cart is => {{ cart | json }}
 
 <br>
-<!-- <div *ngIf="cartProducts.lenght > 0" class="table"> -->
+<div *ngIf="cartProducts.length > 0" class="table">
 
   <table>
     <thead>
@@ -16,15 +16,32 @@ cart is => {{ cart | json }}
       <td>total_sku price</td>
     </thead>
     <tbody>
-      <tr *ngFor="let item of cartProducts">
+      <tr *ngFor="let item of serverCartService">
         <td>{{ item.product_name }}</td>
-        <td>{{ item.qty }}</td>
-        <td>{{ item.product_price }}</td>
-        <td>---- tomultiply ----</td>
+
+        <td> id={{ item.id }} - 
+          <button (click)="minusQty(item.id)"> - </button>
+          x{{ item.qty }}
+          <button> + </button>
+        </td>
+
+        <td>$ {{ item.item_price }}</td>
+        <td>$ {{ item.total_price }}</td>
       </tr>
     </tbody>
   </table>
-<!-- </div> -->
+  <h3>TOTAL: => $ {{ finalCartTotal }}</h3>
+
+</div>
+<hr>
+SKUs in cart => {{ cart.length }}
+<br>
+total items in cart => {{ cart_total_size }}
+
+
+
+<br>
+<button (click)="clearCart()">CLEAR cart with {{ cart_total_size }} items</button>
 
 
 <hr>

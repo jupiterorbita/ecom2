@@ -79,8 +79,8 @@ module.exports = function(app) {
 
 //----------- Get All Cart Items ------------------
     app.get("/api/product/getAllCartItems", prodCtrl.getAllCartItems);
-    
-
+// --------- Clear Cart Session -------------------
+    app.get("/api/product/clearCartSession", prodCtrl.clearCartSession);
 
 
 

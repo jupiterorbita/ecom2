@@ -16,6 +16,7 @@ export class DataService {
 
   cart_total_size = new BehaviorSubject(null);
 
+  serverCartService = new BehaviorSubject([]);
 
   loginValidation = new BehaviorSubject({
     canLogin: false,
@@ -26,11 +27,14 @@ export class DataService {
   constructor(private _http: HttpClient) { }
 
   updateCartItemToSession(cart) {
-    console.log('dataService > addCartItemToSession > cart => ', cart);
+    console.log('dataService > addCartItemToSession(cart) > cart => ', cart);
     return this._http.post('/api/session/updateCartItemToSession', cart);
   }
 
-
+  clearCartSession() {
+    console.log('dataService > clearCartSession() >> going to SERVER ');
+    return this._http.get('/api/product/clearCartSession');
+  }
 
 
   getData() {

@@ -218,7 +218,8 @@ module.exports = {
     getAllCartItems: (req, res) => {
         console.log('productController > getAllCartItems'.yellow);
         var totalItemPrice = 0;
-        
+        var totalItemsBack = [];
+        var finalCartTotal = 0;
         // req.session.string_id
         // console.log('req.session =>', req.session);
         console.log('getAllCartItems >> req.session["cart"] =>', req.session['cart']);
@@ -232,7 +233,7 @@ module.exports = {
             var sql = `SELECT id, product_name, product_price, img FROM UserSQL_DB.products WHERE id in (${req.session.sql_string_id});`
             connection.query(sql, function(err, results_arr, fields) {
             if (err) throw err;
-                console.log('results_arr'.green, results_arr);
+            console.log('results_arr'.green, results_arr);
 
                 // ****** calculate price of each product ******
                 for (var idx = 0; idx < results_arr.length; idx++) {
@@ -244,6 +245,18 @@ module.exports = {
                         if (req.session['cart'][i].id === results_arr[idx].id) {
                             console.log('SAME!!! => req.session["cart"][i].id === results_arr[idx].id', req.session['cart'][i].id, results_arr[idx].id);
                             totalItemPrice = (req.session['cart'][i].qty * results_arr[idx].product_price);
+
+                            // calc final total cart price
+                            finalCartTotal += totalItemPrice;
+
+                            totalItemsBack.push({
+                                id: results_arr[idx].id,
+                                product_name: results_arr[idx].product_name,
+                                item_price:results_arr[idx].product_price, 
+                                qty: req.session['cart'][i].qty, 
+                                total_price: totalItemPrice
+                            });
+
                             console.log(
                                 `
                                 in cart 🏠\n
@@ -257,18 +270,22 @@ module.exports = {
 
 
                 }
+                console.log('-----\n - totalItemsBack - \n', totalItemsBack);
+                console.log('=====>finalCartTotal'.blue, finalCartTotal);
 
-
-                res.json({message: "found items", results: results_arr});
+                res.json({message: "found items", results: results_arr, totalItemsBack: totalItemsBack, finalCartTotal: finalCartTotal});
             });
         }
 
-
-
-
     },
 
+    clearCartSession: (req, res) => {
+        console.log('>>>>> req.session["cart"] >>>'.green, req.session['cart']);
+        req.session['cart'] = null;
+        console.log('>>>>> req.session["cart"] >>>'.yellow, req.session['cart']);
 
+        res.json({msg: 'something test'})
+    }
 
 
 
