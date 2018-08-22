@@ -1,13 +1,32 @@
-.wrapper{
+/* .wrapper{
     border: 1px solid rgb(255, 187, 0);
     border-radius: 10px;
     background-color: rgb(203, 243, 202);
     padding: 5px;
     min-height: 50px;
     margin-bottom: 10px;
+} */
+div.wrapper{
+    /* align-content: center; */
+    margin-left: 5%;
+    margin-right: 5%;
+    background-color: rgb(254, 239, 231);
+
+    /* min-height: 500px; */
+    /* max-width: 1300px; */
 }
 
-
+div.nav{
+    overflow: hidden;
+    background-color: rgb(254, 239, 231);
+    min-height: 42px;
+    align-content: center;
+}
+/* ---------- LOGO ---------- */
+    .logo{
+        width: 180px;
+        display: inline-block;
+    }
 
 /* ===== NAV BAR ======= */
 /* removes bullets from list */
