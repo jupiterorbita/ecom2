@@ -180,38 +180,45 @@ module.exports = {
         var arr_id = [];
         var sql_string_id = '';
         console.log('addCartItemToSession res.body=>\n', req.body);
-        console.log('req.session.cart', req.session['cart']);
+        console.log('FIRST >>> req.session.cart =', req.session['cart']);
         console.log('req.seesion', req.session);
 // ------------------------
+
+            for (var idx = 0; idx < req.body['cart'].length; idx++) {
+                console.log(req.body['cart'][idx]);
+                console.log('id =>', req.body['cart'][idx]['id']);
+    
+                arr_id.push(req.body['cart'][idx]['id']);
+    
+                if (arr_id.length === 1) {
+                    sql_string_id += (req.body['cart'][idx]['id']);
+                }
+                else if (arr_id.length > 1) {
+                    sql_string_id += (', ' + (req.body['cart'][idx]['id']));
+                }
+    
+                // console.log('id is =>', req.body[idx]['id'], 'qty is =>', req.body[idx].qty);
+            }
+            console.log('string_id ===>'.yellow, arr_id);
+            console.log('string ===>'.bgCyan, sql_string_id);
+            req.session.sql_string_id = sql_string_id;
+            req.session['cart'] = req.body['cart'];
+            console.log('NEW req.session.cart =>', req.session['cart']);
+            // console.log('SERVER RESPONSE --->', res)
+            res.json({message: 'got res.body'});
         
-        for (var idx = 0; idx < req.body['cart'].length; idx++) {
-            console.log(req.body['cart'][idx]);
-            console.log('id =>', req.body['cart'][idx]['id']);
+        
+    
 
-            arr_id.push(req.body['cart'][idx]['id']);
 
-            if (arr_id.length === 1) {
-                sql_string_id += (req.body['cart'][idx]['id']);
-            }
-            else if (arr_id.length > 1) {
-                sql_string_id += (', ' + (req.body['cart'][idx]['id']));
-            }
 
-            // console.log('id is =>', req.body[idx]['id'], 'qty is =>', req.body[idx].qty);
-        }
-        console.log('string_id ===>'.yellow, arr_id);
-        console.log('string ===>'.bgCyan, sql_string_id);
-        req.session.sql_string_id = sql_string_id;
-        req.session['cart'] = req.body['cart'];
-        console.log('NEW req.session.cart =>', req.session['cart']);
-        // console.log('SERVER RESPONSE --->', res)
-        res.json({message: 'got res.body'});
     },
 
 // ------------ Get All Cart Items ------------------
     getAllCartItems: (req, res) => {
         console.log('productController > getAllCartItems'.yellow);
-
+        var totalItemPrice = 0;
+        
         // req.session.string_id
         // console.log('req.session =>', req.session);
         console.log('getAllCartItems >> req.session["cart"] =>', req.session['cart']);
@@ -236,7 +243,15 @@ module.exports = {
                     for (var i = 0; i < req.session['cart'].length; i++) {
                         if (req.session['cart'][i].id === results_arr[idx].id) {
                             console.log('SAME!!! => req.session["cart"][i].id === results_arr[idx].id', req.session['cart'][i].id, results_arr[idx].id);
-                            
+                            totalItemPrice = (req.session['cart'][i].qty * results_arr[idx].product_price);
+                            console.log(
+                                `
+                                in cart 🏠\n
+                                ------------
+                                itemID: ${results_arr[idx].id} has QTY: ${req.session['cart'][i].qty} X $${results_arr[idx].product_price} = 💵 $${totalItemPrice} 
+                                -----------
+                                `
+                            );
                         }
                     }
 
