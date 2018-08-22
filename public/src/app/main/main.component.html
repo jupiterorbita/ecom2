@@ -14,143 +14,28 @@ show main welcome products here
 </div>
 
 <!-- ============= BEST SELLERS ============ -->
-<div class="best_sellers">
-    <!-- <h5>best sellers</h5> -->
+<!-- ITEM -->
+  <div class="best_sellers">
     
-    <!-- ITEM -->
-    <div class="items">
-        <div class="left_content">
-            <img src="images/product_img/1.jpg" alt="">
-        </div>
-        <div class="right_content">
-            <h3>product name X</h3>
-            <h3>$34.99</h3>
-            <div class="desc">
-                this is atest !!!ad as das d sa s a das   askjbda sdasd sa dsa djas djasdsad sk
-            </div>
-            <button>ADD to Cart</button>
-        </div>
-    </div>
+    <div *ngFor="let item of allProducts" class="loop">
 
-    <!-- ITEM -->
-    <div class="items">
+      <div class="item">
         <div class="left_content">
-            <img src="images/product_img/2.jpg" alt="">
+          <img src="images/product_img/1.jpg" alt="">
         </div>
         <div class="right_content">
-            <h3>product name X</h3>
-            <h3>$34.99</h3>
-            <div class="desc">
-                this is atest !!!ad as das d sa s a das   askjbda sdasd sa dsa djas djasdsad sk
-            </div>
-            <button>ADD to Cart</button>
+          <h3> {{ item.product_name }}</h3>
+          <h3>$ {{ item.product_price }}</h3>
+          <div class="desc">
+            {{ item.product_description}}
+          </div>
+          <button>ADD to Cart</button>
         </div>
+      </div>
+      
     </div>
-
-    <!-- ITEM -->
-    <div class="items">
-        <div class="left_content">
-            <img src="images/product_img/3.jpg" alt="">
-        </div>
-        <div class="right_content">
-            <h3>product name X</h3>
-            <h3>$34.99</h3>
-            <div class="desc">
-                this is atest !!!ad as das d sa s a das   askjbda sdasd sa dsa djas djasdsad sk
-            </div>
-            <button>ADD to Cart</button>
-        </div>
-    </div>
-
-                <!-- ITEM -->
-    <div class="items">
-        <div class="left_content">
-            <img src="images/product_img/4.jpg" alt="">
-        </div>
-        <div class="right_content">
-            <h3>product name X</h3>
-            <h3>$34.99</h3>
-            <div class="desc">
-                this is atest !!!ad as das d sa s a das   askjbda sdasd sa dsa djas djasdsad sk
-            </div>
-            <button>ADD to Cart</button>
-        </div>
-    </div>
-
-                <!-- ITEM -->
-    <div class="items">
-        <div class="left_content">
-            <img src="images/product_img/5.jpg" alt="">
-        </div>
-        <div class="right_content">
-            <h3>product name X</h3>
-            <h3>$34.99</h3>
-            <div class="desc">
-                this is atest !!!ad as das d sa s a das   askjbda sdasd sa dsa djas djasdsad sk
-            </div>
-            <button>ADD to Cart</button>
-        </div>
-    </div>
-
-                <!-- ITEM -->
-    <div class="items">
-        <div class="left_content">
-            <img src="images/product_img/6.jpg" alt="">
-        </div>
-        <div class="right_content">
-            <h3>product name X</h3>
-            <h3>$34.99</h3>
-            <div class="desc">
-                this is atest !!!ad as das d sa s a das   askjbda sdasd sa dsa djas djasdsad sk
-            </div>
-            <button>ADD to Cart</button>
-        </div>
-    </div>
-
-                <!-- ITEM -->
-    <div class="items">
-        <div class="left_content">
-            <img src="images/product_img/7.jpg" alt="">
-        </div>
-        <div class="right_content">
-            <h3>product name X</h3>
-            <h3>$34.99</h3>
-            <div class="desc">
-                this is atest !!!ad as das d sa s a das   askjbda sdasd sa dsa djas djasdsad sk
-            </div>
-            <button>ADD to Cart</button>
-        </div>
-    </div>
-
-                            <!-- ITEM -->
-    <div class="items">
-        <div class="left_content">
-            <img src="images/product_img/8.jpg" alt="">
-        </div>
-        <div class="right_content">
-            <h3>product name X</h3>
-            <h3>$34.99</h3>
-            <div class="desc">
-                this is atest !!!ad as das d sa s a das   askjbda sdasd sa dsa djas djasdsad sk
-            </div>
-            <button>ADD to Cart</button>
-        </div>
-    </div>
-
-                            <!-- ITEM -->
-    <div class="items">
-        <div class="left_content">
-            <img src="images/product_img/9.jpg" alt="">
-        </div>
-        <div class="right_content">
-            <h3>product name X</h3>
-            <h3>$34.99</h3>
-            <div class="desc">
-                this is atest !!!ad as das d sa s a das   askjbda sdasd sa dsa djas djasdsad sk
-            </div>
-            <button>ADD to Cart</button>
-        </div>
-    </div>
+  </div>
+<!-- ITEM END LOOP -->
 
 
 <!-- ============ LOWER BANNER ============== -->

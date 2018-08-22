@@ -16,7 +16,7 @@ export class CartComponent implements OnInit {
   public confirmClearCart: boolean;
   cart_total_size: any;
   serverCartService;
-
+  confirmZeroCart: boolean;
 
   constructor(
     private _dataService: DataService,
@@ -119,8 +119,64 @@ export class CartComponent implements OnInit {
   }
 
 // ----------- QTY change -------------
-  minusQty(item_id) {
+  plusQty(item_id) {
     console.log('clicked minusQty with itemid=', item_id);
+    // adding to existing cart
+    for (let idx = 0; idx < this.cart.length; idx++) {
+      if (this.serverCartService[idx].id === item_id) {
+        // update cart QTY
+        this.serverCartService[idx].qty++;
+        // then update the cart service
+        this._dataService.cart.next(this.serverCartService);
+
+        // go and update the cart session > SERVER
+        // this._dataService.updateCartItemToSession({cart: this.cart})
+
+        this._dataService.updateCartItemToSession({ cart: this.serverCartService})
+        .subscribe(server_res => {
+          console.log('-- updated cart ------', server_res);
+
+          // once in session go back to server and calc the totals
+          this.getAllCartProducts();
+        });
+        return;
+      }
+    }
+  }
+
+  minusQty(item_id) {
+    console.log('clicked plusQty with itemid=', item_id);
+    for (let idx = 0; idx < this.cart.length; idx++) {
+      if (this.cart[idx].id === item_id) {
+        // update cart QTY
+        if (this.cart[idx].qty > 1) {
+          this.cart[idx].qty--;
+          // then update the cart service
+          this._dataService.cart.next(this.cart);
+
+          // go and update the cart session > SERVER
+        // this._dataService.updateCartItemToSession({cart: this.cart})
+
+        this._dataService.updateCartItemToSession({ cart: this.cart})
+        .subscribe(server_res => {
+          console.log('-- updated cart ------', server_res);
+          // once in session go back to server and calc the totals
+          this.getAllCartProducts();
+        });
+      } else if (this.cart[idx].qty === 1) {
+        console.log(`qty of item ${this.cart[idx].product_name} === 0 !!`);
+        this.confirmZeroCart = confirm(`are you sure you want to remove ${this.cart[idx].product_name} from the cart?`);
+        if (this.confirmZeroCart === true) {
+          console.log('user said yes to remove item from cart id=>', this.cart[idx].id);
+          // remove this product id from session and update cart
+          // .....
+        }
+
+      }
+
+        return;
+      }
+    }
   }
 
 

@@ -19,12 +19,18 @@
 				</li>
 			</span>
 
+			<span *ngIf="loginValidation['admin'] === true">
+				<li>
+					<a (click)="goToAdminDash()"> 👑 Admin Dashboard </a>
+				</li>
+			</span>
+
 			<li>
 				<a [routerLink]= "['/']"> 🏠 HOME </a>
 			</li>
 
 			<li>
-				<a (click)="goToProducts()"> 🛍 Browse Teddies! </a>
+				<a [routerLink]= "['products']"> 🛍 Browse Teddies! </a>
 			</li>
 			
 			<span *ngIf="loginValidation['canLogin'] === false">
@@ -37,11 +43,11 @@
 				</li>
 			</span>
 
-			<span *ngIf="cart_total_size > 0">
+			<!-- <span *ngIf="cart_total_size > 0"> -->
 				<li>
 					<a (click)="goToCart()"> 🛒 CART ({{cart_total_size}})</a>
 				</li>
-			</span>
+			<!-- </span> -->
 
 			<span *ngIf="loginValidation['canLogin'] === true">
 				<li>

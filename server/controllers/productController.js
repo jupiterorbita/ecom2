@@ -199,18 +199,17 @@ module.exports = {
     
                 // console.log('id is =>', req.body[idx]['id'], 'qty is =>', req.body[idx].qty);
             }
+
+
+            
             console.log('string_id ===>'.yellow, arr_id);
             console.log('string ===>'.bgCyan, sql_string_id);
             req.session.sql_string_id = sql_string_id;
             req.session['cart'] = req.body['cart'];
             console.log('NEW req.session.cart =>', req.session['cart']);
             // console.log('SERVER RESPONSE --->', res)
-            res.json({message: 'got res.body'});
+            res.json({message: 'saved to session'});
         
-        
-    
-
-
 
     },
 

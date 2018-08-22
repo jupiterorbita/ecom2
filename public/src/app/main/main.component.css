@@ -87,7 +87,13 @@ div.best_sellers{
         background-color: black;
         color: aliceblue;
     } */
-    .best_sellers .items{
+    div.loop{
+        display: inline-block;
+    }
+    div.item{
+        border: 1px solid saddlebrown;
+    }
+    .best_sellers .item{
         /* background-image: url(/images/bg_sale.jpg) */
         padding: 5px;
         padding-left: 0px;
@@ -111,7 +117,7 @@ div.best_sellers{
             /* background-color: rgb(199, 230, 211); */
 
         }
-        .best_sellers .items .left_content img{
+        .best_sellers .item .left_content img{
             border-radius: 15px;
             display: inline-block;
             /* background-color: blue; */
@@ -129,7 +135,7 @@ div.best_sellers{
             /* background-color: rgb(225, 212, 225); */
             vertical-align: top;
         }
-            .best_sellers .items .right_content .desc{ 
+            .best_sellers .item .right_content .desc{ 
                 margin-left: 1px;
                 text-align: right;
                 width: 100%;
