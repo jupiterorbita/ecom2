@@ -2,6 +2,7 @@
 // const ctrl = require("./../controllers/userController.js");
 const ctrl = require("./../controllers/userController.js");
 const prodCtrl = require("./../controllers/productController.js");
+const cartCtrl  =require("./../controllers/cartConroller.js")
 
 console.log(">> SERVER > routes.js".blue);
 
@@ -75,15 +76,15 @@ module.exports = function(app) {
 
 // ============= DATA ROUTES =======================
 // ----------- Add cart Item To Session ------------
-    app.post("/api/session/updateCartItemToSession", prodCtrl.updateCartItemToSession);
+    app.post("/api/session/updateCartItemToSession", cartCtrl.updateCartItemToSession);
 
 //----------- Get All Cart Items ------------------
-    app.get("/api/product/getAllCartItems", prodCtrl.getAllCartItems);
+    app.get("/api/product/getAllCartItems", cartCtrl.getAllCartItems);
 // --------- Clear Cart Session -------------------
-    app.get("/api/product/clearCartSession", prodCtrl.clearCartSession);
+    app.get("/api/product/clearCartSession", cartCtrl.clearCartSession);
 
 // ------ Remove Item From Cart Session ---------
-    app.get("/api/cart/:cartItemId/remove", prodCtrl.removeItemFromCartSession);
+    app.get("/api/cart/:cartItemId/remove", cartCtrl.removeItemFromCartSession);
 
 
 

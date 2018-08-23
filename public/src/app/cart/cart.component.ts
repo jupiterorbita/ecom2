@@ -193,6 +193,12 @@ export class CartComponent implements OnInit {
   }
 
 
+  goToCheckout(serverCartService) {
+    console.log('clicked on Checkout with cart obj serverCartService =>', serverCartService);
+    this._router.navigate(['checkout']);
+
+  }
+
 
 
 } // -- EOF
