@@ -82,7 +82,8 @@ module.exports = function(app) {
 // --------- Clear Cart Session -------------------
     app.get("/api/product/clearCartSession", prodCtrl.clearCartSession);
 
-
+// ------ Remove Item From Cart Session ---------
+    app.get("/api/cart/:cartItemId/remove", prodCtrl.removeItemFromCartSession);
 
 
 

@@ -170,6 +170,11 @@ export class CartComponent implements OnInit {
           console.log('user said yes to remove item from cart id=>', this.cart[idx].id);
           // remove this product id from session and update cart
           // .....
+          this._productService.removeItemFromCartSession(this.cart[idx].id)
+          .subscribe((res: any) => {
+            console.log(res);
+            this.getAllCartProducts();
+          });
         }
 
       }

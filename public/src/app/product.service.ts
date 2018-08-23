@@ -102,5 +102,17 @@ export class ProductService {
     console.log('productService > getAllCartItems()');
     return this._http.get('/api/product/getAllCartItems');
   }
+// ------ Remove Item From Cart Session -----
+  removeItemFromCartSession(cartItemId) {
+    console.log(`productService > removeItemFromCartSession(${cartItemId})`);
+    return this._http.get('/api/cart/' + cartItemId + '/remove');
+
+  }
+
+
+
+
+
+
 
 } // -- EOF
