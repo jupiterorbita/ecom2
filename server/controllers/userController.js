@@ -77,7 +77,7 @@ module.exports = {
 // ==================== LOGIN check user ================
     checkUser: (req, res) => {
         console.log("MySQL connected as id ".yellow + connection.threadId)
-        var sql = `SELECT email, id, admin FROM users WHERE email='${req.body.email}' LIMIT 1;`
+        var sql = `SELECT email, id, fname, admin FROM users WHERE email='${req.body.email}' LIMIT 1;`
         connection.query(sql, function(err, result) {
             if (err) throw err;
             // console.log('======= RESULT ====>'.bgRed.black, result);
@@ -107,11 +107,13 @@ module.exports = {
                                     // console.log('result[0].admin', result[0].admin);
                                     // console.log('result[0].id', result[0].id);
                                     req.session.userid = result[0].id;
+                                    req.session.fname = result[0].fname;
                                     // console.log('req.session.userid', req.session.userid);
                                     res.json({
                                         message: 'SUCCESS email & pass match',
                                         canLogin: true,
-                                        powerLevel: 9999
+                                        powerLevel: 9999,
+                                        fname: result[0].fname
                                     });
                                 } 
                                 // if not admin just store in session
@@ -121,7 +123,8 @@ module.exports = {
                                     res.json({
                                         message: 'SUCCESS email & pass match',
                                         canLogin: true,
-                                        powerLevel: 0
+                                        powerLevel: 0,
+                                        fname: result[0].fname
                                     });
                                 }
 

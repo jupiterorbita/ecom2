@@ -13,6 +13,9 @@ export class LoginComponent implements OnInit {
   public loginUser: {};
   public loginValidation: any;
   whereAmIComingFrom: {};
+  cart;
+
+  userName: string;
 
   constructor(
     private _dataService: DataService,
@@ -24,7 +27,13 @@ export class LoginComponent implements OnInit {
       });
       this._dataService.whereAmIComingFrom.subscribe((service_comingFrom) => {
         this.whereAmIComingFrom = service_comingFrom;
-      })
+      });
+      this._dataService.userName.subscribe((service_userName) => {
+        this.userName = service_userName;
+      });
+      this._dataService.cart.subscribe((service_cart) => {
+        this.cart = service_cart;
+      });
     }
 
   ngOnInit() {
@@ -78,19 +87,41 @@ export class LoginComponent implements OnInit {
         if (res.powerLevel > 9000 ) {
           alert('CHUCK NORRIS logged in!');
           console.log('SUCCESS id stored in session in server, goToAdmin now');
+
           // change login status and update service
           this.loginValidation['canLogin'] = true;
           this.loginValidation['admin'] = true;
           this._dataService.loginValidation.next(this.loginValidation);
+
           this.goToAdmin();
         } else {
-          alert('USER logged in!');
-          console.log('SUCCESS id stored in session in server, goToProducts now');
-          // change login status and update service
+          // success USER login
 
+          // check to see if we get the fname of the user
+          console.log('res["fname"] =>', res['fname']);
+          // update the observable var userName fname from res
+          this.userName = res['fname'];
+          console.log('this.userName =>', this.userName);
+          // update the user fname to the service to have it
+          // at this point it is already in session req.session.fname
+          this._dataService.userName.next(this.userName);
+
+          // change login status and update service
           this.loginValidation['canLogin'] = true;
           this.loginValidation['admin'] = false;
           this._dataService.loginValidation.next(this.loginValidation);
+
+
+
+          alert(`USER logged in!\n WELCOME ${this.userName}!`);
+          console.log('SUCCESS id stored in session in server, goToProducts now');
+
+          // once user logs in update coming from
+          // if coming from CART, go back to cart
+          if (this.whereAmIComingFrom['from'] === 'cart' && this.cart) {
+            this._router.navigate(['/checkout']);
+            return;
+          }
           this.goToProducts();
         }
       } else {

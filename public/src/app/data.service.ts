@@ -24,8 +24,12 @@ export class DataService {
   });
 
   whereAmIComingFrom = new BehaviorSubject({
-    from: 'nothing'
+    from: 'nothing',
+    cart_size: null
   });
+
+  userName = new BehaviorSubject('');
+
 
 
   constructor(private _http: HttpClient) { }

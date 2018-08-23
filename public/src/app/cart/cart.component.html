@@ -36,6 +36,7 @@
             
             <td>$ {{ item.item_price }}</td>
             <td>$ {{ item.total_price }}</td>
+            <td (click)="removeCartItem(item.id, item.product_name, item.qty)"> 💥 </td>
           </tr>
         </tbody>
       </table>

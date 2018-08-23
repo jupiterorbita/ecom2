@@ -98,7 +98,13 @@ export class HeaderComponent implements OnInit {
   destroySession() {
     console.log('destroySession() pressed');
 
-    this.confirmLogoutAlert = confirm('Are you sure you want to logout?\nthis will force refresh the page to clear all session data!');
+    if (this.cart_total_size > 0) {
+      console.log('%c=== this.cart.length =>', 'color: blue', this.cart_total_size);
+      this.confirmLogoutAlert = confirm(`Are you sure you want to logout?\nthis will force refresh the page to clear all session data!\nyou will also lose ${this.cart_total_size} item(s) in your CART! :(`);
+    }
+    if (!this.cart_total_size) {
+      this.confirmLogoutAlert = confirm('Are you sure you want to logout?\nthis will force refresh the page to clear all session data!');
+    }
     if (this.confirmLogoutAlert === true) {
 
       this._userService.destroySession()

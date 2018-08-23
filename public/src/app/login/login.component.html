@@ -4,6 +4,25 @@ login.component
   <a [routerLink]= "['/']">back to main</a>
   <hr> -->
   <h2>LOGIN</h2>
+  <hr>
+
+  <div *ngIf="whereAmIComingFrom['from'] === 'cart'">
+    <h3>your 
+      <span *ngIf="whereAmIComingFrom['cart_size'] > 1"> 
+        {{ whereAmIComingFrom['cart_size']}} 
+        Teddies are 
+      </span>
+
+      <span *ngIf="whereAmIComingFrom['cart_size'] === 1"> 
+        Teddy is 
+      </span>
+
+      wating for you!</h3>
+    <h4>the Teddies need to know who is going to be their new owner so they can send you a thank you card!</h4>
+  <hr>
+  <h4>if you are not part of Team TeddyBears, then <button [routerLink]="['/register']"> Register here! </button></h4>
+  </div>
+
   <form (submit)="login()" >
     email:
     <br>

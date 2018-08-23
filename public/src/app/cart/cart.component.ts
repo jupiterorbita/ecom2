@@ -168,8 +168,6 @@ export class CartComponent implements OnInit {
           this._dataService.cart.next(this.cart);
 
           // go and update the cart session > SERVER
-        // this._dataService.updateCartItemToSession({cart: this.cart})
-
         this._dataService.updateCartItemToSession({ cart: this.cart})
         .subscribe(server_res => {
           console.log('-- updated cart ------', server_res);
@@ -201,6 +199,25 @@ export class CartComponent implements OnInit {
   }
 
 
+  removeCartItem(item_id, name, qty) {
+    console.log(`CLICKED removeCartItem(id:${item_id}, name:${name}, qty:${qty})`);
+    console.log('this.serviceCart=>', this.serverCartService);
+    this.confirmZeroCart = confirm(`are you sure you want to remove name:${name}, qty:${qty} from the cart?`);
+    if (this.confirmZeroCart === true) {
+      this._productService.removeItemFromCartSession(item_id)
+      .subscribe((res: any) => {
+        console.log('delete item row res=>', res);
+        console.log('%cremove item from cart res["updatedCart"]=> ', 'color: red', res['updatedCart']);
+        this._dataService.cart.next(res['updatedCart']);
+        this.getAllCartProducts();
+
+      });
+    return;
+    } else { return; }
+
+  }
+
+
   goToCheckout(serverCartService) {
     console.log('clicked on Checkout with cart obj serverCartService =>', serverCartService);
     this._router.navigate(['checkout']);
@@ -210,7 +227,7 @@ export class CartComponent implements OnInit {
       // console.log('whereAmIComingFrom =>', this.whereAmIComingFrom);
 
       // update whereAmIComingFrom location
-      this._dataService.whereAmIComingFrom.next({from : 'cart'});
+      this._dataService.whereAmIComingFrom.next({from : 'cart', cart_size: this.cart_total_size });
 
       this._router.navigate(['login']);
     } else if (this.loginValidation['canLogin'] === true) {
