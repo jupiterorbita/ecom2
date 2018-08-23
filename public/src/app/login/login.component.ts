@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
 
   public loginUser: {};
   public loginValidation: any;
+  whereAmIComingFrom: {};
 
   constructor(
     private _dataService: DataService,
@@ -21,6 +22,9 @@ export class LoginComponent implements OnInit {
       this._dataService.loginValidation.subscribe( (service_login) => {
         this.loginValidation = service_login;
       });
+      this._dataService.whereAmIComingFrom.subscribe((service_comingFrom) => {
+        this.whereAmIComingFrom = service_comingFrom;
+      })
     }
 
   ngOnInit() {
@@ -28,6 +32,7 @@ export class LoginComponent implements OnInit {
       email: '',
       pass: ''
     };
+    console.log('REGISTER COMPONENT > whereAmIComingFrom =>', this.whereAmIComingFrom);
   }
 
 

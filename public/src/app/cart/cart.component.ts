@@ -18,6 +18,9 @@ export class CartComponent implements OnInit {
   serverCartService;
   confirmZeroCart: boolean;
 
+  loginValidation: {};
+  whereAmIComingFrom: {};
+
   constructor(
     private _dataService: DataService,
     private _productService: ProductService,
@@ -34,6 +37,14 @@ export class CartComponent implements OnInit {
     });
     this._dataService.serverCartService.subscribe((service_serverCart) => {
       this.serverCartService = service_serverCart;
+    });
+    // === loginValidation subscribe ===
+    this._dataService.loginValidation.subscribe((service_loginStatus) => {
+      this.loginValidation = service_loginStatus;
+    });
+    // === whereAmIComginFrom subscribe ===
+    this._dataService.whereAmIComingFrom.subscribe((service_comingFrom) => {
+      this.whereAmIComingFrom = service_comingFrom;
     });
   }
 
@@ -70,7 +81,6 @@ export class CartComponent implements OnInit {
       } else if (res['message'] === 'found items') {
         this._dataService.serverCartService.next(res['totalItemsBack']);
 
-
         // TO DO HERE =-=-=-=--=-=--=
         console.log('###### res["totalItemsBack"] =>', res['totalItemsBack']);
         // this.cartProducts = res['totalItemsBack'];
@@ -78,8 +88,6 @@ export class CartComponent implements OnInit {
 
         console.log('##### this.cartProducts =>', this.cartProducts);
         this._dataService.serverCartService.next(res['totalItemsBack']);
-
-
 
         this.finalCartTotal = res['finalCartTotal'];
         console.log('##### this.finalCartTotal =>', this.finalCartTotal);
@@ -89,7 +97,7 @@ export class CartComponent implements OnInit {
 
   clearCart() {
     console.log('### about to clear CART ###');
-    this.confirmClearCart = confirm(`CLEAR CART? with ${this.cart_total_size} items ?`);
+    this.confirmClearCart = confirm(`CLEAR CART? with ${this.cart_total_size} item(s) ?`);
     if (this.confirmClearCart === true) {
       for (let idx = this.cart.length; idx > 0; idx--) {
         this.cart.pop();
@@ -196,7 +204,19 @@ export class CartComponent implements OnInit {
   goToCheckout(serverCartService) {
     console.log('clicked on Checkout with cart obj serverCartService =>', serverCartService);
     this._router.navigate(['checkout']);
+    if (this.loginValidation['canLogin'] === false) {
+      console.log('user is not logged in DO NOT PROCCEED to chekcout, go to LOGIN');
+      // this.whereAmIComingFrom['from'] = 'cart';
+      // console.log('whereAmIComingFrom =>', this.whereAmIComingFrom);
 
+      // update whereAmIComingFrom location
+      this._dataService.whereAmIComingFrom.next({from : 'cart'});
+
+      this._router.navigate(['login']);
+    } else if (this.loginValidation['canLogin'] === true) {
+      console.log('user is logged in, procceed to checkout');
+      this._router.navigate(['checkout']);
+    }
   }
 
 

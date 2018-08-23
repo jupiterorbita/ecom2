@@ -23,6 +23,10 @@ export class DataService {
     admin: false
   });
 
+  whereAmIComingFrom = new BehaviorSubject({
+    from: 'nothing'
+  });
+
 
   constructor(private _http: HttpClient) { }
 
