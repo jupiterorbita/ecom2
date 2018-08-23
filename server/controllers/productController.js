@@ -219,44 +219,19 @@ module.exports = {
 
 // -------- Remove Item From Cart Session -----------
     removeItemFromCartSession: (req, res) => {
-
-        // function to remove obj from cart
-        // give it the cart from session and the id from params
-        function removeAt(id, cart_arr) {
-            for (var i =0; i < cart_arr.length; i++){
-                if (cart_arr[i].id === id) {
-                    cart_arr.splice(i,1);
-                    console.log(`after function removes id=${id}`, cart_arr);
-                    return cart_arr;
-                }
-            }
-        }
-
-
-        console.log('productController > removeItemFromCartSession'.yellow);
-        console.log('req.params.cartItemId'.yellow, req.params.cartItemId);
-        console.log('req.params'.yellow, req.params)
-        
-        var removeThisId = req.params.cartItemId;
-        console.log('removeThisId =>'.blue, removeThisId);
+        console.log('productController > removeItemFromCartSession'.blue);
+        console.log('id to remove => req.params.cartItemId => '.yellow, req.params.cartItemId);
+        console.log('id to remove => req.params'.yellow, req.params)
+        console.log('CART before remove Id -> req.session.cart =>'.bgGreen.black, req.session.cart);
 
         if (req.session.cart) {
-            console.log('BEFORE remove cartId -> req.session.cart =>'.bgGreen.black, req.session.cart);
-            for (var i =0; i < req.session.cart.length; i++){
-                console.log(' |-------- length cart -----| =>', req.session.cart.length)
-                console.log('=== req.session.cart[i].id   =>'.bgRed.white, req.session.cart[i].id);
-                console.log('=== id to remove from params =>'.bgRed.white, req.params.cartItemId);
-                if (req.session.cart[i].id === req.params.cartItemId) {
-                    console.log('-0-0-0-0-0-0-0-0-0');
-                    req.session.cart.splice(i,1);
-                    console.log(`after function removes id=${req.params.cartItemId}`.bgGreen.black, req.session.cart);
-                    return req.session.cart;
-                }
-            }
+            console.log('cart is true procceed to filter and return id...')
 
-            // =========
-            console.log('What is cart now??!??!?!?! =>'.bgYellow.black, req.session.cart)
-            res.json({msg: 'removed the id'})
+            // filter out that one id and return the cart obj without it
+            req.session.cart = req.session.cart.filter(removeid => removeid.id != req.params.cartItemId);
+            console.log('CART *** AFTER *** remove Id -> req.session.cart => '.bgGreen.black, req.session.cart);
+            
+            res.json({msg: 'removed the id', updatedCart: req.session.cart})
         }
     },
 

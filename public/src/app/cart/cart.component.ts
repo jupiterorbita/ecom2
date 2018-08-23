@@ -144,6 +144,11 @@ export class CartComponent implements OnInit {
     }
   }
 
+
+  /// TO DO
+  // when going back to products to add 1 ADDITIONAL item with qty 1
+  // you come back to cart to delete that 1 new item added with qty 1
+  // err is that it displays name undefined on th confirm delete
   minusQty(item_id) {
     console.log('clicked plusQty with itemid=', item_id);
     for (let idx = 0; idx < this.cart.length; idx++) {
@@ -172,7 +177,10 @@ export class CartComponent implements OnInit {
           // .....
           this._productService.removeItemFromCartSession(this.cart[idx].id)
           .subscribe((res: any) => {
-            console.log(res);
+            console.log('%cremove LAST item from cart res["updatedCart"]=> ', 'color: red', res['updatedCart']);
+            // once the item is removed from session update the cart
+            this._dataService.cart.next(res['updatedCart']);
+
             this.getAllCartProducts();
           });
         }
