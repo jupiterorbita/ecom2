@@ -1,21 +1,23 @@
 <div class="wrapper">
   
-  cart component
-  <hr>
+  <!-- cart component
+  <hr> -->
   
   <div *ngIf="cart.length === 0" class="cartEmpty">
     cart is empty :( <br>
     go buy some Teddy Bears!!! 🐻 ❤️ ❤
+    <br>
+    <button [routerLink]="['/products']"> >> BUY HERE << </button>
   </div>
 
   <div *ngIf="cart.length > 0" class="cartFull">
 
-    cart is => {{ cart | json }}
+    <!-- cart is => {{ cart | json }} -->
     
     <br>
     <div *ngIf="cartProducts.length > 0" class="table">
-        serverCartService => {{ serverCartService | json }}
-
+        <!-- serverCartService => {{ serverCartService | json }} -->
+      <h2>My cart 🛒</h2>
       <table>
         <thead>
           <td>name</td>
@@ -47,9 +49,9 @@
       
     </div>
     <hr>
-    SKUs in cart => {{ cart.length }}
+    <!-- SKUs in cart => {{ cart.length }} -->
     <br>
-    total items in cart => {{ cart_total_size }}
+    <!-- total items in cart => {{ cart_total_size }} -->
         
     
     
@@ -59,7 +61,7 @@
     
     <hr>
     
-    cartProducts => {{ cartProducts | json}}
+    <!-- cartProducts => {{ cartProducts | json}} -->
     
     
   </div> <!-- Cart full If -->

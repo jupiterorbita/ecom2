@@ -23,6 +23,7 @@ export class UsersdashComponent implements OnInit {
   orderByLName_var;
   orderByEmail_var;
   orderByCreated_var;
+  orderByUpdated_var;
 
   constructor(
     // private _dataService: DataService,
@@ -42,6 +43,7 @@ export class UsersdashComponent implements OnInit {
     this.orderByLName_var = 'asc';
     this.orderByEmail_var = 'asc';
     this.orderByCreated_var = 'asc';
+    this.orderByUpdated_var = 'asc';
   }
 
   checkSession() {
@@ -251,18 +253,41 @@ export class UsersdashComponent implements OnInit {
       console.log('orderByCreated_var => asc ; changing it to DESC and going to get results as DESC');
       this.orderByCreated_var = 'desc';
       // go to db and search by DESC
-      this._userService.email_desc().subscribe(res => {
+      this._userService.created_desc().subscribe(res => {
+        console.log(res['order_results']);
         this.allUsers = res['order_results'];
       });
     } else if (this.orderByCreated_var === 'desc') {
       console.log('orderByCreated_var => desc ; changing it to ASC and going to get results as ASC');
       this.orderByCreated_var = 'asc';
       // go to db and search by ASC
-      this._userService.email_asc().subscribe(res => {
+      this._userService.created_asc().subscribe(res => {
+        console.log(res['order_results']);
         this.allUsers = res['order_results'];
       });
     }
   }
-
+  // --------------- ORDER BY EMAIL -----------------
+  orderByUpdated() {
+    console.log('orderByUpdated()');
+    // check to see what condition the orderby is
+    if (this.orderByUpdated_var === 'asc') {
+      console.log('orderByUpdated_var => asc ; changing it to DESC and going to get results as DESC');
+      this.orderByUpdated_var = 'desc';
+      // go to db and search by DESC
+      this._userService.updated_desc().subscribe(res => {
+        console.log(res['order_results']);
+        this.allUsers = res['order_results'];
+      });
+    } else if (this.orderByUpdated_var === 'desc') {
+      console.log('orderByUpdated_var => desc ; changing it to ASC and going to get results as ASC');
+      this.orderByUpdated_var = 'asc';
+      // go to db and search by ASC
+      this._userService.updated_asc().subscribe(res => {
+        console.log(res['order_results']);
+        this.allUsers = res['order_results'];
+      });
+    }
+  }
 
 } // -- EOF

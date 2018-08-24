@@ -16,3 +16,15 @@ thead {
 button{
     font-size: 16pt;
 }
+
+/* if cart is empty div */
+div.cartEmpty{
+    align-content: center;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin: 20px auto;
+}
+    .cartEmpty button{
+        margin-top: 10px;
+    }

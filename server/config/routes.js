@@ -104,7 +104,10 @@ app.get("/api/users/search/:sql_str", ctrl.searchQueryString);
     app.get("/api/users/created_asc", ctrl.created_asc);
     // --------- created ▼ desc ----------
     app.get("/api/users/created_desc", ctrl.created_desc);
-
+    // --------- updated ▲ asc ------------
+    app.get("/api/users/updated_asc", ctrl.updated_asc);
+    // --------- updated ▼ desc ----------
+    app.get("/api/users/updated_desc", ctrl.updated_desc);
 
 
 // ============= DATA ROUTES =======================

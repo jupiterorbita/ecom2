@@ -119,5 +119,15 @@ makeAdmin() {
     console.log('userService > created_desc()');
     return this._http.get('/api/users/created_desc');
   }
+  // ------------ Updated ▲ ASCENDING -------------
+  updated_asc() {
+    console.log('userService > updated_asc()');
+    return this._http.get('/api/users/updated_asc');
+  }
+  // ------------ Updated ▼ DESCENDING -----------
+  updated_desc() {
+    console.log('userService > updated_desc()');
+    return this._http.get('/api/users/updated_desc');
+  }
 
 } // -- EOF

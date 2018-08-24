@@ -176,23 +176,29 @@ export class CartComponent implements OnInit {
         });
       } else if (this.cart[idx].qty === 1) {
         console.log(`qty of item ${this.cart[idx].product_name} === 0 !!`);
-        this.confirmZeroCart = confirm(`are you sure you want to remove ${this.cart[idx].product_name} from the cart?`);
-        if (this.confirmZeroCart === true) {
-          console.log('user said yes to remove item from cart id=>', this.cart[idx].id);
-          // remove this product id from session and update cart
-          // .....
-          this._productService.removeItemFromCartSession(this.cart[idx].id)
-          .subscribe((res: any) => {
-            console.log('%cremove LAST item from cart res["updatedCart"]=> ', 'color: red', res['updatedCart']);
-            // once the item is removed from session update the cart
-            this._dataService.cart.next(res['updatedCart']);
 
-            this.getAllCartProducts();
-          });
-        }
+        // get cart item name from DB (on init it is undefined)
+        this._productService.getOneProduct(item_id).subscribe(name_res => {
+          console.log(name_res['res']['product_name']);
+
+          this.confirmZeroCart = confirm(`are you sure you want to remove ${name_res['res']['product_name']} from the cart?`);
+          if (this.confirmZeroCart === true) {
+            console.log('user said yes to remove item from cart id=>', this.cart[idx].id);
+            // remove this product id from session and update cart
+            // .....
+            this._productService.removeItemFromCartSession(this.cart[idx].id)
+            .subscribe((res: any) => {
+              console.log('%cremove LAST item from cart res["updatedCart"]=> ', 'color: red', res['updatedCart']);
+              // once the item is removed from session update the cart
+              this._dataService.cart.next(res['updatedCart']);
+
+              this.getAllCartProducts();
+            });
+          }
+
+        }); // end _productService.getOneProduct callback
 
       }
-
         return;
       }
     }
