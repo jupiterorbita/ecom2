@@ -30,6 +30,9 @@ module.exports = function(app) {
 //========== MAKE ADMIN ==========
     app.get("/api/users/makeAdmin", ctrl.makeAdmin);
 
+//====== Check Who This User Is - Get req.session.id & req.session.fname
+    app.get("/api/users/checkWhoThisUserIs", ctrl.checkWhoThisUserIs)
+
 
 //================ PRODUCT ROUTES =================
 
@@ -89,3 +92,4 @@ module.exports = function(app) {
 
 
 } // -- EOF
+

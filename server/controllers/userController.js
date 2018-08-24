@@ -36,6 +36,9 @@ module.exports = {
                     connection.query(sql, function (err, result) {
                         if (err) throw err;
                         console.log(result.affectedRows + ' record(s) created');
+                        // i could make another query
+                        // store the user in req.session.id & req.session.fname
+                        // or redirect them to login (for security)
                         res.json({
                             message: 'successful register', 
                             success: true
@@ -45,8 +48,26 @@ module.exports = {
 
             }
         });
+    },
 
+//====== Check Who This User Is - Get req.session.id & req.session.fname ========
+    checkWhoThisUserIs: (req, res) => {
+        console.log('>> USER CONTROLLER > checkWhoThisUserIs');
+        
+        if (req.session['userid'] && req.session['fname']) {
 
+            console.log('req.session.userid =>', req.session['userid']);
+            console.log('req.session.fname =>', req.session['fname'])
+            var sql = `SELECT id, fname, lname, email FROM UserSQL_DB.users LIMIT 1;`
+            connection.query(sql, function (er, result) {
+                if (err) throw err;
+                console.log('RESULT SQL QUERY =>', result);
+                res.json({message: 'ok'});
+            })
+        } else {
+            console.log('WARNING req.session["userid"] && req.session["fname"] doens\'t exist in session return err');
+            res.json({message: 'ERROR session doesnt exist for user trying to access userprofile page, rediret to login'});
+        }
     },
 
 // ============== FETCH ALL USERS ==================

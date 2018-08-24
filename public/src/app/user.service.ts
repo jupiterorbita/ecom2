@@ -46,17 +46,20 @@ export class UserService {
 // ========= MAKE ADMIN ============
 // make admin
 makeAdmin() {
-  console.log('productService > makeAdmin >');
+  console.log('userService > makeAdmin() >');
   return this._http.get('/api/users/makeAdmin');
 }
 
 // ======== DESTROY SESSION =========
   destroySession() {
-    console.log(`%c inside destroySession userService >>> SERVER`, 'color: red');
+    console.log(`%c userService > destroySession() > SERVER`, 'color: red');
     return this._http.get('/api/users/destroySession');
   }
 
-
-
+// ========== User Profile Check who this user is from login/reg ======
+  checkWhoThisUserIs() {
+    console.log(`%c userService > checkWhoThisUserIs() >> SERVER`, 'color: red');
+    return this._http.get('/api/users/checkWhoThisUserIs');
+  }
 
 } // -- EOF
