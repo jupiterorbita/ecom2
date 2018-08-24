@@ -62,4 +62,10 @@ makeAdmin() {
     return this._http.get('/api/users/checkWhoThisUserIs');
   }
 
+  // -------------search -----------
+  sendSearchStr(sql_str: any) {
+    console.log('userService > sendSearchStr > SQL STRING =>', sql_str);
+    return this._http.get('/api/users/search/' + sql_str);
+  }
+
 } // -- EOF

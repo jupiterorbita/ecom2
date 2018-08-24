@@ -24,14 +24,20 @@
 
       <!-- ========== SEARCH =========== -->
       <div class="search">
-          <div *ngIf="searchResultsFound">search results: {{ searchResultsFound }}</div>
+          <div *ngIf="searchResultsFound">search results: {{ searchResultsFound }}
+            <br>
+            searching in fname OR lname OR email
+          </div>
           <br>
           <input (keyup)="onKey($event)" class="search-container" type="text" placeholder="Search...">
           <button type="submit">
               <img src="images/search.png" alt="">
-          </button>
+          </button> - <button> CLEAR search results</button>
       </div>
 
+      <br>
+      sql_value_str => {{sql_value_str | json}} <br>
+      searchResultsFound => {{ searchResultsFound | json }}
       <!-- ======== USERS TABLE ========== -->
   <table>
     <thead>

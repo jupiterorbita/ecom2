@@ -207,6 +207,27 @@ module.exports = {
 
 
 
+ // ================== SEARCH ======================
+ searchQueryString: (req, res) => {
+    console.log('>> SERVER > userController.js > searchQueryString'.blue);
+    console.log("MySQL connected as id ".yellow + connection.threadId);
+    console.log('req.params.sql_str =>'.bgWhite.black, req.params.sql_str);
+    var sql = `SELECT * FROM UserSQL_DB.users WHERE fname LIKE '%${req.params.sql_str}%%' OR lname LIKE '%${req.params.sql_str}%%' OR email LIKE '%${req.params.sql_str}%%';`;
+    connection.query(sql, function(err, sql_search_result, fields) {
+        if (err) throw err;
+        console.log(sql_search_result);
+        if (sql_search_result.length > 0) {
+            res.json({found: true, res: sql_search_result});
+        } else {
+            console.log('empty array - no result');
+            res.json({found: false, res: ''});
+        }
+    })
+
+},
+
+
+
 // ========== CHECK SESSION ==========
     checkSession: (req, res) => {
         console.log('inside > SERVER > checkSession > USER CONTROLLER');

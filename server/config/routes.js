@@ -8,6 +8,7 @@ console.log(">> SERVER > routes.js".blue);
 
 module.exports = function(app) {
 
+// ============ U S E R  routes =============
 //======= REGISTER routes ===========
     // Create new user
     app.post("/api/users/new_user", ctrl.newUser);
@@ -32,6 +33,9 @@ module.exports = function(app) {
 
 //====== Check Who This User Is - Get req.session.id & req.session.fname
     app.get("/api/users/checkWhoThisUserIs", ctrl.checkWhoThisUserIs)
+
+//---------------- search --------------
+app.get("/api/users/search/:sql_str", ctrl.searchQueryString);
 
 
 //================ PRODUCT ROUTES =================

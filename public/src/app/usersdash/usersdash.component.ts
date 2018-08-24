@@ -13,6 +13,8 @@ export class UsersdashComponent implements OnInit {
   public allUsers: {};
   public allFormattedDates: {};
   public sessionExists: boolean;
+  sql_value_str = ''; // for the search
+  searchResultsFound = null;
 
 
   constructor(
@@ -37,6 +39,36 @@ export class UsersdashComponent implements OnInit {
         this.sessionExists = true;
       } else { return; }
     });
+  }
+
+  // ======== onKey event =============
+  onKey(event: any) {
+    // console.log('====== event =>', event);
+    // console.log('====== event.target =>', event.target);
+    console.log('====== event.target.value =>', event.target.value);
+    this.sql_value_str = event.target.value;
+    console.log('this.sql_value_str', this.sql_value_str);
+    if (this.sql_value_str.length > 0) {
+      this._userService.sendSearchStr(this.sql_value_str)
+      .subscribe(server_res => {
+        console.log('server_res =>', server_res);
+        console.log('server_res["found"] =>', server_res['found']);
+        if (server_res['found'] === true) {
+          this.allUsers = server_res['res'];
+          console.log('search results found from DB:' + Object.keys(this.allUsers).length);
+          this.searchResultsFound = Object.keys(this.allUsers).length;
+          console.log('%c all products =>', 'color: yellow', this.allUsers);
+        } else {
+          console.log('not found');
+          this.searchResultsFound = 0;
+          // this.getInventory();
+        }
+      });
+    } else {
+      this.fetchAllUsers();
+      this.searchResultsFound = null;
+
+    }
   }
 
   destroySession() {

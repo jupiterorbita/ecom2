@@ -70,7 +70,7 @@ module.exports = {
 
  // ================== SEARCH ======================
     searchQueryString: (req, res) => {
-        console.log('>> SERVER > productController.js > deleteProduct'.blue);
+        console.log('>> SERVER > productController.js > searchQueryString'.blue);
         console.log("MySQL connected as id ".yellow + connection.threadId);
         console.log('req.params.sql_str =>'.bgWhite.black, req.params.sql_str);
         var sql = `SELECT * FROM products WHERE product_name LIKE '%${req.params.sql_str}%';`;
