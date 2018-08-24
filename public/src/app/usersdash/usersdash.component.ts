@@ -19,6 +19,8 @@ export class UsersdashComponent implements OnInit {
 
   // -------- table ordering ---------
   orderById_var;
+  orderByFName_var;
+  orderByLName_var;
 
   constructor(
     // private _dataService: DataService,
@@ -34,6 +36,8 @@ export class UsersdashComponent implements OnInit {
     this.checkSession();
     // -------- table ordering ---------
     this.orderById_var = 'asc';
+    this.orderByFName_var = 'asc';
+    this.orderByLName_var = 'asc';
   }
 
   checkSession() {
@@ -145,7 +149,17 @@ export class UsersdashComponent implements OnInit {
     });
   }
 
-  // =============== TABLE ordering ================
+
+
+
+
+
+
+  // =====================================================
+  // =============== USERS TABLE ordering ================
+  // =====================================================
+
+  // --------------- ORDER BY ID -----------------
   orderById() {
     console.log('orderById');
     // check to see what condition the orderby is
@@ -165,7 +179,46 @@ export class UsersdashComponent implements OnInit {
       });
     }
   }
-
+  // --------------- ORDER BY FNAME -----------------
+  orderByFName() {
+    console.log('orderByFName()');
+    // check to see what condition the orderby is
+    if (this.orderByFName_var === 'asc') {
+      console.log('orderByFName_var => asc ; changing it to DESC and going to get results as DESC');
+      this.orderByFName_var = 'desc';
+      // go to db and search by DESC
+      this._userService.fname_desc().subscribe(res => {
+        this.allUsers = res['order_results'];
+      });
+    } else if (this.orderByFName_var === 'desc') {
+      console.log('orderByFName_var => desc ; changing it to ASC and going to get results as ASC');
+      this.orderByFName_var = 'asc';
+      // go to db and search by ASC
+      this._userService.fname_asc().subscribe(res => {
+        this.allUsers = res['order_results'];
+      });
+    }
+  }
+  // --------------- ORDER BY LNAME -----------------
+  orderByLName() {
+    console.log('orderByLName()');
+    // check to see what condition the orderby is
+    if (this.orderByLName_var === 'asc') {
+      console.log('orderByLName_var => asc ; changing it to DESC and going to get results as DESC');
+      this.orderByLName_var = 'desc';
+      // go to db and search by DESC
+      this._userService.lname_desc().subscribe(res => {
+        this.allUsers = res['order_results'];
+      });
+    } else if (this.orderByLName_var === 'desc') {
+      console.log('orderByLName_var => desc ; changing it to ASC and going to get results as ASC');
+      this.orderByLName_var = 'asc';
+      // go to db and search by ASC
+      this._userService.lname_asc().subscribe(res => {
+        this.allUsers = res['order_results'];
+      });
+    }
+  }
 
 
 } // -- EOF

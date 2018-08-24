@@ -322,8 +322,42 @@ module.exports = {
             res.json({message: "success retreiving all data ORDER BY ID DESC", order_results: results});
         });
     },
-
-
+    //----------- fname ▲ ascending ----------
+    fname_asc: (req, res) => {
+        var sql = `SELECT id, fname, lname, email, pass, admin, DATE_FORMAT(created_at, "%d-%c-%Y, %H:%i") as 'date_created', DATE_FORMAT(updated_at, "%d-%c-%Y, %H:%i") as 'date_updated' FROM UserSQL_DB.users ORDER BY fname;`
+        connection.query(sql, function(err, results, fields) {
+        if (err) throw err;
+            // console.log(results);
+            res.json({message: "success retreiving all data ORDER BY fname ASC", order_results: results});
+        });
+    },
+    //----------- fname ▼ descending ----------
+    fname_desc: (req, res) => {
+        var sql = `SELECT id, fname, lname, email, pass, admin, DATE_FORMAT(created_at, "%d-%c-%Y, %H:%i") as 'date_created', DATE_FORMAT(updated_at, "%d-%c-%Y, %H:%i") as 'date_updated' FROM UserSQL_DB.users ORDER BY fname DESC;`;
+        connection.query(sql, function(err, results, fields) {
+        if (err) throw err;
+            // console.log(results);
+            res.json({message: "success retreiving all data ORDER BY fname DESC", order_results: results});
+        });
+    },
+    //----------- lname ▲ ascending ----------
+    lname_asc: (req, res) => {
+        var sql = `SELECT id, fname, lname, email, pass, admin, DATE_FORMAT(created_at, "%d-%c-%Y, %H:%i") as 'date_created', DATE_FORMAT(updated_at, "%d-%c-%Y, %H:%i") as 'date_updated' FROM UserSQL_DB.users ORDER BY lname;`
+        connection.query(sql, function(err, results, fields) {
+        if (err) throw err;
+            // console.log(results);
+            res.json({message: "success retreiving all data ORDER BY lname ASC", order_results: results});
+        });
+    },
+    //----------- lname ▼ descending ----------
+    lname_desc: (req, res) => {
+        var sql = `SELECT id, fname, lname, email, pass, admin, DATE_FORMAT(created_at, "%d-%c-%Y, %H:%i") as 'date_created', DATE_FORMAT(updated_at, "%d-%c-%Y, %H:%i") as 'date_updated' FROM UserSQL_DB.users ORDER BY lname DESC;`;
+        connection.query(sql, function(err, results, fields) {
+        if (err) throw err;
+            // console.log(results);
+            res.json({message: "success retreiving all data ORDER BY lname DESC", order_results: results});
+        });
+    },
 
 
 

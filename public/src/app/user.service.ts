@@ -79,6 +79,25 @@ makeAdmin() {
     console.log('userService > id_desc()');
     return this._http.get('/api/users/id_desc');
   }
-
+  // ------------ FNAME ▲ ASCENDING -------------
+  fname_asc() {
+    console.log('userService > id_asc()');
+    return this._http.get('/api/users/fname_asc');
+  }
+  // ------------ FNAME ▼ DESCENDING -----------
+  fname_desc() {
+    console.log('userService > id_desc()');
+    return this._http.get('/api/users/fname_desc');
+  }
+  // ------------ LNAME ▲ ASCENDING -------------
+  lname_asc() {
+    console.log('userService > id_asc()');
+    return this._http.get('/api/users/lname_asc');
+  }
+  // ------------ LNAME ▼ DESCENDING -----------
+  lname_desc() {
+    console.log('userService > id_desc()');
+    return this._http.get('/api/users/lname_desc');
+  }
 
 } // -- EOF

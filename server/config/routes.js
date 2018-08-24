@@ -87,12 +87,15 @@ app.get("/api/users/search/:sql_str", ctrl.searchQueryString);
     // --------- id ▲ asc ------------
     app.get("/api/users/id_asc", ctrl.id_asc);
     // --------- id ▼ desc -----------
-    app.get("/api/users/id_desc", ctrl.id_desc);
-    
-    // // --------- price ▲ asc --------
-    // app.get("/api/users/price_asc", ctrl.price_asc);
-    // // -------- price ▼ desc -------
-    // app.get("/api/users/price_desc", ctrl.price_desc);
+    app.get("/api/users/id_desc", ctrl.id_desc);    
+    // --------- fname ▲ asc --------
+    app.get("/api/users/fname_asc", ctrl.fname_asc);
+    // -------- fname ▼ desc -------
+    app.get("/api/users/fname_desc", ctrl.fname_desc);
+    // --------- lname ▲ asc --------
+    app.get("/api/users/lname_asc", ctrl.lname_asc);
+    // -------- lname ▼ desc -------
+    app.get("/api/users/lname_desc", ctrl.lname_desc);
 
     // // -------- qty ▲ asc ----------
     // app.get("/api/users/qty_asc", ctrl.qty_asc);
