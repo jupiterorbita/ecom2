@@ -57,10 +57,11 @@ app.get("/api/users/search/:sql_str", ctrl.searchQueryString);
     app.get("/api/product/search/:sql_str", prodCtrl.searchQueryString);
 
 
-    // ************* ordering *************-
+
+
+    // ************* PRODUCT ordering *************-
     // --------- id ▲ asc ------------
     app.get("/api/product/id_asc", prodCtrl.id_asc);
-
     // --------- id ▼ desc -----------
     app.get("/api/product/id_desc", prodCtrl.id_desc);
     
@@ -78,6 +79,30 @@ app.get("/api/users/search/:sql_str", ctrl.searchQueryString);
     app.get("/api/product/name_asc", prodCtrl.name_asc);
     // --------- name ▼ desc ----------
     app.get("/api/product/name_desc", prodCtrl.name_desc);
+
+
+
+
+    // ************* USER ordering *************-
+    // --------- id ▲ asc ------------
+    app.get("/api/users/id_asc", ctrl.id_asc);
+    // --------- id ▼ desc -----------
+    app.get("/api/users/id_desc", ctrl.id_desc);
+    
+    // // --------- price ▲ asc --------
+    // app.get("/api/users/price_asc", ctrl.price_asc);
+    // // -------- price ▼ desc -------
+    // app.get("/api/users/price_desc", ctrl.price_desc);
+
+    // // -------- qty ▲ asc ----------
+    // app.get("/api/users/qty_asc", ctrl.qty_asc);
+    // // -------- qty ▼ desc ----------
+    // app.get("/api/users/qty_desc", ctrl.qty_desc);
+
+    // // --------- name ▲ asc ------------
+    // app.get("/api/users/name_asc", ctrl.name_asc);
+    // // --------- name ▼ desc ----------
+    // app.get("/api/users/name_desc", ctrl.name_desc);
 
 
 

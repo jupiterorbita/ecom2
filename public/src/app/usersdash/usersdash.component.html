@@ -55,7 +55,7 @@
       <!-- ======== USERS TABLE ========== -->
   <table>
     <thead>
-      <td>id</td>
+      <td (click)="orderById()">id ↕️</td>
       <td>fname</td>
       <td>lname</td>
       <td>email</td>
@@ -72,7 +72,7 @@
         <td>{{ user.email }}</td>
         <td>{{ user.pass }}</td>
         <td>{{ user.date_created }}</td>
-        <td>{{ user.updated_at }}</td>
+        <td>{{ user.date_updated }}</td>
         <td>{{ user.admin | json }}</td>
       </tr>
     </tbody>

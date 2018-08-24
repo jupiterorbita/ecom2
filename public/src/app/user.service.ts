@@ -68,4 +68,17 @@ makeAdmin() {
     return this._http.get('/api/users/search/' + sql_str);
   }
 
+// ========== ORDERING users table in admin dash =========
+  // ------------ ID ▲ ASCENDING -------------
+  id_asc() {
+    console.log('userService > id_asc()');
+    return this._http.get('/api/users/id_asc');
+  }
+  // ------------ ID ▼ DESCENDING -----------
+  id_desc() {
+    console.log('userService > id_desc()');
+    return this._http.get('/api/users/id_desc');
+  }
+
+
 } // -- EOF

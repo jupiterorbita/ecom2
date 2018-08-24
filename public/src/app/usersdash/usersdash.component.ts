@@ -17,6 +17,8 @@ export class UsersdashComponent implements OnInit {
   searchResultsFound = null;
   searchFieldValue;
 
+  // -------- table ordering ---------
+  orderById_var;
 
   constructor(
     // private _dataService: DataService,
@@ -30,6 +32,8 @@ export class UsersdashComponent implements OnInit {
     this.fetchAllUsers();
     // this.sessionExists = false;
     this.checkSession();
+    // -------- table ordering ---------
+    this.orderById_var = 'asc';
   }
 
   checkSession() {
@@ -139,6 +143,27 @@ export class UsersdashComponent implements OnInit {
         this._router.navigate(['admindash']);
       }
     });
+  }
+
+  // =============== TABLE ordering ================
+  orderById() {
+    console.log('orderById');
+    // check to see what condition the orderby is
+    if (this.orderById_var === 'asc') {
+      console.log('orderById_var => asc ; changing it to DESC and going to get results as DESC');
+      this.orderById_var = 'desc';
+      // go to db and search by DESC
+      this._userService.id_desc().subscribe(res => {
+        this.allUsers = res['order_results'];
+      });
+    } else if (this.orderById_var === 'desc') {
+      console.log('orderById_var => desc ; changing it to ASC and going to get results as ASC');
+      this.orderById_var = 'asc';
+      // go to db and search by ASC
+      this._userService.id_asc().subscribe(res => {
+        this.allUsers = res['order_results'];
+      });
+    }
   }
 
 

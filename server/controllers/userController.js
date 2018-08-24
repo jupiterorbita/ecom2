@@ -96,7 +96,7 @@ module.exports = {
         //     if (err) throw err;
             console.log("Connected!");
             console.log("MySQL connected as id ".yellow + connection.threadId)
-            var sql = `SELECT id, fname, lname, email, pass, admin, DATE_FORMAT(created_at, "%d-%c-%Y, %H:%i") as 'date_created' FROM UserSQL_DB.users ORDER BY id;`;
+            var sql = `SELECT id, fname, lname, email, pass, admin, DATE_FORMAT(created_at, "%d-%c-%Y, %H:%i") as 'date_created', DATE_FORMAT(updated_at, "%d-%c-%Y, %H:%i") as 'date_updated' FROM UserSQL_DB.users ORDER BY id;`;
             connection.query(sql, function (err, result) {
                 if (err) throw err;
                 console.log('RESULT SQL QUERY =>', result);
@@ -295,12 +295,33 @@ module.exports = {
             res.json({msg: 'ok'});
         });
         console.log('req.session after destroy =>'.yellow, req.session);
-    }
+    },
 
 
 
 
+//*****************************************
+//***************  ORDERING ***************
+//***************************************** 
 
+    //----------- id ▲ ascending ----------
+    id_asc: (req, res) => {
+        var sql = `SELECT id, fname, lname, email, pass, admin, DATE_FORMAT(created_at, "%d-%c-%Y, %H:%i") as 'date_created', DATE_FORMAT(updated_at, "%d-%c-%Y, %H:%i") as 'date_updated' FROM UserSQL_DB.users ORDER BY id;`
+        connection.query(sql, function(err, results, fields) {
+        if (err) throw err;
+            // console.log(results);
+            res.json({message: "success retreiving all data ORDER BY ID ASC", order_results: results});
+        });
+    },
+    //----------- id ▼ descending ----------
+    id_desc: (req, res) => {
+        var sql = `SELECT id, fname, lname, email, pass, admin, DATE_FORMAT(created_at, "%d-%c-%Y, %H:%i") as 'date_created', DATE_FORMAT(updated_at, "%d-%c-%Y, %H:%i") as 'date_updated' FROM UserSQL_DB.users ORDER BY id DESC;`;
+        connection.query(sql, function(err, results, fields) {
+        if (err) throw err;
+            // console.log(results);
+            res.json({message: "success retreiving all data ORDER BY ID DESC", order_results: results});
+        });
+    },
 
 
 
