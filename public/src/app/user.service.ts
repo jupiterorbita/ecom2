@@ -81,23 +81,43 @@ makeAdmin() {
   }
   // ------------ FNAME ▲ ASCENDING -------------
   fname_asc() {
-    console.log('userService > id_asc()');
+    console.log('userService > fname_asc()');
     return this._http.get('/api/users/fname_asc');
   }
   // ------------ FNAME ▼ DESCENDING -----------
   fname_desc() {
-    console.log('userService > id_desc()');
+    console.log('userService > fname_desc()');
     return this._http.get('/api/users/fname_desc');
   }
   // ------------ LNAME ▲ ASCENDING -------------
   lname_asc() {
-    console.log('userService > id_asc()');
+    console.log('userService > lname_asc()');
     return this._http.get('/api/users/lname_asc');
   }
   // ------------ LNAME ▼ DESCENDING -----------
   lname_desc() {
-    console.log('userService > id_desc()');
+    console.log('userService > lname_desc()');
     return this._http.get('/api/users/lname_desc');
+  }
+  // ------------ Email ▲ ASCENDING -------------
+  email_asc() {
+    console.log('userService > email_asc()');
+    return this._http.get('/api/users/email_asc');
+  }
+  // ------------ Email ▼ DESCENDING -----------
+  email_desc() {
+    console.log('userService > email_desc()');
+    return this._http.get('/api/users/email_desc');
+  }
+  // ------------ Created ▲ ASCENDING -------------
+  created_asc() {
+    console.log('userService > created_asc()');
+    return this._http.get('/api/users/created_asc');
+  }
+  // ------------ Created ▼ DESCENDING -----------
+  created_desc() {
+    console.log('userService > created_desc()');
+    return this._http.get('/api/users/created_desc');
   }
 
 } // -- EOF

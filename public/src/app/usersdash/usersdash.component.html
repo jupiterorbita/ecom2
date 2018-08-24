@@ -55,14 +55,14 @@
       <!-- ======== USERS TABLE ========== -->
   <table>
     <thead>
-      <td (click)="orderById()">id↕️</td>
-      <td (click)="orderByFName()">fname↕️</td>
-      <td (click)="orderByLName()">lname↕️</td>
-      <td>email</td>
+      <td (click)="orderById()">id ↕️</td>
+      <td (click)="orderByFName()">fname ↕️</td>
+      <td (click)="orderByLName()">lname ↕️</td>
+      <td (click)="orderByEmail()">email ↕️</td>
       <td>pass</td>
-      <td>created_at</td>
-      <td>updated_at</td>
-      <td>admin | json</td>
+      <td (click)="orderByCreated()">date_created ↕️</td>
+      <td>date_updated</td>
+      <td>admin status | json</td>
     </thead>
     <tbody>
       <tr *ngFor="let user of allUsers">

@@ -96,16 +96,14 @@ app.get("/api/users/search/:sql_str", ctrl.searchQueryString);
     app.get("/api/users/lname_asc", ctrl.lname_asc);
     // -------- lname ▼ desc -------
     app.get("/api/users/lname_desc", ctrl.lname_desc);
-
-    // // -------- qty ▲ asc ----------
-    // app.get("/api/users/qty_asc", ctrl.qty_asc);
-    // // -------- qty ▼ desc ----------
-    // app.get("/api/users/qty_desc", ctrl.qty_desc);
-
-    // // --------- name ▲ asc ------------
-    // app.get("/api/users/name_asc", ctrl.name_asc);
-    // // --------- name ▼ desc ----------
-    // app.get("/api/users/name_desc", ctrl.name_desc);
+    // -------- email ▲ asc ----------
+    app.get("/api/users/email_asc", ctrl.email_asc);
+    // -------- email ▼ desc ----------
+    app.get("/api/users/email_desc", ctrl.email_desc);
+    // --------- created ▲ asc ------------
+    app.get("/api/users/created_asc", ctrl.created_asc);
+    // --------- created ▼ desc ----------
+    app.get("/api/users/created_desc", ctrl.created_desc);
 
 
 

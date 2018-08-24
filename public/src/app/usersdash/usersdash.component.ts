@@ -21,6 +21,8 @@ export class UsersdashComponent implements OnInit {
   orderById_var;
   orderByFName_var;
   orderByLName_var;
+  orderByEmail_var;
+  orderByCreated_var;
 
   constructor(
     // private _dataService: DataService,
@@ -38,6 +40,8 @@ export class UsersdashComponent implements OnInit {
     this.orderById_var = 'asc';
     this.orderByFName_var = 'asc';
     this.orderByLName_var = 'asc';
+    this.orderByEmail_var = 'asc';
+    this.orderByCreated_var = 'asc';
   }
 
   checkSession() {
@@ -215,6 +219,46 @@ export class UsersdashComponent implements OnInit {
       this.orderByLName_var = 'asc';
       // go to db and search by ASC
       this._userService.lname_asc().subscribe(res => {
+        this.allUsers = res['order_results'];
+      });
+    }
+  }
+  // --------------- ORDER BY EMAIL -----------------
+  orderByEmail() {
+    console.log('orderByEmail()');
+    // check to see what condition the orderby is
+    if (this.orderByEmail_var === 'asc') {
+      console.log('orderByEmail_var => asc ; changing it to DESC and going to get results as DESC');
+      this.orderByEmail_var = 'desc';
+      // go to db and search by DESC
+      this._userService.email_desc().subscribe(res => {
+        this.allUsers = res['order_results'];
+      });
+    } else if (this.orderByEmail_var === 'desc') {
+      console.log('orderByEmail_var => desc ; changing it to ASC and going to get results as ASC');
+      this.orderByEmail_var = 'asc';
+      // go to db and search by ASC
+      this._userService.email_asc().subscribe(res => {
+        this.allUsers = res['order_results'];
+      });
+    }
+  }
+  // --------------- ORDER BY EMAIL -----------------
+  orderByCreated() {
+    console.log('orderByCreated()');
+    // check to see what condition the orderby is
+    if (this.orderByCreated_var === 'asc') {
+      console.log('orderByCreated_var => asc ; changing it to DESC and going to get results as DESC');
+      this.orderByCreated_var = 'desc';
+      // go to db and search by DESC
+      this._userService.email_desc().subscribe(res => {
+        this.allUsers = res['order_results'];
+      });
+    } else if (this.orderByCreated_var === 'desc') {
+      console.log('orderByCreated_var => desc ; changing it to ASC and going to get results as ASC');
+      this.orderByCreated_var = 'asc';
+      // go to db and search by ASC
+      this._userService.email_asc().subscribe(res => {
         this.allUsers = res['order_results'];
       });
     }
