@@ -28,11 +28,18 @@
             <br>
             searching in fname OR lname OR email
           </div>
+          searchFieldValue => {{ searchFieldValue | json}}
           <br>
-          <input (keyup)="onKey($event)" class="search-container" type="text" placeholder="Search...">
+          <input 
+          (keyup)="onKey($event)" 
+          [value]="sql_value_str" (input)="sql_value_str = $event.target.value"
+          class="search-container" 
+          type="text" 
+          placeholder="Search..."
+          />
           <button type="submit">
               <img src="images/search.png" alt="">
-          </button> - <button> CLEAR search results</button>
+          </button> - <button (click)="clearSearchStr()"> CLEAR search results</button>
       </div>
 
       <br>

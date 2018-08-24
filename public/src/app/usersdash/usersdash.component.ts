@@ -13,8 +13,9 @@ export class UsersdashComponent implements OnInit {
   public allUsers: {};
   public allFormattedDates: {};
   public sessionExists: boolean;
-  sql_value_str = ''; // for the search
+  sql_value_str: string; // for the search
   searchResultsFound = null;
+  searchFieldValue;
 
 
   constructor(
@@ -25,6 +26,7 @@ export class UsersdashComponent implements OnInit {
 
   ngOnInit() {
     console.log('=== MAIN.COMPONENT.TS LOADED ===');
+    this.sql_value_str = ''; // for the search
     this.fetchAllUsers();
     // this.sessionExists = false;
     this.checkSession();
@@ -67,8 +69,14 @@ export class UsersdashComponent implements OnInit {
     } else {
       this.fetchAllUsers();
       this.searchResultsFound = null;
-
     }
+  }
+  // ----- clear search str --------
+  clearSearchStr() {
+    console.log('pressed clearSearchStr() >');
+    this.sql_value_str = '';
+    this.fetchAllUsers();
+    // maybe i have to do this as a form to be able to clear fields later
   }
 
   destroySession() {
