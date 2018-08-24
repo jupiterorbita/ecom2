@@ -54,19 +54,38 @@ module.exports = {
     checkWhoThisUserIs: (req, res) => {
         console.log('>> USER CONTROLLER > checkWhoThisUserIs');
         
+        console.log('req.session.userid =>', req.session['userid']);
+        console.log('req.session.fname =>', req.session['fname'])
         if (req.session['userid'] && req.session['fname']) {
 
             console.log('req.session.userid =>', req.session['userid']);
             console.log('req.session.fname =>', req.session['fname'])
-            var sql = `SELECT id, fname, lname, email FROM UserSQL_DB.users LIMIT 1;`
-            connection.query(sql, function (er, result) {
+            var sql = `SELECT id, fname, lname, email FROM UserSQL_DB.users WHERE id=${req.session['userid']} AND fname='${req.session['fname']}' LIMIT 1;`
+            connection.query(sql, function (err, result) {
                 if (err) throw err;
-                console.log('RESULT SQL QUERY =>', result);
-                res.json({message: 'ok'});
+                console.log('result =>', result)
+                // catch if the result doesn't match the given query
+                if (result.length < 1) {
+                    console.log('ERROR ERROR ERROR ERROR ERROR ERROR ERROR result.length < 1 no match found with given fname and userid')
+                    res.json({redirect: 'yes', message: 'ERROR session doesnt exist for user trying to access userprofile page, rediret to login'});
+                }
+                else if (result.length > 0) {
+                    console.log('RESULT SQL QUERY =>', result[0]);
+                    res.json({
+                        redirect: 'no',
+                        message: 'ok',
+                        user: {
+                            userid: result[0].id,
+                            userfname: result[0].fname,
+                            userlname: result[0].lname,
+                            useremail: result[0].email
+                        }
+                    });
+                }
             })
         } else {
             console.log('WARNING req.session["userid"] && req.session["fname"] doens\'t exist in session return err');
-            res.json({message: 'ERROR session doesnt exist for user trying to access userprofile page, rediret to login'});
+            res.json({redirect: 'yes', message: 'ERROR session doesnt exist for user trying to access userprofile page, rediret to login'});
         }
     },
 
@@ -141,6 +160,8 @@ module.exports = {
                                 else if (result[0].admin != 1) {
                                     console.log('this is not an admin!');
                                     req.session.userid = result[0].id;
+                                    req.session.fname = result[0].fname;
+
                                     res.json({
                                         message: 'SUCCESS email & pass match',
                                         canLogin: true,

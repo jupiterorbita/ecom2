@@ -164,6 +164,19 @@ export class HeaderComponent implements OnInit {
 
   goToUserProfile() {
     console.log('header component > goToUserProfile()');
+    // check to see if this is the user to go to the profile page
+    this._userService.checkWhoThisUserIs().subscribe((res: any) => {
+      console.log(res);
+      // this.user = res['user'];
+      // console.log('this.user =>', this.user);
+
+      if (res['redirect'] === 'no') { // do not redirect go to profile :)
+        this._router.navigate(['userprofile']);
+      } else {
+        this._router.navigate(['login']);
+      }
+
+    });
     this._router.navigate(['userprofile']);
   }
 

@@ -20,12 +20,18 @@ export class UserprofileComponent implements OnInit {
 
   ngOnInit() {
     this.checkWhoThisUserIs();
+    // init defaults so the callback can fill them
+    this.user = {
+      userfname: '',
+      userlname: '',
+      useremail: ''
+    };
   }
 
   checkWhoThisUserIs() {
     // get this user from req.session.userid & req.session.fname
     console.log('userprofile component > checkUser()');
-    this._userService.checkWhoThisUserIs().subscribe((res:any) => {
+    this._userService.checkWhoThisUserIs().subscribe((res: any) => {
       this.user = res['user'];
       console.log(res);
       console.log('this.user =>', this.user);

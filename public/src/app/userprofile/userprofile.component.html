@@ -1,5 +1,13 @@
 <div class="wrapper">
 
   *** user profile ***
+  <hr>
+  {{ user | json}}
+  <hr>
+
+  <h2>MY profile 😊 </h2>
+  first name: {{ user.userfname }} <br>
+  last name: {{ user.userlname }} <br>
+  email: {{ user.useremail }}
 </div>
 
