@@ -162,6 +162,10 @@ export class HeaderComponent implements OnInit {
     });
   }
 
+  goToUserProfile() {
+    console.log('header component > goToUserProfile()');
+    this._router.navigate(['userprofile']);
+  }
 
   goToAdminDash() {
     this._userService.checkIfAdmin()

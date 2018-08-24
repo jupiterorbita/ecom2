@@ -25,6 +25,12 @@
 				</li>
 			</span>
 
+			<span *ngIf="loginValidation['canLogin'] === true && loginValidation['admin'] === false">
+				<li>
+					<a (click)="goToUserProfile()"> 🤪 My Profile </a>
+				</li>
+			</span>
+
 			<li>
 				<a [routerLink]= "['/']"> 🏠 HOME </a>
 			</li>

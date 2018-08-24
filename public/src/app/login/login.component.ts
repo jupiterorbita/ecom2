@@ -111,6 +111,8 @@ export class LoginComponent implements OnInit {
           this.loginValidation['admin'] = false;
           this._dataService.loginValidation.next(this.loginValidation);
 
+          console.log('********* user login ******* loginValidation =>', this.loginValidation);
+
 
 
           alert(`USER logged in!\n WELCOME ${this.userName}!`);

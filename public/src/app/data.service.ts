@@ -29,6 +29,10 @@ export class DataService {
   });
 
   userName = new BehaviorSubject('');
+  user = new BehaviorSubject({
+    id: null,
+    fname: ''
+  });
 
 
 

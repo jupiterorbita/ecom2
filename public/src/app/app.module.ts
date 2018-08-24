@@ -24,6 +24,8 @@ import { ProductsdashComponent } from './productsdash/productsdash.component';
 import { UsersdashComponent } from './usersdash/usersdash.component';
 import { AdminheadComponent } from './adminhead/adminhead.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { UserprofileComponent } from './userprofile/userprofile.component';
+import { OrdersComponent } from './orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { CheckoutComponent } from './checkout/checkout.component';
     ProductsdashComponent,
     UsersdashComponent,
     AdminheadComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    UserprofileComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,

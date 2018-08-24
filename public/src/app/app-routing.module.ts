@@ -11,6 +11,7 @@ import { CartComponent } from './cart/cart.component';
 // import { ProductsdashComponent } from './productsdash/productsdash.component';
 import { UsersdashComponent } from './usersdash/usersdash.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { UserprofileComponent } from './userprofile/userprofile.component';
 
 const routes: Routes = [
   // {path: '', pathMatch: 'full', redirectTo: '/main'},
@@ -25,7 +26,8 @@ const routes: Routes = [
   {path: 'cart', component: CartComponent},
   // {path: 'admindash/productsdash', component: ProductsdashComponent},
   {path: 'admindash/usersdash', component: UsersdashComponent},
-  {path: 'checkout', component: CheckoutComponent}
+  {path: 'checkout', component: CheckoutComponent},
+  {path: 'userprofile', component: UserprofileComponent}
 
 ];
 
