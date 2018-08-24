@@ -47,8 +47,37 @@ li a.active {
     color: black;
 }
 
+/* ----------- SEARCH ------------- */
+div.search{
+    display: block;
+    background-color: rgb(250, 173, 71);
+    /* width: 800px; */
+    border-radius: 15px;
+    width: 40%;
+    padding: 5px;
+    margin: 0 auto;
+    margin-top: -20px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+/* ----- SEARCH INPUT----- */
+    .search input{
+        /* margin-top: 5px; */
+        padding: 6px;
+        border: none;
+        font-size: 17px;
+        min-width: 300px;
+        border-radius: 15px 15px 15px 15px;
+        -moz-border-radius: 15px;
+        border: solid 1px rgb(250, 173, 68);
+    }
+        .search img{
+            width: 18px;
+        }
 
 
+
+/* ======== users table ========= */
 table, td{
     border: 1px solid black;
     border-collapse: collapse;

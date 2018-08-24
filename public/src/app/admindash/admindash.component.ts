@@ -94,6 +94,7 @@ export class AdmindashComponent implements OnInit {
   clearSearchStr() {
     console.log('pressed clearSearchStr() >');
     this.sql_value_str = '';
+    this.searchResultsFound = 0;
     this.getInventory();
     // get focus on the input field again
     document.getElementById('searchbox').focus();
