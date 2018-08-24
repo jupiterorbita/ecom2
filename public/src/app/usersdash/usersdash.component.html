@@ -31,16 +31,23 @@
           searchFieldValue => {{ searchFieldValue | json}}
           <br>
           <input 
+          id="searchbox"
           (keyup)="onKey($event)" 
           [value]="sql_value_str" (input)="sql_value_str = $event.target.value"
           class="search-container" 
           type="text" 
-          placeholder="Search..."
+          placeholder="Search users..."
           />
+
           <button type="submit">
               <img src="images/search.png" alt="">
-          </button> - <button (click)="clearSearchStr()"> CLEAR search results</button>
-      </div>
+          </button> -
+
+          <span *ngIf="sql_value_str">
+            <button (click)="clearSearchStr()"> CLEAR search results</button>
+          </span>
+      
+        </div>
 
       <br>
       sql_value_str => {{sql_value_str | json}} <br>
@@ -70,6 +77,7 @@
       </tr>
     </tbody>
   </table>
+  
 
 
 

@@ -76,6 +76,9 @@ export class UsersdashComponent implements OnInit {
     console.log('pressed clearSearchStr() >');
     this.sql_value_str = '';
     this.fetchAllUsers();
+    // get focus on the input field again
+    document.getElementById('searchbox').focus();
+
     // maybe i have to do this as a form to be able to clear fields later
   }
 

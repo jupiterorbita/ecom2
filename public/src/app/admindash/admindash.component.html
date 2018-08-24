@@ -38,10 +38,24 @@
         <div class="search">
             <div *ngIf="searchResultsFound">search results: {{ searchResultsFound }}</div>
             <br>
-            <input (keyup)="onKey($event)" class="search-container" type="text" placeholder="Search...">
+            searchFieldValue => {{ searchFieldValue | json}}
+            <br>
+            <input 
+            id="searchbox"
+            (keyup)="onKey($event)" 
+            [value]="sql_value_str" (input)="sql_value_str = $event.target.value"
+            class="search-container" 
+            type="text" 
+            placeholder="Search products..."
+            />
+
             <button type="submit">
                 <img src="images/search.png" alt="">
-            </button>
+            </button> - 
+
+            <span *ngIf="sql_value_str">
+                <button (click)="clearSearchStr()"> CLEAR search results</button>
+            </span>
         </div>
 
         <div class="pages">

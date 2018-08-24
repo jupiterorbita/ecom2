@@ -12,9 +12,10 @@ export class AdmindashComponent implements OnInit {
   allProducts: {};
 
   confirmDelete: boolean;
-  // search string
-  sql_value_str = '';
+  sql_value_str = '';   // search string
   searchResultsFound = null;
+  searchFieldValue;
+
 
   constructor(private _productService: ProductService, private _router: Router) { }
 
@@ -89,7 +90,16 @@ export class AdmindashComponent implements OnInit {
 
     }
   }
+  // ----- clear search str --------
+  clearSearchStr() {
+    console.log('pressed clearSearchStr() >');
+    this.sql_value_str = '';
+    this.getInventory();
+    // get focus on the input field again
+    document.getElementById('searchbox').focus();
 
+    // maybe i have to do this as a form to be able to clear fields later
+  }
 
 // ============ ORDERING =============
   // ----------- order by ID  -----------=
