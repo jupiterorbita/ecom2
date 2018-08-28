@@ -245,7 +245,7 @@ export class UsersdashComponent implements OnInit {
       });
     }
   }
-  // --------------- ORDER BY EMAIL -----------------
+  // --------------- ORDER BY created -----------------
   orderByCreated() {
     console.log('orderByCreated()');
     // check to see what condition the orderby is
@@ -267,7 +267,7 @@ export class UsersdashComponent implements OnInit {
       });
     }
   }
-  // --------------- ORDER BY EMAIL -----------------
+  // --------------- ORDER BY updated -----------------
   orderByUpdated() {
     console.log('orderByUpdated()');
     // check to see what condition the orderby is

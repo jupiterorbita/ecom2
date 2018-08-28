@@ -114,14 +114,14 @@ div.search{
 div.left_filters{
     padding: 5px;
     width: 140px;
-    height: 300px;
+    /* height: 300px; */
     display: inline-block;
     vertical-align: top;
     background-color: rgb(251, 200, 146);
     border-radius: 15px;
 }
     div.sort{
-        background-color: rgb(255, 239, 233);
+        /* background-color: rgb(255, 239, 233); */
         padding: 3px;
         border-radius: 5px;
         margin-bottom: 5px;
