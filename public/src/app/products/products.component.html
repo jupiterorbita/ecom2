@@ -1,12 +1,8 @@
 <!-- <div class="wrapper"> -->
-  <!-- products component -->
-  <!-- <br>
+<!-- products component -->
+<!-- <br>
   <a [routerLink]= "['/']">back to main</a>
   <hr> -->
-
-
-
-
 
 <!-- *************************************** -->
 <!-- ************* MAIN CONTENT ************ -->
@@ -15,90 +11,69 @@
 <!-- =========== LEFT FILTER ============ -->
 <div class="content_wrap">
 
-  <!-- <div class="left_filter">
-      <b>CATEGORY:</b>
-      <br>
-      TEDDY BEARS
-      <hr>
-      <br>
-      <div class="filter_price">
-          <a href="">price ascending ▲</a>
-          <br>
-          <a href="">price descending ▼</a>
-          <hr>
-      </div>
-  </div> -->
+    <!-- =========== LEFT SIDE FILTERS ========== -->
+    <div class="left_filters">
+        sort by:
+        <hr>
 
+        <div class="sort">
+            <button (click)="price_asc()">price ▲</button>
+            <br>
+            <button (click)="price_desc()">price ▼</button>
+        </div>
 
-<!-- =========== LEFT SIDE FILTERS ========== -->
-<div class="left_filters">
-    filters
-    <br>
-    sort by:
-    <hr>
+        <div class="sort">
+            <button (click)="name_asc()">name ▲</button>
+            <br>
+            <button (click)="name_desc()">name ▼</button>
+        </div>
 
-    <div class="sort">
-        <button (click)="price_asc()">price ascending ▲</button>
-        <br>
-        <button (click)="price_desc()">price descending ▼</button>
     </div>
 
-    <div class="sort">
-        <button (click)="name_asc()">name ascending ▲</button>
-        <br>
-        <button (click)="name_desc()">name descending ▼</button>
-    </div>
 
+
+    <div class="content">
+
+        <!-- ========== SEARCH =========== -->
+        <div class="search">
+            <input (keyup)="onKey($event)" class="search-container" type="text" placeholder="Search Teddy Bear products...">
+            <!-- <button type="submit">GO</button> -->
+            <br><br>
+            <div *ngIf="searchResultsFound">found {{ searchResultsFound }} product(s)</div>
+
+        </div>
+
+        <!-- <div class="pages">
+            < 1 | 2 | 3 | 4 | 5 | .... | 14 >
+        </div> -->
+
+        <!-- content -->
+        <!-- LOOP through all the products -->
+        <div *ngFor="let product of allProducts" class="loop_products">
+
+            <div class="item">
+                <img class="product_img" src="assets/images/product_img/5.jpg" alt="">
+                <div class="mid_item">
+                    <h2>{{ product.product_name }}</h2>
+                    <h3>$ {{ product.product_price }}</h3>
+                    <img class="stars" src="images/star_rating.png" alt="">
+                    <br>
+                    <!-- id={{ product.id }} -->
+                    <button (click)="addToCart(product.id)">ADD TO CART</button>
+                </div>
+                <div class="right_item">
+                    {{ product.product_description}}
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- <div class="pages">
+            < 1 | 2 | 3 | 4 | 5 | .... | 14 >
+        </div> -->
+
+    </div>
 </div>
-
-
-  
-  <div class="content">
-
-    <!-- ========== SEARCH =========== -->
-    <div class="search">
-        <div *ngIf="searchResultsFound">search results: {{ searchResultsFound }}</div>
-        <br>
-        <input (keyup)="onKey($event)" class="search-container" type="text" placeholder="Search...">
-        <button type="submit">
-            <img src="images/search.png" alt="">
-        </button>
-    </div>
-
-      <div class="pages">
-          < 1 | 2 | 3 | 4 | 5 | .... | 14 >
-      </div>
-      <!-- content -->
-      <!-- LOOP through all the products -->
-      <div *ngFor="let product of allProducts" class="loop_products">
-
-      <div class="item">
-          <img class="product_img" src="images/product_img/1.jpg" alt="">
-          <div class="mid_item">
-              <h2>{{ product.product_name }}</h2>
-              <h3>$ {{ product.product_price }}</h3>
-              <img class="stars" src="images/star_rating.png" alt="">
-              <br>
-              <button (click)="addToCart(product.id)"> id={{ product.id }}, ADD TO CART</button>
-          </div>
-          <div class="right_item">
-            {{ product.product_description}}
-          </div>
-      </div>
-      
-      </div>
-      
-      
-      <div class="pages">
-          < 1 | 2 | 3 | 4 | 5 | .... | 14 >
-      </div>
-      
-  </div>
-</div>
-
-
-
-
-
 
 <!-- </div> -->

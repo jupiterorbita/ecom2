@@ -1,7 +1,7 @@
 /* main.component */
-*{
+/* *{
     outline: 1px dotted red;
-}
+} */
 /* .wrapper{
     border: 1px solid red;
     border-radius: 10px;
@@ -22,63 +22,29 @@ div.wrapper{
     margin-left: 5%;
     margin-right: 5%;
     /* min-height: 500px;
-    max-width: 1300px; */
+	max-width: 1300px; */
+	background-color: rgb(254, 236, 227);
+	padding-bottom: 10px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
 
 /* =========== SLIDES ========= */
-div.slides{
-    background-color: bisque;
-    width: 100%;
-    /* min-height: 250px; */
+.slider{
+	overflow: hidden;
+	border-radius: 0 0 15px 15px;
 }
-    .slides img{
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        /* width: 40%; */
-        width: 700px;
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
+.slider figure img{
+	width: 20%;
+	float: left;
+}
+.slider figure {
+	position: relative;
+	width: 500%;
+	margin: 0;
+	left: 0;
+}
 
 
 /* =========== BEST SELLERS ========= */
@@ -86,7 +52,9 @@ div.best_sellers{
     text-align: center;
     background-color: rgb(254, 239, 231);
     max-width: 1300px;
-    min-height: 300px;
+	min-height: 300px;
+	margin-bottom: 5px;
+	padding: 5px;
 }
     /* .best_sellers h5{
         text-align: center;
@@ -126,7 +94,7 @@ div.best_sellers{
         .best_sellers .item .left_content img{
             border-radius: 15px;
             display: inline-block;
-            /* background-color: blue; */
+            background-color: blue;
             vertical-align: top;
 
             width: 100%;
@@ -204,7 +172,7 @@ div.lower_banner{
 **************************************/
 
 /* ============ each product ADD to CARD BUTTON */
-    .items button{
+	button{
         margin-top: 5px;
         margin-bottom: 5px;
         background-color: aqua;
@@ -218,7 +186,7 @@ div.lower_banner{
         /* webkit-transition-duration: 0.4s; Safari */
         transition-duration: 0.4s;
     }
-        .items button:hover {
+        button:hover {
             background-color: #4CAF50; /* Green */
             color: white;
             /* box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19); */

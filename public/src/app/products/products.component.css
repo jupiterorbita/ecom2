@@ -1,10 +1,12 @@
-.wrapper{
+/* .wrapper{
     border: 1px solid rgb(30, 255, 0);
     border-radius: 10px;
     background-color: rgb(245, 240, 156);
     padding: 5px;
     min-height: 300px;
-}
+    margin-left: 5%;
+    margin-right: 5%;
+} */
 
 
 /* * * * * * * * * * * MAIN CONTENT * * * * * * * * * */
@@ -12,51 +14,57 @@
 div.content_wrap{
     background-color: rgb(254, 239, 231);
     padding: 5px;
+    padding-top: 15px;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
 
 /* ---------- LEFT FILTERS --------- */
 div.left_filters{
+    text-align: center;
     padding: 5px;
     width: 140px;
-    height: 300px;
+    /* height: 300px; */
     display: inline-block;
     vertical-align: top;
-    background-color: rgb(251, 200, 146);
+    background-color: rgb(247, 217, 171);
     border-radius: 15px;
 }
     div.sort{
-        background-color: rgb(255, 239, 233);
+        /* background-color: rgb(255, 239, 233); */
+        font-size: 16pt;
         padding: 3px;
         border-radius: 5px;
         margin-bottom: 5px;
+        display: inline-block;
     }
 
 
-
-
-
-/* =========== LEFT FILTER =========== */
-/* div.left_filter{
-    background-color: rgb(246, 202, 140);
-    border-radius: 15px;
-    display: inline-block;
-    vertical-align: top;
-    width: 200px;
-    height: 500px;
-    padding: 10px;
+/* ======== search ======= */
+/* ----- SEARCH INPUT----- */
+div.search{
+    align-content: center;
+    margin: 0 auto;
+    /* background-color: aqua; */
+    text-align: center;
 }
-    .left_filter .filter_price{
-        background-color: rgb(255, 239, 232);
-        width: auto;
-        height: auto;
-    }
-     */
+.search input{
+    margin: 0 auto;
+    /* margin-top: 5px; */
+    padding: 6px;
+    font-size: 17px;
+    min-width: 300px;
+    border-radius: 15px 15px 15px 15px;
+    -moz-border-radius: 15px;
+    border: solid 2px rgb(250, 173, 68);
+}
+
 
 /* ============ MAIN CONTENT & PAGES ========= */
 div.content{
     background-color: rgb(254, 239, 231);
-    border: 1px solid black;
+    /* border: 1px solid black; */
     display: inline-block;
     vertical-align: top;
     width: 850px;
@@ -108,42 +116,19 @@ div.content{
 **             BUTTONS               **
 **************************************/
 
-/* ====== SEARCH BUTTON ========= */
-div.topNav .search button{
-    /* background: linear-gradient(red, yellow); */
-    border: 1px solid rgb(250, 173, 68); 
-    border-radius: 15px 15px 15px 15px;
-    padding: 6px 10px;
-    transition-duration: 0.4s;
-    font-size: 18px;
-    text-align: center;
-    color: rgb(130, 39, 23);
+/* --- left side sort buttons */
+.sort button{
+    transition-duration: 0.2s;
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 5px;
+    width: 50px;
+    display: inline-block;
 }
-    .search button:hover{
+    .sort button:hover {
+        background-color: #4CAF50;
         color: white;
-        background-color: rgb(250, 173, 68);
     }
-    button.addToCartBtn{
-        margin-top: 5px;
-        margin-bottom: 5px;
-        /* height: 40px;
-        width: 80px; */
-        padding: 10px 25px;
-        border: none;
-        border-radius: 15px;
-        text-align: center;
-        font-size: 18px;
-        border: 2px solid #4CAF50; 
-        background-color: white; /* Green */
-        /* webkit-transition-duration: 0.4s; Safari */
-        transition-duration: 0.4s;
-    }
-        button.addToCartBtn:hover {
-            background-color: #4CAF50; /* Green */
-            color: white;
-            /* box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19); */
-        }
-
 
 /* ============ each product ADD to CARD BUTTON */
 .item button{
@@ -151,7 +136,6 @@ div.topNav .search button{
     margin-bottom: 5px;
     background-color: aqua;
     padding: 5px 15px;
-    border: none;
     border-radius: 10px;
     text-align: center;
     font-size: 14px;
@@ -164,4 +148,9 @@ div.topNav .search button{
         background-color: #4CAF50; /* Green */
         color: white;
         /* box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19); */
+    }
+
+    .search button{
+        width: 18px;
+        padding: 5px;
     }
