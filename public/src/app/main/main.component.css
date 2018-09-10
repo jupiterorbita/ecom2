@@ -1,4 +1,7 @@
 /* main.component */
+*{
+    outline: 1px dotted red;
+}
 /* .wrapper{
     border: 1px solid red;
     border-radius: 10px;
@@ -27,32 +30,13 @@ div.wrapper{
 
 
 
-/* =========== CATEGORIES ============ */
-div.categories{
-    text-align: center;
-    background-color: rgb(130, 39, 23);
-    color: white;
-    font-size: 18pt;
-}
-    div.bar{
-        display: inline-block;
-        padding: 0px 40px 0px 40px;
-    }
-/* ====== LINKS COLOR ====== */
-    .categories a:link{
-        color: white;
-        text-decoration: none;
-    }
-    .categories a:visited{
-        /* color: lightblue; */
-        color: white;
-    }
-    .categories a:hover{
-        color: rgb(250, 173, 68);
-    }
-    .categories a:active{
-        color: red;
-    }
+
+
+
+
+
+
+
 
 
 
@@ -72,6 +56,28 @@ div.slides{
     }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
 
 
 
