@@ -1,31 +1,51 @@
 <div class="wrapper">
-  register.component
+  <!-- register.component
   <hr>
-  whereAmIComingFrom => {{ whereAmIComingFrom | json}}
+  whereAmIComingFrom => {{ whereAmIComingFrom | json}} -->
+
   <!-- <br>
     <a [routerLink]= "['/']">back to main</a>
     <hr> -->
-    <h3>register</h3>
-    <form (submit)="submitNewUser(newFormUser)" #newFormUser="ngForm">
-      first name:
-      <input type="text" ngModel name="fname" placeholder="First Name">
-      <br>
-      last name:
-      <input type="text" ngModel name="lname" placeholder="Last Name">
-      <br>
-      email
-      <input type="email" ngModel name="email" placeholder="email">
-      <br>
-      password:
-      <input type="password" ngModel name="pass" placeholder="password">
-      <br>
-      confirm password:
-      <input type="password" ngModel name="pass2" placeholder="password2">
-      <br>
-      <input type="submit" value="register">
 
-    </form>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container">
+
+  <h3>Register</h3>
+  <form (submit)="submitNewUser(newFormUser)" #newFormUser="ngForm">
+    first name:
+    <input type="text" ngModel name="fname" placeholder="First Name">
+    <br>
+    last name:
+    <input type="text" ngModel name="lname" placeholder="Last Name">
+    <br>
+    email
+    <input type="email" ngModel name="email" placeholder="email">
+    <br>
+    password:
+    <input type="password" ngModel name="pass" placeholder="password">
+    <br>
+    confirm password:
+    <input type="password" ngModel name="pass2" placeholder="password2">
+    <br>
+    <input type="submit" value="register">
+  </form>
+  
+</div>
     
     
   

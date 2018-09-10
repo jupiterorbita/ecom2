@@ -1,10 +1,11 @@
 <div class="wrapper">
-login.component
+<!-- login.component -->
 <!-- <br>
   <a [routerLink]= "['/']">back to main</a>
   <hr> -->
-  <h2>LOGIN</h2>
-  <hr>
+
+  <!-- <h2>LOGIN</h2>
+  <hr> -->
 
   <div *ngIf="whereAmIComingFrom['from'] === 'cart'">
     <h3>your 
@@ -23,23 +24,32 @@ login.component
   <h4>if you are not part of Team TeddyBears, then <button [routerLink]="['/register']"> Register here! </button></h4>
   </div>
 
-  <form (submit)="login()" >
-    email:
-    <br>
-    <input [(ngModel)]="loginUser.email" name="loginUser.email" type="email" name="email" placeholder="email">
-    <br>
-    password:
-    <br>
-    <input [(ngModel)]="loginUser.pass" name="loginUser.pass" type="password" name="pass" placeholder="password">
-    <br>
-    <br>
-    <input type="submit" value="Login">
-    <hr>
-    email: {{ loginUser | json }} <br>
-    pass: {{ loginUser.pass }} <br>
+  <div class="container">
+    <h3>Login</h3>
+    <form (submit)="login()" >
+      email:
+      <br>
+      <input [(ngModel)]="loginUser.email" name="loginUser.email" type="email" name="email" placeholder="email">
+      <br>
+      password:
+      <br>
+      <input [(ngModel)]="loginUser.pass" name="loginUser.pass" type="password" name="pass" placeholder="password">
+      <br>
+      <br>
+      <input type="submit" value="Login">
+      <!-- <hr>
+      email: {{ loginUser | json }} <br>
+      pass: {{ loginUser.pass }} <br>
+       -->
+    </form>
+  </div>
+    
 
-  </form>
-  
+
+
+
+
+
 
 
 
