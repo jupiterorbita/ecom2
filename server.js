@@ -76,9 +76,9 @@ app.use(express.static( __dirname + '/public/dist/public' ));
 
 require('./server/config/routes')(app);
     // // widlcard for angular
-    // app.all("*", (req,res,next) => {
-    //     res.sendFile(path.resolve("./public/dist/public/index.html"))
-    // });
+app.all("*", (req,res,next) => {
+    res.sendFile(path.resolve("./public/dist/public/index.html"));
+});
 
 
 // ------------------ END ------------------

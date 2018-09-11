@@ -28,46 +28,6 @@
         </div>
 
 
-        <button [routerLink]="['/addproduct']" class="add_button">ADD New Product</button>
-
-
-
-
-        <!-- =========== LEFT SIDE FILTERS ========== -->
-        <div class="left_filters">
-            filters
-            <br>
-            sort by:
-            <!-- <hr> -->
-
-            <div class="sort">
-                <button (click)="id_asc()">ID ascending ▲ </button>
-                <br>
-                <button (click)="id_desc()">ID descending ▼ </button>
-            </div>
-
-            <div class="sort">
-                <button (click)="price_asc()">price ascending ▲</button>
-                <br>
-                <button (click)="price_desc()">price descending ▼</button>
-            </div>
-
-            <div class="sort">
-                <button (click)="qty_asc()">Qty ascending ▲</button>
-                <br>
-                <button (click)="qty_desc()">Qty descending ▼</button>
-            </div>
-
-            <div class="sort">
-                <button (click)="name_asc()">name ascending ▲</button>
-                <br>
-                <button (click)="name_desc()">name descending ▼</button>
-            </div>
-
-        </div>
-
-
-
 
         <div class="table-users">
             <div class="header_title">Teddy Store Inventory </div>
@@ -79,7 +39,7 @@
                     <div class='searchResultsText' *ngIf="searchResultsFound">found: {{ searchResultsFound }} item(s)
                     </div>
                     <input id="searchbox" (keyup)="onKey($event)" [value]="sql_value_str" (input)="sql_value_str = $event.target.value"
-                        class="search-container" type="text" placeholder="Search users..." />
+                        class="search-container" type="text" placeholder="Search inventory..." />
 
                     <br>
                     <span *ngIf="sql_value_str">
@@ -88,29 +48,38 @@
 
                 </div>
 
+
+
+
+                <div class="addnew">
+                    <button [routerLink]="['/addproduct']" class="add_button">✰ ADD New Product ✰</button>
+                </div>
+
+
                 <div class="header_sort">
+                    <span class='sort_text_header'>sorting</span><br>
                     <div class="sort">
-                        <button class='sortBtn' (click)="id_asc()">ID ascending ▲ </button>
+                        <button class='sortBtn' (click)="id_asc()">ID ▲ </button>
                         <br>
-                        <button class='sortBtn' (click)="id_desc()">ID descending ▼ </button>
+                        <button class='sortBtn' (click)="id_desc()">ID ▼ </button>
                     </div>
 
                     <div class="sort">
-                        <button (click)="price_asc()">price ascending ▲</button>
+                        <button class='sortBtn' (click)="price_asc()">price ▲</button>
                         <br>
-                        <button (click)="price_desc()">price descending ▼</button>
+                        <button class='sortBtn' (click)="price_desc()">price ▼</button>
                     </div>
 
                     <div class="sort">
-                        <button (click)="qty_asc()">Qty ascending ▲</button>
+                        <button class='sortBtn' (click)="qty_asc()">Qty ▲</button>
                         <br>
-                        <button (click)="qty_desc()">Qty descending ▼</button>
+                        <button class='sortBtn' (click)="qty_desc()">Qty ▼</button>
                     </div>
 
                     <div class="sort">
-                        <button (click)="name_asc()">name ascending ▲</button>
+                        <button class='sortBtn' (click)="name_asc()">name ▲</button>
                         <br>
-                        <button (click)="name_desc()">name descending ▼</button>
+                        <button class='sortBtn' (click)="name_desc()">name ▼</button>
                     </div>
                 </div>
 
@@ -142,8 +111,8 @@
                     <td> {{ product.date_created }} </td>
                     <td> {{ product.date_updated }} </td>
                     <td>
-                        <button (click)="editProduct(product.id)" class="edit_button">EDIT</button>
-                        <button (click)="deleteProduct(product.id, product.product_name)" class="delete_button">DELETE</button>
+                        <button (click)="editProduct(product.id)" class="edit_button">✍️ EDIT</button>&nbsp;
+                        <button (click)="deleteProduct(product.id, product.product_name)" class="delete_button">🗑 DELETE</button>
                     </td>
                 </tr>
             </table>

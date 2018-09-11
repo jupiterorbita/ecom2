@@ -65,6 +65,7 @@ div.search{
         border-radius: 15px 15px 15px 15px;
         -moz-border-radius: 15px;
         border: solid 1px rgb(250, 173, 68);
+        margin-bottom: 10px;
     }
 
 
@@ -76,7 +77,7 @@ div.search{
         border-radius: 5px;
         /* margin-bottom: 5px; */
         display: inline-block;
-        width: 200px;
+        min-width: 90px;
     }
     .header_sort button{
         width: 150px;
@@ -104,14 +105,32 @@ div.search{
     text-align: center;
     text-transform: uppercase;
 }
+/* ====== addnew product div with button inside ======= */
+.addnew {
+    display: inline-block;
+    /* background: blue; */
+    vertical-align: middle;
+    margin-right: 10px;
+}
+/* ====== sort div that holds the buttons ====== */
 .header_sort {
+    vertical-align: top;
+    display: inline-block;
     background-color: rgb(139, 99, 89);
     color: white;
+    width: 50%;
+    border-radius: 10px;
+    padding-bottom: 4px;
     /* font-size: 1em; */
     /* padding: 5px; */
     text-align: center;
     /* text-transform: uppercase; */
 }
+    .header_sort span.sort_text_header {
+        font-size: 12pt;
+        box-shadow: #2b686e;
+        border-bottom: 1px solid black;
+    }
 
 
 img {
@@ -165,23 +184,72 @@ table tr:nth-child(2n+1) {
     color: red;
 }
 
-.sort button{
-    width: 150px;
-}
-
 /* ========== BUTTONS ========= */
+
+/* ===== sort order buttons ======= */
+div.header_sort div.sort button.sortBtn {
+    width: 70px;
+}
+/* ===== add new product button === */
+div.addnew button.add_button{
+    transition-duration: 0.4s;
+    width: 150px;
+    font-size: 14pt;
+    border-radius: 10px;
+    border: 2px solid rgb(26, 155, 32);
+    vertical-align: top;
+    margin-top: 37px;
+    box-shadow: 0px 17px 10px -10px rgba(0, 0, 0, 0.4);
+}
+    div.addnew button.add_button:hover {
+        background-color: rgb(26, 155, 32);
+        color: white;
+    }
+/* ----- SORT buttons ------- */
+button.sortBtn {
+    transition-duration: 0.2s;
+    height: 20px;
+    border-radius: 5px;
+    font-size: 11pt;
+}
+    button.sortBtn:hover {
+        border: 1px solid  rgb(241, 166, 43);
+        background: chocolate;
+        color: white;
+    }
 /* ----- EDIT button ------ */
-.table-users button{
+.table-users button.edit_button {
     transition-duration: 0.2s;
     padding: 5px;
+    border: 2px solid rgb(241, 166, 43);
     border-radius: 5px;
     margin-top: 5px;
-    width: 50px;
+    /* width: 50px; */
+    height: 27px;
+    vertical-align: top;
     display: inline-block;
 }
-    .table-users button:hover {
+    .table-users button.edit_button:hover {
         background-color: rgb(241, 166, 43);
         color: white;
+        box-shadow: 0px 17px 10px -10px rgba(0, 0, 0, 0.4);
+    }
+/* ----- D E L E T E  button ------ */
+.table-users button.delete_button {
+    transition-duration: 0.2s;
+    padding: 5px;
+    border: 2px solid rgb(255, 0, 0);
+    border-radius: 5px;
+    margin-top: 5px;
+    /* width: 70px; */
+    height: 27px;
+    vertical-align: top;
+    display: inline-block;
+}
+    .table-users button.delete_button:hover {
+        background-color: rgb(255, 0, 0);
+        color: white;
+        box-shadow: 0px 17px 10px -10px rgba(0, 0, 0, 0.4);
     }
 /* ------ CLEAR search button ------- */
 .search2 button{
