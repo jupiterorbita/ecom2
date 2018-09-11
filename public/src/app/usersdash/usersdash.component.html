@@ -16,10 +16,10 @@
       </ul>
   </div>
 
-  <h3>ALL REGISTERED USERS</h3>
+  <!-- <h3>ALL REGISTERED USERS</h3> -->
 
       <!-- ========== SEARCH =========== -->
-      <div class="search">
+      <!-- <div class="search">
           <div *ngIf="searchResultsFound">search results: {{ searchResultsFound }}
             <br>
             searching in fname OR lname OR email
@@ -35,17 +35,13 @@
           placeholder="Search users..."
           />
 
-          <button type="submit">
-              <img src="images/search.png" alt="">
-          </button> -
-
           <span *ngIf="sql_value_str">
             <button (click)="clearSearchStr()"> CLEAR search results</button>
           </span>
       
         </div>
 
-      <br>
+      <br> -->
       
       
       
@@ -55,7 +51,7 @@
 
 
       <!-- ======== USERS TABLE ========== -->
-  <table>
+  <!-- <table>
     <thead>
       <td (click)="orderById()">id ↕️</td>
       <td (click)="orderByFName()">fname ↕️</td>
@@ -78,8 +74,70 @@
         <td>{{ user.admin | json }}</td>
       </tr>
     </tbody>
-  </table>
+  </table> -->
   
+
+  <!-- copy pasta -->
+
+
+
+  <div class="table-users">
+    <div class="header_title">all registered Users </div>
+    
+    <div class="header">
+
+
+      <div class="search2">
+        <div class='searchResultsText' *ngIf="searchResultsFound">search results: {{ searchResultsFound }} person(s)
+        </div>
+        <input 
+        id="searchbox"
+        (keyup)="onKey($event)" 
+        [value]="sql_value_str" (input)="sql_value_str = $event.target.value"
+        class="search-container" 
+        type="text" 
+        placeholder="Search users..."
+        />
+
+        <br>
+        <span *ngIf="sql_value_str">
+          <button (click)="clearSearchStr()"> CLEAR search results</button>
+        </span>
+    
+      </div>
+
+
+    </div>
+
+    <table cellspacing="0">
+       <tr>
+          <th>Picture</th>
+          <th (click)="orderById()">id ↕️</th>
+          <th (click)="orderByFName()">first name ↕️</th>
+          <th (click)="orderByLName()">Last name ↕️</th>
+          <th (click)="orderByEmail()">email ↕️</th>
+          <th (click)="orderByCreated()">registered ↕️</th>
+          <th (click)="orderByUpdated()">info updated ↕️</th>
+          <th>level</th>
+          <th>📝</th>
+       </tr>
+ 
+       <tr *ngFor="let user of allUsers">
+          <td><img src="http://lorempixel.com/100/100/people/9" alt="" /></td>
+          <td>{{ user.id }}</td>
+          <td>{{ user.fname }}</td>
+          <td>{{ user.lname }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.date_created }}</td>
+          <td>{{ user.date_updated }}</td>
+          <td>
+            <span *ngIf="user.admin === 1" class='yes'> ADMIN </span>
+            <span *ngIf="user.admin === 0" class='no'> user </span>
+          </td>
+          <td> <button>edit</button></td>
+       </tr>
+    </table>
+ </div>
 
 
 

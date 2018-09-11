@@ -11,6 +11,7 @@ export class MainComponent implements OnInit {
 
   cart: any;
   allProducts: {};
+  randomImg: any;
 
   // for search
   sql_value_str = '';
@@ -30,9 +31,14 @@ export class MainComponent implements OnInit {
   ngOnInit() {
     console.log('=== MAIN.COMPONENT.TS LOADED ===');
     this.getInventory();
-
+    this.getRandomImg();
   }
 
+// ------- get a random img num to put in --------
+getRandomImg() {
+  this.randomImg = Math.floor(Math.random() * 11) + 1; // return a num between 1 - 11
+  console.log('this.randomImg =>', this.randomImg);
+}
 
 // --------- get all products (onInit)-----------
 getInventory() {

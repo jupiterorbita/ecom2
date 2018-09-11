@@ -5,66 +5,69 @@
   
   <div *ngIf="cart.length === 0" class="cartEmpty">
     cart is empty :( <br>
-    go buy some Teddy Bears!!! 🐻 ❤️ ❤
+    go buy some Teddy Bears!!! 🐻 ❤️ <span class="red">❤</span>
     <br>
-    <button [routerLink]="['/products']"> >> BUY HERE << </button>
+    <button class='buyhere'[routerLink]="['/products']"> >> BUY HERE << </button>
   </div>
 
   <div *ngIf="cart.length > 0" class="cartFull">
 
     <!-- cart is => {{ cart | json }} -->
-    
-    <br>
-    <div *ngIf="cartProducts.length > 0" class="table">
-        <!-- serverCartService => {{ serverCartService | json }} -->
-      <h2>My cart 🛒</h2>
-      <table>
-        <thead>
-          <td>name</td>
-          <td>qty</td>
-          <td>price</td>
-          <td>total_sku price</td>
-        </thead>
-        <tbody>
-          
-          <tr *ngFor="let item of serverCartService">
-            <td>{{ item.product_name }}</td>
-            
-            <td> id={{ item.id }} - 
-              <button (click)="minusQty(item.id)"> - </button>
-              x{{ item.qty }}
-              <button (click)="plusQty(item.id)"> + </button>
-            </td>
-            
-            <td>$ {{ item.item_price }}</td>
-            <td>$ {{ item.total_price }}</td>
-            <td (click)="removeCartItem(item.id, item.product_name, item.qty)"> 💥 </td>
-          </tr>
-        </tbody>
-      </table>
-      <h3>TOTAL: => $ {{ finalCartTotal }}</h3>
-      <br>
-      <button (click)="goToCheckout(serverCartService)"> CHECKOUT! 🎁 </button>
+
+    <div class="container">
 
       
-    </div>
-    <hr>
-    <!-- SKUs in cart => {{ cart.length }} -->
-    <br>
-    <!-- total items in cart => {{ cart_total_size }} -->
+      <div *ngIf="cartProducts.length > 0" class="table">
+        <!-- serverCartService => {{ serverCartService | json }} -->
+        <h2>My cart 🛒</h2>
+        <table>
+          <thead>
+            <td>name</td>
+            <td>qty</td>
+            <td>price</td>
+            <td>total_sku price</td>
+          </thead>
+          <tbody>
+            
+            <tr *ngFor="let item of serverCartService">
+              <td>{{ item.product_name }}</td>
+              
+              <td> id={{ item.id }} - 
+                <button class='minus' (click)="minusQty(item.id)"> - </button>
+                x{{ item.qty }}
+                <button class='plus' (click)="plusQty(item.id)"> + </button>
+              </td>
+              
+              <td>$ {{ item.item_price }}</td>
+              <td>$ {{ item.total_price }}</td>
+              <td (click)="removeCartItem(item.id, item.product_name, item.qty)"> 💥 </td>
+            </tr>
+          </tbody>
+        </table>
+        <h3>TOTAL: => $ {{ finalCartTotal }}</h3>
+        <br>
+        <button (click)="goToCheckout(serverCartService)"> CHECKOUT! 🎁 </button>
         
+        
+      </div>
+      <hr>
+      <!-- SKUs in cart => {{ cart.length }} -->
+      <br>
+      <!-- total items in cart => {{ cart_total_size }} -->
+      
+      
+      
+      <br>
+      <button (click)="clearCart(serverCartService)">CLEAR cart with {{ cart_total_size }} items</button>
+      
+      
+      <hr>
+      
+      <!-- cartProducts => {{ cartProducts | json}} -->
+      
+      
+    </div> <!-- Cart full If -->
     
-    
-    <br>
-    <button (click)="clearCart(serverCartService)">CLEAR cart with {{ cart_total_size }} items</button>
-    
-    
-    <hr>
-    
-    <!-- cartProducts => {{ cartProducts | json}} -->
-    
-    
-  </div> <!-- Cart full If -->
-    
+  </div> <!-- div container end -->
     
   </div>
