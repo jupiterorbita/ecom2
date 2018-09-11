@@ -88,7 +88,7 @@
 
 
       <div class="search2">
-        <div class='searchResultsText' *ngIf="searchResultsFound">search results: {{ searchResultsFound }} person(s)
+        <div class='searchResultsText' *ngIf="searchResultsFound">found: {{ searchResultsFound }} person(s)
         </div>
         <input 
         id="searchbox"
@@ -101,7 +101,7 @@
 
         <br>
         <span *ngIf="sql_value_str">
-          <button (click)="clearSearchStr()"> CLEAR search results</button>
+          <button class='clear' (click)="clearSearchStr()"> CLEAR search</button>
         </span>
     
       </div>
@@ -123,7 +123,7 @@
        </tr>
  
        <tr *ngFor="let user of allUsers">
-          <td><img src="http://lorempixel.com/100/100/people/9" alt="" /></td>
+          <td><img src="/assets/images/placeholder/placeholder_profile_img.jpg" alt="" /></td>
           <td>{{ user.id }}</td>
           <td>{{ user.fname }}</td>
           <td>{{ user.lname }}</td>
@@ -133,8 +133,10 @@
           <td>
             <span *ngIf="user.admin === 1" class='yes'> ADMIN </span>
             <span *ngIf="user.admin === 0" class='no'> user </span>
+            <span *ngIf="user.admin === null" class='no'> NULL </span>
+
           </td>
-          <td> <button>edit</button></td>
+          <td> <button class='edit'>edit</button></td>
        </tr>
     </table>
  </div>

@@ -13,13 +13,13 @@
 }
 
 /* ===== NAV BAR ======= */
-/* removes bullets from list */
 ul {
+    /* removes bullets from list */
     list-style-type: none;
     background-color: #DEE7E7;
     margin: 0px;
     padding: 0px;
-    /* border: 1px solid #555; */
+    border-bottom: 3px solid rgb(138, 30, 5);
     overflow: hidden;
 }
 li {
@@ -42,9 +42,15 @@ li a:hover{
 }
 /* lets the user know which page they are on */
 li a.active {
-    background-color: whitesmoke;
-    color: black;
+    background-color: rgb(138, 30, 5);
+    color: white;
 }
+
+
+
+
+
+
 
 /* ----------- SEARCH ------------- */
 div.search{
@@ -70,9 +76,7 @@ div.search{
         -moz-border-radius: 15px;
         border: solid 1px rgb(250, 173, 68);
     }
-        .search img{
-            width: 18px;
-        }
+
 
 
 
@@ -153,3 +157,33 @@ table tr:nth-child(2n+1) {
 .yes{
     color: red;
 }
+
+
+
+/* ========== BUTTONS ========= */
+/* ----- EDIT button ------ */
+.table-users button{
+    transition-duration: 0.2s;
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 5px;
+    width: 50px;
+    display: inline-block;
+}
+    .table-users button:hover {
+        background-color: rgb(241, 166, 43);
+        color: white;
+    }
+/* ------ CLEAR search button ------- */
+.search2 button{
+    transition-duration: 0.2s;
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 5px;
+    width: 120px;
+    display: inline-block;
+}
+    .search2 button:hover {
+        background-color: rgb(175, 76, 76);
+        color: white;
+    }

@@ -1,25 +1,13 @@
 /* main.component */
 .wrapper{
-    border: 1px solid red;
-    border-radius: 10px;
+    /* border: 1px solid red; */
+    /* border-radius: 10px; */
     background-color: rgb(243, 221, 192);
     padding: 5px;
+    margin: 0 5% 0 5%;
 }
 
-/* ============= DASHBOARD =========== */
-/* ----------- container ---------- */
-div.dashboard_container{
-    background-color: rgb(254, 239, 231);
-    min-height: 400px;
-    padding: 5px;
-}
-/* ----------- all inside CREATE ----- */
-    div.create_product{
-        background-color: rgb(255, 225, 203);
-        border: 1px solid black;
-        border-radius: 15px;
-        padding: 8px;
-    }
+
     /*==== form is inside here ===*/
     div.create_form{
         border: 1px solid black;

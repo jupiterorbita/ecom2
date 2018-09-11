@@ -1,19 +1,18 @@
 .wrapper{
-    border: 1px solid rgb(255, 0, 0);
-    border-radius: 10px;
-    background-color: rgb(243, 202, 240);
+    background-color: rgb(254, 236, 227);
+    margin: 0 5% 0 5%;
     padding: 5px;
     min-height: 300px;
 }
 
 /* ===== NAV BAR ======= */
-/* removes bullets from list */
 ul {
+    /* removes bullets from list */
     list-style-type: none;
     background-color: #DEE7E7;
     margin: 0px;
     padding: 0px;
-    /* border: 1px solid #555; */
+    border-bottom: 3px solid rgb(138, 30, 5);
     overflow: hidden;
 }
 li {
@@ -36,41 +35,11 @@ li a:hover{
 }
 /* lets the user know which page they are on */
 li a.active {
-    background-color: whitesmoke;
-    color: black;
+    background-color: rgb(138, 30, 5);
+    color: white;
 }
-/* ---------- LOGO ----------
-    .topNav img{
-        width: 180px;
-        display: inline-block;
-    }
-    .topNav .center_title{
-        display: inline-block;
-        vertical-align: top;
-        margin-left: 50px;
-    }
-    .topNav button{
-        display: inline-block;
-        vertical-align: top;
-        margin: 10px;
-        padding: 10px;
-    } */
 
 
-/* ============= DASHBOARD =========== */
-/* ----------- container ---------- */
-div.dashboard_container{
-    background-color: rgb(254, 239, 231);
-    min-height: 400px;
-    padding: 5px;
-}
-/* ----------- all inside product list ----- */
-    div.product_list{
-        background-color: rgb(255, 225, 203);
-        border: 1px solid black;
-        border-radius: 15px;
-        padding: 8px;
-    }
 
 
 /* ----------- SEARCH ------------- */
@@ -87,7 +56,7 @@ div.search{
     margin-bottom: 10px;
 }
 /* ----- SEARCH INPUT----- */
-    .search input{
+    .search2 input{
         /* margin-top: 5px; */
         padding: 6px;
         border: none;
@@ -97,64 +66,133 @@ div.search{
         -moz-border-radius: 15px;
         border: solid 1px rgb(250, 173, 68);
     }
-        .search img{
-            width: 18px;
-        }
 
-
-        .pages{
-            margin-top: 10px;
-            margin-bottom: 10px;
-            background-color:rgb(254, 239, 231);
-            text-align: center;
-        }
 
 
 /* ---------- LEFT FILTERS --------- */
-div.left_filters{
-    padding: 5px;
-    width: 140px;
-    /* height: 300px; */
-    display: inline-block;
-    vertical-align: top;
-    background-color: rgb(251, 200, 146);
-    border-radius: 15px;
-}
     div.sort{
         /* background-color: rgb(255, 239, 233); */
-        padding: 3px;
+        padding: 2px;
         border-radius: 5px;
-        margin-bottom: 5px;
+        /* margin-bottom: 5px; */
+        display: inline-block;
+        width: 200px;
+    }
+    .header_sort button{
+        width: 150px;
+    }
+    .sortBtn{
+        width: 120px;
     }
 
 
-/* ----------- TABLE --------- */
-div.table{
-    display: inline-block;
-    min-width: 720px;
-    vertical-align: top;
-    margin-left: 10px;
-    /* background-color: #4CAF50; */
-}
-.product_list table{
-    padding: 10px;
-    width: 90%;
-    margin: 0 auto;
-    margin-bottom: 20px;
-    background-color: rgb(255, 239, 233);
-    border: 1px solid rgb(130, 39, 23);
-    border-radius: 15px;
-    /* border-collapse: collapse; */
-}
-.product_list thead{
-    background-color: rgb(130, 39, 23);
+/* =========== new table ============ */
+
+.header_title {
+    background-color: rgb(114, 37, 20);
     color: white;
-    border-collapse: collapse;
+    font-size: 1.5em;
+    padding: 1rem 1rem 0 1rem;
+    text-align: center;
+    text-transform: uppercase;
 }
-.product_list thead, tr, td{
-    border-bottom: 1px solid #ddd;
+.header {
+    background-color: rgb(114, 37, 20);
+    color: white;
+    font-size: 1.5em;
+    padding: 1rem;
+    text-align: center;
+    text-transform: uppercase;
 }
-.product_list tr:hover {background-color: #f5f5f5;}
-.product_list .table img{
-    height: 40px;
+.header_sort {
+    background-color: rgb(139, 99, 89);
+    color: white;
+    /* font-size: 1em; */
+    /* padding: 5px; */
+    text-align: center;
+    /* text-transform: uppercase; */
 }
+
+
+img {
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+}
+
+.table-users {
+    /* border: 1px solid #327a81; */
+    border: 1px solid rgb(114, 37, 20);
+    border-radius: 10px;
+    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+    max-width: calc(100% - 2em);
+    margin: 1em auto;
+    overflow: hidden;
+    width: 90%;
+}
+
+table {
+    width: 100%;
+}
+table td, table th {
+    color: #2b686e;
+    padding: 10px;
+}
+table td {
+    text-align: center;
+    vertical-align: middle;
+}
+table td:last-child {
+    font-size: 0.95em;
+    line-height: 1.4;
+    text-align: left;
+}
+table th {
+    background-color: #f1e3da;
+    font-weight: 300;
+}
+table tr:nth-child(2n) {
+    background-color: white;
+}
+table tr:nth-child(2n+1) {
+    background-color: #f8f0ed;
+}
+
+.searchResultsText{
+    font-size: 11pt;
+}
+.yes{
+    color: red;
+}
+
+.sort button{
+    width: 150px;
+}
+
+/* ========== BUTTONS ========= */
+/* ----- EDIT button ------ */
+.table-users button{
+    transition-duration: 0.2s;
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 5px;
+    width: 50px;
+    display: inline-block;
+}
+    .table-users button:hover {
+        background-color: rgb(241, 166, 43);
+        color: white;
+    }
+/* ------ CLEAR search button ------- */
+.search2 button{
+    transition-duration: 0.2s;
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 5px;
+    width: 120px;
+    display: inline-block;
+}
+    .search2 button:hover {
+        background-color: rgb(175, 76, 76);
+        color: white;
+    }
