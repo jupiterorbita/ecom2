@@ -30,6 +30,14 @@ div.wrapper{
 
     /* ===== NAV BAR ======= */
 div.nav{
+
+
+        
+    /* position: fixed;
+    width: 100%;
+    z-index: 99; */
+
+
     overflow: hidden;
     background-color: rgb(254, 239, 231);
     min-height: 42px;

@@ -1,6 +1,6 @@
 .wrapper{
     border: none;
-    background-color: rgb(225, 243, 192);
+    background-color: rgb(254, 236, 227);
     padding: 5px;
     margin: 0 5% 0 5%;
 }
@@ -8,23 +8,7 @@
     color: red;
 }
 
-/* cart container */
-div.container{
-    background-color: paleturquoise;
-    margin: 0 auto;
-    width: 500px;
-}
 
-table, thead, tr, td {
-    border: 1px solid black;
-}
-thead {
-    font-size: 18pt;
-}
-
-button{
-    font-size: 16pt;
-}
 
 /* if cart is empty div */
 div.cartEmpty{
@@ -57,9 +41,112 @@ div.cartEmpty{
         color: white;
         /* box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19); */
     }
-/* ========= CART FULL buttons ========= */
-.minus{
-    border-radius: 50%;
-    background: #4CAF50;
-    width: 50px;
+
+
+
+
+/* =========== new table ============ */
+
+.header_title {
+    background-color: rgb(114, 37, 20);
+    color: white;
+    font-size: 1.5em;
+    padding: 1rem 1rem 0 1rem;
+    text-align: center;
+    text-transform: uppercase;
 }
+
+
+
+img {
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+}
+
+.table-users {
+    border-radius: 10px;
+    /* box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19); */
+    max-width: calc(100% - 2em);
+    margin: 1em auto;
+    overflow: hidden;
+    width: 90%;
+}
+
+table thead {
+    border-bottom: 1px solid black;
+}
+
+table {
+    width: 100%;
+}
+table td, table th {
+    color: black;
+    padding: 10px;
+}
+table td {
+    text-align: center;
+    vertical-align: middle;
+    /* border-bottom: 1px solid black; */
+
+}
+
+table td:last-child {
+    font-size: 0.95em;
+    line-height: 1.4;
+    text-align: left;
+}
+table th {
+    background-color: rgb(114, 37, 20);
+    color: white;
+    font-weight: 300;
+}
+table tr:nth-child(2n) {
+    background-color: white;
+}
+table tr:nth-child(2n+1) {
+    background-color: #f8f0ed;
+}
+
+.table-users2 {
+    border-radius: 10px;
+    /* box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19); */
+    max-width: calc(100% - 2em);
+    margin: 1em auto;
+    overflow: hidden;
+    width: 30%;
+}
+.total {
+    background-color: rgb(241, 166, 43);
+    /* border: 1px solid saddlebrown; */
+    color: white;
+    font-size: 1.5em;
+    padding: 1rem 1rem 0 1rem;
+    padding-bottom: 20px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/* button.checkout_button { */
+    .buttons {
+    /* transition: 0.3s; */
+    min-height: 50px;
+    margin: 10px auto;
+    overflow: hidden;
+    max-width: calc(100% - 2em);
+    width: 90%;
+    text-align: center;
+    align-content: center;
+}
+    button.checkout_button{
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+
+        transition: 0.3s;
+        border-radius: 10px;
+        border: 2px solid #4CAF50;
+        width: 30%;
+    }
+    button.checkout_button:hover {
+        background: #4CAF50;
+        color: white;
+    }
