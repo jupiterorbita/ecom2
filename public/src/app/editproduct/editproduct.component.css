@@ -1,102 +1,170 @@
 .wrapper{
-    border: 1px solid red;
-    border-radius: 10px;
-    background-color: rgb(243, 221, 192);
+    /* border: 1px solid red; */
+    /* border-radius: 10px; */
+    /* background-color: rgb(163, 119, 60); */
+    background-color: rgb(245, 236, 227);
     padding: 5px;
+    margin: 0 5% 0 5%;
+}
+
+/* ========= form ========== */
+.container {
+    padding: 16px;
+    background-color: white;
+    width: 500px;
+    margin: 0px auto;
+    border-radius: 10px;
+    margin-top: 10px;
+    border: 1px solid black;
+}
+.container h3{
+    text-align: center;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid rgb(254, 137, 98); 
+}
+/* ========= input fields ========= */
+input[type=email], input[type=password], input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+textarea {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+    height: 60px;
+}
+
+div.sku_qty {
+    display: block;
+    /* background: lightblue; */
+    /* width: 100%;
+    margin: 0 auto; */
+    align-content: space-between;
+    justify-content: space-around;
+}
+    div.sku_qty input[type=number] {
+        width: 20%;
+
+        margin: 0 auto;
+
+        font-size: 14pt;
+        padding: 8px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        box-sizing: border-box;
+    }
+    div.sku_qty input.price {
+        border: 2px solid green;
+    }
+
+input[type=submit] {
+    background-color: rgb(254, 137, 98);
+    font-size: 18pt;
+    color: white;
+    width: 200px;
+    border: none;
+    border-radius: 10px;
+    padding: 14px 20px;
+    margin: 8px 0;
+    cursor: pointer;
+    width: 100%;
+    box-shadow: 0px 17px 10px -10px rgba(0, 0, 0, 0.4);
+}
+
+input:hover {
+    opacity: 0.8;
+}
+
+/* VALIDATION ERRORS */
+
+#errors{
+    color: red;
 }
 
 
 
 
 
-/* ============= DASHBOARD =========== */
-/* ----------- container ---------- */
-/* div.dashboard_container{
-    background-color: rgb(254, 239, 231);
-    min-height: 400px;
-    padding: 5px;
-} */
-/* ----------- all inside CREATE ----- */
-    div.create_product{
-        background-color: rgb(255, 225, 203);
-        border: 1px solid black;
-        border-radius: 15px;
-        padding: 8px;
-    }
-    /*==== form is inside here ===*/
-    div.create_form{
-        border: 1px solid black;
-        width: 70%;
-        margin: 0 auto;
-        border-radius: 15px;
-        background-color: rgb(255, 239, 232);
-        padding: 5px;
-        text-align: center;
-    }
-    /* ========= FORM =============== */
-        div.labels{
-            /* margin-right: 220px; */
-            border-radius: 15px;
-            font-size: 16pt;
-            text-align: right;
-            padding: 10px;
-            /* width: 600px; */
-            min-height: 200px;
-            display: inline-block;
-            vertical-align: top;
-            background-color: rgb(255, 239, 232);
-        }
-            .labels input{
-                height: 25px;
-                margin-bottom: 5px;
-                font-size: 14pt;
-            }
-            .labels textarea{
-                width: 210px;
-                height: 50px;
-                resize: none;
-            }
 
 /**************************************
 **             BUTTONS               **
 **************************************/
-/* ---- ALL buttons styles ------ */
-.labels button{
+/* ---- UPDATE ------ */
+div.container button.create_button {
     margin-top: 10px;
     margin-bottom: 1px;
-    /* height: 40px;
-    width: 80px; */
     padding: 5px 10px;
     border: none;
     border-radius: 15px;
     text-align: center;
     font-size: 16px;
     border: 1px solid #4CAF50; 
+    background-color: white;
+    /* webkit-transition-duration: 0.4s; Safari */
+    transition-duration: 0.4s;
+}
+    .container button.create_button:hover {
+        background-color: #4CAF50; /* Green */
+        color: white;
+        /* box-shadow: 0px 17px 10px -10px rgba(0, 0, 0, 0.4); */
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    }
+/* ----- RESET BUTTON ----- */
+div.container button.reset_button {
+    margin-top: 10px;
+    margin-bottom: 1px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 16px;
+    border: 1px solid rgb(255, 174, 0); 
     background-color: white; /* Green */
     /* webkit-transition-duration: 0.4s; Safari */
     transition-duration: 0.4s;
 }
-    .labels button:hover {
-        background-color: #4CAF50; /* Green */
+    .container button.reset_button:hover {
+        background-color: rgb(255, 174, 0); 
         color: white;
-        /* box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19); */
+        /* box-shadow: 0px 17px 10px -10px rgba(0, 0, 0, 0.4); */
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    }
+/* ----- CANCEL/BACK BUTTON ------*/
+div.container button.cancel_button {
+    margin-top: 10px;
+    margin-bottom: 1px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 16px;
+    border: 1px solid rgb(255, 0, 0); 
+    background-color: white; /* Green */
+    /* webkit-transition-duration: 0.4s; Safari */
+    transition-duration: 0.4s;
+}
+    .container button.cancel_button:hover {
+        background-color: rgb(255, 0, 0); 
+        color: white;
+        /* box-shadow: 0px 17px 10px -10px rgba(0, 0, 0, 0.4); */
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
     }
 
-    /* ======== EDIT button TOP ====== */
-    button.reset_button {
-        margin-right: 60px;
-        border: 1px solid orange;
-        background-color: white; /* Green */
-    }
-        button.reset_button:hover{
-            background-color: orange;
-        }
+    .button_actions button {
 
-    /* ========= DELETE BUTTON ======= */
-    button.create_button{
-        border: 1px solid blue;
-        background-color: white; /* Green */
+        display:inline-block;    
+        width:33%;
+        text-align:center;
     }
-        button.create_button:hover{
-            background-color: blue;
-        }

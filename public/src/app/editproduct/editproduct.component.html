@@ -1,34 +1,17 @@
 <div class="wrapper">
 
-  edit component
-  <!-- <br>
-  ¯\_(ツ)_/¯ 
-  <br>
-  <a [routerLink]= "['/admindash']">back to ADMIN dash</a>
-  <hr> -->
-  <h1> {{ tempProductName }} </h1>
-  <!-- {{ editProduct | json }} -->
+ 
+  <a [routerLink]= "['/admindash']"> 👈 back to ADMIN dash</a>
   <hr>
 
 
-
-
-<!-- ============ DASHBOARD ================= -->
-<!-- <div class="dashboard_container"> -->
-    <!-- dashboard_container -->
-
-
-    <div class="create_product">
-        create new Product
-        
-        <div class="create_form">
+        <!-- <div class="create_form">
             <h1>EDIT{{ tempProductName }} </h1>create create_form
             <br>
             <hr>
             <br>
 
             <div class="labels">
-<!-- ========= FORM ========= -->
               <form (submit)="submitEditedProductForm()">
 
                 Product name:
@@ -83,7 +66,6 @@
                   name="img_url" 
                   placeholder="img url" 
                   value="{{ editProduct.img }}">
-                <!-- <input class='img_field' type="file" name="image" accept="image/*"> -->
                 <br>
                 
                 color:
@@ -100,17 +82,104 @@
               <button (click)="resetToOriginalFields()" class="reset_button">RESET</button> 
             </div>
 
-        </div>
+        </div> -->
+
+
+
+
+
+
+
+
+
+<div class="container">
+
+  <h3>editing: {{ tempProductName }}</h3>
+  <!-- <h2>{{ tempProductName }}</h2> -->
+  
+  <form (submit)="submitEditedProductForm()">
+    
+    Product name:
+    <input 
+      [(ngModel)]="editProduct.product_name" 
+      type="text" 
+      name="product_name" 
+      placeholder="product name"
+      value="{{ editProduct.product_name }}"/>
+    <br>
+
+    product description:
+    <textarea 
+      [(ngModel)]="editProduct.product_description" 
+      name="product_description" 
+      placeholder="descibe the product..." 
+      value="{{ editProduct.product_description }}">
+    </textarea>
+    <br>
+    
+    <div class="sku_qty">
+      SKU 📦 :
+      <input 
+      [(ngModel)]="editProduct.sku" 
+      type="number"
+      name="sku" 
+      placeholder="SKU#" 
+      value="{{ editProduct.sku }}">
+      <!-- <br> -->
+      
+      Qty:
+      <input 
+      [(ngModel)]="editProduct.qty" 
+      type="number" 
+      name="qty" 
+      placeholder="1-100" 
+      value="{{ editProduct.qty }}">
+      
+      Price 💵 : 
+      <input 
+      class='price'
+      [(ngModel)]="editProduct.product_price" 
+      type="number" 
+      name="product_price" 
+      placeholder="$ - price" 
+      value="{{ editProduct.product_price }}">
+      <br>
     </div>
+      
+    image 🖼 :
+    <input 
+      [(ngModel)]="editProduct.img" 
+      type="text" 
+      name="img_url" 
+      placeholder="img url" 
+      value="{{ editProduct.img }}">
+    <!-- <input class='img_field' type="file" name="image" accept="image/*"> -->
+    <br>
+    
+    color 🎨 :
+    <input 
+      [(ngModel)]="editProduct.color" 
+      type="text" 
+      name="color" 
+      placeholder="color" 
+      value="{{ editProduct.color }}">
+    <br>
 
-<!-- </div> -->
-
-
-
-
-
-
-
-
+    <div class="button_actions">
+      <button type="submit" class="create_button">⭐️ UPDATE</button>
+      <button (click)="resetToOriginalFields()" class="reset_button">♻️ RESET</button>
+      <button [routerLink]= "['/admindash']" class="cancel_button">🤚 CANCEL</button>
+    </div>
+  
+  </form>
 
 </div>
+
+  
+</div>
+
+
+
+
+
+<!-- </div> -->
